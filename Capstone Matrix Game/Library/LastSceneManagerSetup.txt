@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Test Level.unity
+- path: Assets/Scenes/MatrixTransformScene.unity
   isLoaded: 1
   isActive: 1
