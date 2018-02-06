@@ -10,6 +10,14 @@ public class RenderPoint : MonoBehaviour
 	public void AssignNextPointInLine(RenderPoint point)
 	{
 		nextPointInLine = point;
-        GetComponent<LineRenderer>().SetPositions(new Vector3[] { transform.position, point.transform.position });
+		UpdateLine();
+    }
+
+	public void UpdateLine()
+	{
+		if (nextPointInLine != null)
+		{
+			GetComponent<LineRenderer>().SetPositions(new Vector3[] { transform.position, nextPointInLine.transform.position });
+		}
 	}
 }
