@@ -36,27 +36,25 @@ public class CartesianRender : MonoBehaviour
 			pointObjects[i] = newRenderPoint;
         }
 
-		RenderLines();
+		ConnectLines();
     }
 
-	public void RenderTransformedPoints(Matrix2x2 transformation)
+	public void TransformPoints(Matrix2x2 transformation)
 	{
-		DestroyExistingPoints();
-
 		int numPoints = listOfPoints.Length;
-		pointObjects = new GameObject[numPoints];
 		for (int i = 0; i < numPoints; i++)
 		{
 			//transform the point
 			Vector2 transformedPoint = new Vector2(transformation.a * listOfPoints[i].x + transformation.b * listOfPoints[i].y, transformation.c * listOfPoints[i].x + transformation.d * listOfPoints[i].y);
 
-			//make the object
+			//find and move the object to the point
 			Vector3 worldPosition = new Vector3(transformedPoint.x * cartesianToWorldScale[0], transformedPoint.y * cartesianToWorldScale[1], -1);
-			GameObject newRenderPoint = Instantiate(pointObjectPrefab, worldPosition, Quaternion.identity);
-			pointObjects[i] = newRenderPoint;
-		}
 
-		RenderLines();
+			pointObjects[i].transform.position = worldPosition;
+			pointObjects[i].GetComponent<RenderPoint>().UpdateLine();
+        }
+
+		ConnectLines();
 	}
 
 	private void DestroyExistingPoints()
@@ -72,7 +70,7 @@ public class CartesianRender : MonoBehaviour
 		pointObjects = null;
     }
 
-	private void RenderLines()
+	private void ConnectLines()
 	{
 		if (lineConnections == null)
 			return;
