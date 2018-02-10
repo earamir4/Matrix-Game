@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/MatrixTransformScene.unity
+- path: Assets/Scenes/FullMatrixUI.unity
   isLoaded: 1
   isActive: 1
