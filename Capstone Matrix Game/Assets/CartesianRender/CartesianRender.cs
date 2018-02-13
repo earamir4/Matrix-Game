@@ -18,9 +18,16 @@ public class CartesianRender : MonoBehaviour
 
 	private GameObject[] pointObjects;
 
+    public List<GameObject> listOfMatrices;
+
 	void Start ()
 	{
 		RenderBasePoints();
+    }
+
+    public void GetPoints(List<GameObject> matrices)
+    {
+        listOfMatrices = matrices;
     }
 
 	public void RenderBasePoints()
