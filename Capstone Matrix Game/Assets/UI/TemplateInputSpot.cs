@@ -11,10 +11,15 @@ public class TemplateInputSpot : MonoBehaviour, IDropHandler
 
 	public bool AcceptingInput
 	{
+		get
+		{
+			return acceptingInput;
+		}
 		set
 		{
 			acceptingInput = value;
 			GetComponent<Image>().color = acceptingInput ? acceptingInputColor : notAcceptingInputColor;
+			Debug.Log("Input slot now " + (!acceptingInput ? "not" : "") + " accepting input.");
 		}
 	}
 	private bool acceptingInput;
@@ -34,7 +39,6 @@ public class TemplateInputSpot : MonoBehaviour, IDropHandler
 
 	private void Start()
     {
-		AcceptingInput = false;
 		if (matrixInputManager == null)
 		{
 			matrixInputManager = GameObject.FindObjectOfType<MatrixInputManager>();
@@ -43,16 +47,16 @@ public class TemplateInputSpot : MonoBehaviour, IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
-        if (acceptingInput && storedTemplateObject == null)
+        if (acceptingInput && storedTemplateObject == null && DragHandler.template != null)
         {
-			//disable input on the template that was just dragged into this slot
+			//find the template that is currently being dragged
 			MatrixInputTemplate draggedTemplate = DragHandler.template.GetComponent<MatrixInputTemplate>();
 
 			draggedTemplate.SetAcceptingInput(true);
 
-			matrixInputManager.SpotAcceptedInput();
-
 			DragHandler.template.transform.SetParent(transform);
-        }
+
+			matrixInputManager.UpdateInputabilityStatus();
+		}
     }
 }

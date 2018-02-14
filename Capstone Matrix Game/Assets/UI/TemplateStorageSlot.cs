@@ -7,7 +7,7 @@ public class TemplateStorageSlot : MonoBehaviour, IDropHandler
 {
 	private MatrixInputManager matrixInputManager;
 
-	public GameObject item
+	public GameObject storedTemplateObject
 	{
 		get
 		{
@@ -28,7 +28,7 @@ public class TemplateStorageSlot : MonoBehaviour, IDropHandler
 
 	public void OnDrop(PointerEventData eventData)
 	{
-		if (item == null)
+		if (storedTemplateObject == null && DragHandler.template != null)
 		{
 			//disable input on the template that was just dragged into this slot
 			MatrixInputTemplate draggedTemplate = DragHandler.template.GetComponent<MatrixInputTemplate>();
@@ -36,6 +36,8 @@ public class TemplateStorageSlot : MonoBehaviour, IDropHandler
 			draggedTemplate.SetAcceptingInput(false);
 
 			DragHandler.template.transform.SetParent(transform);
+
+			matrixInputManager.UpdateInputabilityStatus();
 		}
 	}
 }

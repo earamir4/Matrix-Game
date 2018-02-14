@@ -9,24 +9,48 @@ public class MatrixInputManager : MonoBehaviour
 	private int spotsFilled;
     public MatrixRenderManager renderManager;
 
+	public bool restrictInputToInOrder;
+
 	public void Start()
 	{
-		inputSpots[0].AcceptingInput = true;
-    }
+		for (int i = 0; i < inputSpots.Length; i++)
+		{
+			if (inputSpots[i] != null)
+			{
+				if (i == 0 || !restrictInputToInOrder)
+				{
+					inputSpots[i].AcceptingInput = true;
+				}
+				else
+				{
+					inputSpots[i].AcceptingInput = false;
+				}
+			}
+		}
+	}
 
     public void SendToBackend()
     {
 		List<Matrix2x2> inputMatrices = new List<Matrix2x2>();
 
-		foreach (TemplateInputSpot templateInputSpot in inputSpots)
+		for (int i = 0; i<inputSpots.Length; i++)
 		{
-			GameObject storedTemplateObject = templateInputSpot.storedTemplateObject;
+			TemplateInputSpot templateInputSpot = inputSpots[i];
+
+            GameObject storedTemplateObject = templateInputSpot.storedTemplateObject;
 
 			//check if slot is has a stored slot
 			if (storedTemplateObject == null)
 			{
 				//if slot has nothing in it, stop pushing input since rest shouldn't have anything in them
-				break;
+				if (restrictInputToInOrder)
+				{
+					break;
+				}
+				else
+				{
+					continue;
+				}
 			}
 
 			MatrixInputTemplate workingTemplate = storedTemplateObject.GetComponent<MatrixInputTemplate>();
@@ -49,12 +73,24 @@ public class MatrixInputManager : MonoBehaviour
 		renderManager.SetMatrices(inputMatrices.ToArray());
     }
 
-	public void SpotAcceptedInput()
+	public void UpdateInputabilityStatus()
 	{
-		spotsFilled++;
-		if (spotsFilled < inputSpots.Length)
+		if (!restrictInputToInOrder)
+			return;
+
+		for (int i = inputSpots.Length-1; i>=0; i--)
 		{
-			inputSpots[spotsFilled].AcceptingInput = true;
-        }
-    }
+			inputSpots[i].AcceptingInput = true;
+			if (inputSpots[i].storedTemplateObject != null || i == 0)
+			{
+				break;
+			}
+
+			if (inputSpots[i - 1].storedTemplateObject == null)
+			{
+				//Debug.Log("Input spot " + (i - 1).ToString() + " empty, so disbaling input to spot " + i.ToString() + ".");
+				inputSpots[i].AcceptingInput = false;
+			}
+		}
+	}
 }

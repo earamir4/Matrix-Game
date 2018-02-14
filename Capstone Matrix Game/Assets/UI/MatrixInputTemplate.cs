@@ -35,7 +35,7 @@ public class MatrixInputTemplate : MonoBehaviour
 
     public void SetAcceptingInput(bool isAcceptingInput)
     {
-        blocker.SetActive(isAcceptingInput);
+        blocker.SetActive(!isAcceptingInput);
     }
 
     public int[] GetValues()

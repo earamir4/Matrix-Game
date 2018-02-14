@@ -36,7 +36,7 @@ public class MatrixRenderManager : MonoBehaviour
 			for (int i = 1; i < transformationMatrices.Length; i++)
 			{
 				Matrix2x2 currentMatrix = transformationMatrices[i];
-				finalMatrix = finalMatrix.Multiply(currentMatrix);
+				finalMatrix = currentMatrix.Multiply(finalMatrix);
 			}
 		}
 	}
