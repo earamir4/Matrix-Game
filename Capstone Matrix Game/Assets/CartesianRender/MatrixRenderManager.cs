@@ -43,6 +43,7 @@ public class MatrixRenderManager : MonoBehaviour
 
 	public void RenderFullyTransformed()
 	{
+		StopAllCoroutines();
 		cartesianRenderer.TransformPoints(finalMatrix);
 	}
 

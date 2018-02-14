@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class MatrixSlot : MonoBehaviour, IDropHandler
+public class TemplateStorageSlot : MonoBehaviour, IDropHandler
 {
-	public bool workspaceSlot;
-    private MatrixInputManager matrixInputManager;
+	private MatrixInputManager matrixInputManager;
 
 	public GameObject item
 	{
@@ -21,28 +19,23 @@ public class MatrixSlot : MonoBehaviour, IDropHandler
 	}
 
 	private void Start()
-    {
+	{
 		if (matrixInputManager == null)
 		{
 			matrixInputManager = GameObject.FindObjectOfType<MatrixInputManager>();
 		}
-    }
+	}
 
-    public void OnDrop(PointerEventData eventData)
-    {
-        if (item == null)
-        {
+	public void OnDrop(PointerEventData eventData)
+	{
+		if (item == null)
+		{
 			//disable input on the template that was just dragged into this slot
 			MatrixInputTemplate draggedTemplate = DragHandler.template.GetComponent<MatrixInputTemplate>();
 
-			draggedTemplate.ToggleInput();
-
-			if (workspaceSlot)
-			{
-                matrixInputManager.AddWorkingTemplate(draggedTemplate);
-			}
+			draggedTemplate.SetAcceptingInput(false);
 
 			DragHandler.template.transform.SetParent(transform);
-        }
-    }
+		}
+	}
 }
