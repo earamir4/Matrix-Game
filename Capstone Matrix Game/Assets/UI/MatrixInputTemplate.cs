@@ -33,9 +33,9 @@ public class MatrixInputTemplate : MonoBehaviour
 		FillValuesFromText();
     }
 
-    public void ToggleInput()
+    public void SetAcceptingInput(bool isAcceptingInput)
     {
-        blocker.SetActive(!blocker.activeInHierarchy);
+        blocker.SetActive(!isAcceptingInput);
     }
 
     public int[] GetValues()
