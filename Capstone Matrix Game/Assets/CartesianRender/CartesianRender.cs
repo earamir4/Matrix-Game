@@ -20,6 +20,8 @@ public class CartesianRender : MonoBehaviour
 
     public List<GameObject> listOfMatrices;
 
+	public RenderAreaZoom renderAreaZoom;
+
 	void Start ()
 	{
 		RenderBasePoints();
@@ -38,12 +40,15 @@ public class CartesianRender : MonoBehaviour
         pointObjects = new GameObject[numPoints];
 		for (int i = 0; i < numPoints; i++)
 		{
-			Vector3 worldPosition = new Vector3(listOfPoints[i].x * cartesianToWorldScale[0], listOfPoints[i].y * cartesianToWorldScale[1], -1);
+			Vector2 pointPosition = listOfPoints[i];
+			Vector3 worldPosition = new Vector3(pointPosition.x * cartesianToWorldScale[0], pointPosition.y * cartesianToWorldScale[1], -1);
             GameObject newRenderPoint = Instantiate(pointObjectPrefab, worldPosition, Quaternion.identity);
+			newRenderPoint.GetComponent<RenderPoint>().ChangeText("(" + pointPosition.x.ToString("0.0") + ", " + pointPosition.y.ToString("0.0") + " )");
 			pointObjects[i] = newRenderPoint;
         }
 
 		ConnectLines();
+		UpdateZoom();
     }
 
 	public void TransformPoints(Matrix2x2 transformation)
@@ -58,10 +63,14 @@ public class CartesianRender : MonoBehaviour
 			Vector3 worldPosition = new Vector3(transformedPoint.x * cartesianToWorldScale[0], transformedPoint.y * cartesianToWorldScale[1], -1);
 
 			pointObjects[i].transform.position = worldPosition;
-			pointObjects[i].GetComponent<RenderPoint>().UpdateLine();
-        }
+
+			RenderPoint renderPoint = pointObjects[i].GetComponent<RenderPoint>();
+			renderPoint.UpdateLine();
+			renderPoint.ChangeText("(" + transformedPoint.x.ToString("0.0") + ", " + transformedPoint.y.ToString("0.0") + " )");
+		}
 
 		ConnectLines();
+		UpdateZoom();
 	}
 
 	private void DestroyExistingPoints()
@@ -106,5 +115,27 @@ public class CartesianRender : MonoBehaviour
 				print("Can't render a line between points " + pointA + " and " + pointB + ".");
 			}
 		}
+	}
+
+	private void UpdateZoom()
+	{
+		float maxDistance = 0;
+		foreach (GameObject pointObject in pointObjects)
+		{
+			float xDistance = Mathf.Abs(transform.position.x - pointObject.transform.position.x);
+			float yDistance = Mathf.Abs(transform.position.y - pointObject.transform.position.y);
+
+			if (xDistance > maxDistance)
+			{
+				maxDistance = xDistance;
+            }
+
+			if (yDistance > maxDistance)
+			{
+				maxDistance = yDistance;
+            }
+		}
+
+		renderAreaZoom.SetRenderSize((maxDistance * 1.2f) / cartesianToWorldScale.magnitude);
 	}
 }

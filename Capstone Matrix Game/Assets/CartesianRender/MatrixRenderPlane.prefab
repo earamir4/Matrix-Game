@@ -112,6 +112,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cartesianRenderer: {fileID: 114599620160863538}
   animationDurationPerMatrix: 2.5
+  animationBars:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &114599620160863538
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -141,3 +147,4 @@ MonoBehaviour:
   - X: 3
     Y: 0
   listOfMatrices: []
+  renderAreaZoom: {fileID: 0}
