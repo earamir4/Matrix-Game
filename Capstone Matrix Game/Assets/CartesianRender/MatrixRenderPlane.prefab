@@ -127,12 +127,17 @@ MonoBehaviour:
   pointObjectPrefab: {fileID: 1939782810009628, guid: 69fa6118f1d9d854c8c52f590d47c682,
     type: 2}
   listOfPoints:
-  - {x: 0, y: 0}
   - {x: 1, y: 1}
+  - {x: -1, y: 1}
   - {x: -1, y: -1}
+  - {x: 1, y: -1}
   lineConnections:
   - X: 0
     Y: 1
   - X: 1
     Y: 2
+  - X: 2
+    Y: 3
+  - X: 3
+    Y: 0
   listOfMatrices: []
