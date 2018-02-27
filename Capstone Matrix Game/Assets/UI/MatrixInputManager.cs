@@ -33,6 +33,7 @@ public class MatrixInputManager : MonoBehaviour
     {
 		List<Matrix2x2> inputMatrices = new List<Matrix2x2>();
 
+		int accumulatedBlankSpots = 0;
 		for (int i = 0; i<inputSpots.Length; i++)
 		{
 			TemplateInputSpot templateInputSpot = inputSpots[i];
@@ -42,15 +43,8 @@ public class MatrixInputManager : MonoBehaviour
 			//check if slot is has a stored slot
 			if (storedTemplateObject == null)
 			{
-				//if slot has nothing in it, stop pushing input since rest shouldn't have anything in them
-				if (restrictInputToInOrder)
-				{
-					break;
-				}
-				else
-				{
-					continue;
-				}
+				accumulatedBlankSpots++;
+                continue;
 			}
 
 			MatrixInputTemplate workingTemplate = storedTemplateObject.GetComponent<MatrixInputTemplate>();
@@ -59,6 +53,15 @@ public class MatrixInputManager : MonoBehaviour
 			{
 				Debug.Log("Can't find MatrixInputTemplate component on templateInputObject stored in a slot.");
 			}
+
+			if (accumulatedBlankSpots > 0)
+			{
+				for (int k = 0; k < accumulatedBlankSpots; k++)
+				{
+					inputMatrices.Add(Matrix2x2.IdentityMatrix);
+				}
+				accumulatedBlankSpots = 0;
+            }
 
 			workingTemplate.UpdateValues();
 
