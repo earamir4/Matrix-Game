@@ -18,6 +18,8 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         startPosition = transform.position;
         startParent = transform.parent;
         GetComponent<CanvasGroup>().blocksRaycasts = false;
+        GetComponent<Canvas>().overrideSorting = true;
+        GetComponent<Canvas>().sortingOrder = 1;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -29,6 +31,7 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     {
         template = null;
         GetComponent<CanvasGroup>().blocksRaycasts = true;
+        GetComponent<Canvas>().overrideSorting = false;
         transform.localPosition = Vector3.zero;
     }
 }
