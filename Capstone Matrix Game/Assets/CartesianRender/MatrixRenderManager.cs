@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MatrixRenderManager : MonoBehaviour
 {
@@ -12,12 +13,19 @@ public class MatrixRenderManager : MonoBehaviour
 	public float animationDurationPerMatrix;
 	private float animationTime;
 
+	public Image[] animationBars;
+
 	public void Start()
 	{
 		//render base points
 		if (cartesianRenderer != null)
 		{
 			cartesianRenderer.RenderBasePoints();
+		}
+
+		for (int i = 0; i< animationBars.Length; i++)
+		{
+			animationBars[i].fillAmount = 0f;
 		}
     }
 
@@ -45,6 +53,11 @@ public class MatrixRenderManager : MonoBehaviour
 	{
 		StopAllCoroutines();
 		cartesianRenderer.TransformPoints(finalMatrix);
+
+		for (int i = 0; i < transformationMatrices.Length; i++)
+		{
+			animationBars[i].fillAmount = 1f;
+		}
 	}
 
 	public void StartAnimation()
@@ -62,7 +75,12 @@ public class MatrixRenderManager : MonoBehaviour
 	{
 		print("Animation starting.");
 
-        cartesianRenderer.TransformPoints(Matrix2x2.IdentityMatrix);
+		for (int i = 0; i < animationBars.Length; i++)
+		{
+			animationBars[i].fillAmount = 0f;
+		}
+
+		cartesianRenderer.TransformPoints(Matrix2x2.IdentityMatrix);
 
 		Matrix2x2 cumulativeMatrix = Matrix2x2.IdentityMatrix;
 
@@ -86,6 +104,8 @@ public class MatrixRenderManager : MonoBehaviour
 					Mathf.Lerp(1, currentTargetMatrix.d, animationRatio)
 					);
 				cartesianRenderer.TransformPoints(transformationInProgress.Multiply(cumulativeMatrix));
+
+				animationBars[i].fillAmount = animationRatio;
 
 				yield return null;
 			}
