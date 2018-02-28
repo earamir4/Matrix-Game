@@ -5,13 +5,20 @@ using UnityEngine.UI;
 
 public class TemplateMenuNavagator : MonoBehaviour {
 
-    public Text pageText;
+    public GameObject[] templatePages;
+    public Text pageTitle;
+    private int pageNumber;
 
-	void Start () {
-		
-	}
-	
-	void Update () {
-		
-	}
+    public void ChangePage(int navigate)
+    {
+        templatePages[pageNumber].SetActive(false);
+        pageNumber += navigate;
+        if (pageNumber >= templatePages.Length)
+            pageNumber = 0;
+        if (pageNumber < 0)
+            pageNumber = templatePages.Length - 1;
+        templatePages[pageNumber].SetActive(true);
+
+        pageTitle.text = ("Page " + (pageNumber + 1));
+    }
 }
