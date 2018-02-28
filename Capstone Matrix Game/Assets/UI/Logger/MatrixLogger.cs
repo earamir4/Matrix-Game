@@ -36,4 +36,9 @@ public class MatrixLogger: MonoBehaviour
     {
         LogField.text = string.Empty;
     }
+
+    public void ToggleVisibility()
+    {
+        gameObject.SetActive(!gameObject.activeInHierarchy);
+    }
 }

@@ -1012,12 +1012,12 @@ Prefab:
     - target: {fileID: 224048334048208898, guid: 71ec7eb7af5494248b3e4d6ffe3232c6,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224742927695930870, guid: 71ec7eb7af5494248b3e4d6ffe3232c6,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 22
+      value: 107
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 71ec7eb7af5494248b3e4d6ffe3232c6, type: 2}
