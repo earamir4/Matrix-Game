@@ -40,4 +40,9 @@ public class Matrix2x2
 			this.c * other.b + this.d * other.d
 			);
 	}
+
+    public override string ToString()
+    {
+        return "[ " + a + ", " + b + " ]\n[ " + c + ", " + d + " ]";
+    }
 }
