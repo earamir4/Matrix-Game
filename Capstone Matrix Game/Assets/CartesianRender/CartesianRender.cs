@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,10 +18,14 @@ public class CartesianRender : MonoBehaviour
 	private IntVector2[] lineConnections;
 
 	private GameObject[] pointObjects;
+	private Vector2[] transformedPointPositions;
 
     public List<GameObject> listOfMatrices;
 
 	public RenderAreaZoom renderAreaZoom;
+
+	//render options
+	public bool showCoordinates;
 
 	void Start ()
 	{
@@ -37,27 +42,50 @@ public class CartesianRender : MonoBehaviour
 		DestroyExistingPoints();
 
 		int numPoints = listOfPoints.Length;
-        pointObjects = new GameObject[numPoints];
+
+		transformedPointPositions = new Vector2[numPoints];
+
+		pointObjects = new GameObject[numPoints];
 		for (int i = 0; i < numPoints; i++)
 		{
 			Vector2 pointPosition = listOfPoints[i];
 			Vector3 worldPosition = new Vector3(pointPosition.x * cartesianToWorldScale[0], pointPosition.y * cartesianToWorldScale[1], -1);
             GameObject newRenderPoint = Instantiate(pointObjectPrefab, worldPosition, Quaternion.identity);
-			newRenderPoint.GetComponent<RenderPoint>().ChangeText("(" + pointPosition.x.ToString("0.0") + ", " + pointPosition.y.ToString("0.0") + " )");
+
 			pointObjects[i] = newRenderPoint;
+
+			transformedPointPositions[i] = pointPosition;
         }
 
 		ConnectLines();
+		UpdatePointCoordinates();
 		UpdateZoom();
     }
 
 	public void TransformPoints(Matrix2x2 transformation)
 	{
+		if (transformation == null)
+		{
+			Debug.LogError("Can't transform points with a null transformation matrix.");
+			return;
+		}
+
 		int numPoints = listOfPoints.Length;
 		for (int i = 0; i < numPoints; i++)
 		{
+			//check for point being null
+			if (listOfPoints[i] == null)
+			{
+				Debug.LogError("Null point in points list.");
+				continue;
+			}
+
 			//transform the point
-			Vector2 transformedPoint = new Vector2(transformation.a * listOfPoints[i].x + transformation.b * listOfPoints[i].y, transformation.c * listOfPoints[i].x + transformation.d * listOfPoints[i].y);
+			float newX = transformation.a * listOfPoints[i].x + transformation.b * listOfPoints[i].y;
+			float newY = transformation.c * listOfPoints[i].x + transformation.d * listOfPoints[i].y;
+            Vector2 transformedPoint = new Vector2(newX, newY);
+
+			transformedPointPositions[i] = transformedPoint;
 
 			//find and move the object to the point
 			Vector3 worldPosition = new Vector3(transformedPoint.x * cartesianToWorldScale[0], transformedPoint.y * cartesianToWorldScale[1], -1);
@@ -66,10 +94,8 @@ public class CartesianRender : MonoBehaviour
 
 			RenderPoint renderPoint = pointObjects[i].GetComponent<RenderPoint>();
 			renderPoint.UpdateLine();
-			renderPoint.ChangeText("(" + transformedPoint.x.ToString("0.0") + ", " + transformedPoint.y.ToString("0.0") + " )");
 		}
 
-		ConnectLines();
 		UpdateZoom();
 	}
 
@@ -89,7 +115,10 @@ public class CartesianRender : MonoBehaviour
 	private void ConnectLines()
 	{
 		if (lineConnections == null)
+		{
+			Debug.Log("Won't connect lines with no line connections to make.");
 			return;
+		}
 
 		for (int i = 0; i < lineConnections.Length; i++)
 		{
@@ -124,6 +153,7 @@ public class CartesianRender : MonoBehaviour
 		{
 			float xDistance = Mathf.Abs(transform.position.x - pointObject.transform.position.x);
 			float yDistance = Mathf.Abs(transform.position.y - pointObject.transform.position.y);
+			yDistance *= 1.4f;
 
 			if (xDistance > maxDistance)
 			{
@@ -137,5 +167,28 @@ public class CartesianRender : MonoBehaviour
 		}
 
 		renderAreaZoom.SetRenderSize((maxDistance * 1.2f) / cartesianToWorldScale.magnitude);
+	}
+
+	public void SetShowCoordinates(bool value)
+	{
+		showCoordinates = value;
+		UpdatePointCoordinates();
+    }
+
+	private void UpdatePointCoordinates()
+	{
+		int numPoints = listOfPoints.Length;
+		for (int i = 0; i < numPoints; i++)
+		{
+			RenderPoint renderPoint = pointObjects[i].GetComponent<RenderPoint>();
+			if (showCoordinates)
+			{
+				renderPoint.ChangeText("(" + transformedPointPositions[i].x.ToString("0.0") + ", " + transformedPointPositions[i].y.ToString("0.0") + " )");
+			}
+			else
+			{
+				renderPoint.ChangeText("");
+			}
+		}
 	}
 }

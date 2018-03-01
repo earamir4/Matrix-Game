@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,15 +23,17 @@ public class MatrixRenderManager : MonoBehaviour
 		{
 			cartesianRenderer.RenderBasePoints();
 		}
-
-		for (int i = 0; i< animationBars.Length; i++)
-		{
-			animationBars[i].fillAmount = 0f;
-		}
+		ResetAnimationBars();
     }
 
 	public void SetMatrices(Matrix2x2[] matricesArray)
 	{
+		if (matricesArray == null)
+		{
+			Debug.LogError("Render manager can't accept null array of input matrices.");
+			return;
+		}
+
 		transformationMatrices = matricesArray;
 
 		//calculate final matrix
@@ -49,9 +52,31 @@ public class MatrixRenderManager : MonoBehaviour
 		}
 	}
 
+	public void ResetAnimationBars()
+	{
+		for (int i = 0; i < animationBars.Length; i++)
+		{
+			animationBars[i].fillAmount = 0f;
+		}
+	}
+
+	public void RenderUnTransformed()
+	{
+		StopAllCoroutines();
+		cartesianRenderer.TransformPoints(Matrix2x2.IdentityMatrix);
+		ResetAnimationBars();
+    }
+
 	public void RenderFullyTransformed()
 	{
 		StopAllCoroutines();
+
+		if (transformationMatrices == null || transformationMatrices.Length == 0)
+		{
+			Debug.Log("Can't show animation with no transformation.");
+			return;
+		}
+
 		cartesianRenderer.TransformPoints(finalMatrix);
 
 		for (int i = 0; i < transformationMatrices.Length; i++)
@@ -75,10 +100,7 @@ public class MatrixRenderManager : MonoBehaviour
 	{
 		print("Animation starting.");
 
-		for (int i = 0; i < animationBars.Length; i++)
-		{
-			animationBars[i].fillAmount = 0f;
-		}
+		ResetAnimationBars();
 
 		cartesianRenderer.TransformPoints(Matrix2x2.IdentityMatrix);
 

@@ -12,25 +12,23 @@ public class MatrixInputTemplate : MonoBehaviour
     private int[] matrixValues;
     public GameObject blocker;
 
+	public delegate void InputSlotChangedHandler();
+	public event InputSlotChangedHandler inputSlotChanged;
+
     private void Start()
     {
         matrixValues = new int[xSize * ySize];
         xField.text = xSize.ToString();
         yField.text = ySize.ToString();
-        FillValuesFromText();
+        GatherValuesFromText();
     }
 
-    private void FillValuesFromText()
+    private void GatherValuesFromText()
     {
         for(int i = 0; i < matrixValues.Length; i++)
         {
             matrixValues[i] = int.Parse(matrixObjects[i].GetComponentInChildren<InputField>().text);
         }
-    }
-
-    public void UpdateValues()
-    {
-		FillValuesFromText();
     }
 
     public void SetAcceptingInput(bool isAcceptingInput)
@@ -40,6 +38,7 @@ public class MatrixInputTemplate : MonoBehaviour
 
     public int[] GetValues()
     {
+		GatherValuesFromText();
         return matrixValues;
     }
 
@@ -57,4 +56,8 @@ public class MatrixInputTemplate : MonoBehaviour
         gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2((xSize * 100), ySize * 100);
     }
 
+	public void InputSlotChanged()
+	{
+		inputSlotChanged();
+    }
 }
