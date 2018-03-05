@@ -6,6 +6,10 @@ using UnityEngine;
 public class CartesianRender : MonoBehaviour
 {
 	public Vector2 cartesianToWorldScale;
+	public RenderAreaZoom renderAreaZoom;
+
+	/*** Rendering Points ***/
+
 	public GameObject pointObjectPrefab;
 
 	//a list of cartesian space points
@@ -22,9 +26,6 @@ public class CartesianRender : MonoBehaviour
 
     public List<GameObject> listOfMatrices;
 
-	public RenderAreaZoom renderAreaZoom;
-
-	//render options
 	public bool showCoordinates;
 
 	void Start ()
@@ -73,13 +74,6 @@ public class CartesianRender : MonoBehaviour
 		int numPoints = listOfPoints.Length;
 		for (int i = 0; i < numPoints; i++)
 		{
-			//check for point being null
-			if (listOfPoints[i] == null)
-			{
-				Debug.LogError("Null point in points list.");
-				continue;
-			}
-
 			//transform the point
 			float newX = transformation.a * listOfPoints[i].x + transformation.b * listOfPoints[i].y;
 			float newY = transformation.c * listOfPoints[i].x + transformation.d * listOfPoints[i].y;
@@ -91,7 +85,11 @@ public class CartesianRender : MonoBehaviour
 			Vector3 worldPosition = new Vector3(transformedPoint.x * cartesianToWorldScale[0], transformedPoint.y * cartesianToWorldScale[1], -1);
 
 			pointObjects[i].transform.position = worldPosition;
+		}
 
+		//update line positions
+		for (int i = 0; i < numPoints; i++)
+		{
 			RenderPoint renderPoint = pointObjects[i].GetComponent<RenderPoint>();
 			renderPoint.UpdateLine();
 		}
