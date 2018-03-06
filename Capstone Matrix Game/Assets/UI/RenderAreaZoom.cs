@@ -14,6 +14,8 @@ public class RenderAreaZoom : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 	private float orthoSize;
 	private bool isPointerInside = false;
 
+	public CartesianRender cartesianRenderer;
+
 	public void Start()
 	{
 		matrixRenderCamera.orthographicSize = baseOrthoSize;
@@ -29,10 +31,12 @@ public class RenderAreaZoom : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 		if (Input.GetAxis("Mouse ScrollWheel") > 0)
 		{
 			orthoSize = Mathf.Clamp(orthoSize -= sizeChangeRate, minOrthoSize, maxOrthoSize);
-		}
+			cartesianRenderer.toolTipRenderSize = orthoSize / baseOrthoSize;
+        }
 		else if (Input.GetAxis("Mouse ScrollWheel") < 0)
 		{
 			orthoSize = Mathf.Clamp(orthoSize += sizeChangeRate, minOrthoSize, maxOrthoSize);
+			cartesianRenderer.toolTipRenderSize = orthoSize / baseOrthoSize;
 		}
     }
 
@@ -49,5 +53,6 @@ public class RenderAreaZoom : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 	public void SetRenderSize(float renderSize)
 	{
 		orthoSize = Mathf.Clamp(renderSize, minOrthoSize, maxOrthoSize);
+		cartesianRenderer.toolTipRenderSize = orthoSize / baseOrthoSize;
 	}
 }
