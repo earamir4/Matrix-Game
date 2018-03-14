@@ -65,7 +65,7 @@ public class MatrixInputManager : MonoBehaviour
 
 			workingTemplate.UpdateValues();
 
-			int[] inputValues = workingTemplate.GetValues();
+			float[] inputValues = workingTemplate.GetValues();
 
 			//TODO expand to other matrix sizes
 			Matrix2x2 newMatrix = new Matrix2x2(inputValues[0], inputValues[1], inputValues[2], inputValues[3]);
