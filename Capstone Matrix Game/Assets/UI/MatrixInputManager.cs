@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MatrixInputManager : MonoBehaviour
 {
@@ -9,7 +10,12 @@ public class MatrixInputManager : MonoBehaviour
 	private int spotsFilled;
     public MatrixRenderManager renderManager;
 
+	//restrict ability to insert matrices to 
 	public bool restrictInputToInOrder;
+	public bool disableSubmissionIfSkipSlots;
+
+	public Button submitButton;
+	public Button animateButton;
 
 	public void Start()
 	{
@@ -27,9 +33,18 @@ public class MatrixInputManager : MonoBehaviour
 				}
 			}
 		}
+
+		//subscribe to all input template slot changed events
+		MatrixInputTemplate[] inputTemplates = GameObject.FindObjectsOfType<MatrixInputTemplate>();
+		foreach (MatrixInputTemplate inputTemplate in inputTemplates)
+		{
+			inputTemplate.inputSlotChanged += new MatrixInputTemplate.InputSlotChangedHandler(TemplateInputChangedHandler);
+        }
+
+		submitButton.interactable = false;
 	}
 
-    public void SendToBackend()
+    private void SendToBackend()
     {
 		List<Matrix2x2> inputMatrices = new List<Matrix2x2>();
 
@@ -63,8 +78,6 @@ public class MatrixInputManager : MonoBehaviour
 				accumulatedBlankSpots = 0;
             }
 
-			workingTemplate.UpdateValues();
-
 			int[] inputValues = workingTemplate.GetValues();
 
 			//TODO expand to other matrix sizes
@@ -74,26 +87,82 @@ public class MatrixInputManager : MonoBehaviour
         }
 
 		renderManager.SetMatrices(inputMatrices.ToArray());
+	}
+
+	public void SubmitMatrices()
+	{
+		SendToBackend();
+
+		submitButton.interactable = false;
+		animateButton.interactable = true;
+
+		renderManager.RenderFullyTransformed();
     }
 
-	public void UpdateInputabilityStatus()
+	public void BeginAnimation()
 	{
-		if (!restrictInputToInOrder)
-			return;
+		renderManager.StartAnimation();
+    }
 
-		for (int i = inputSpots.Length-1; i>=0; i--)
+	public void WorkspaceChanged()
+	{
+		renderManager.RenderUnTransformed();
+
+		submitButton.interactable = true;
+		animateButton.interactable = false;
+
+		if (restrictInputToInOrder)
 		{
-			inputSpots[i].AcceptingInput = true;
-			if (inputSpots[i].storedTemplateObject != null || i == 0)
+			//goingfrom left to right along the input spots, determine which to have disabled and which to have enabled
+			for (int i = inputSpots.Length - 1; i >= 0; i--)
 			{
-				break;
-			}
+				//assume that it should be enabled
+				inputSpots[i].AcceptingInput = true;
 
-			if (inputSpots[i - 1].storedTemplateObject == null)
-			{
-				//Debug.Log("Input spot " + (i - 1).ToString() + " empty, so disbaling input to spot " + i.ToString() + ".");
-				inputSpots[i].AcceptingInput = false;
+				//if its the right-most slot or there is an object stored in the slot already, keep it enabled and also stop iterating through
+				if (inputSpots[i].storedTemplateObject != null || i == 0)
+				{
+					break;
+				}
+
+				//if the slot to the right of it doesn't contain anything, disable the slot
+				if (inputSpots[i - 1].storedTemplateObject == null)
+				{
+					inputSpots[i].AcceptingInput = false;
+				}
 			}
 		}
+
+		//goingfrom right to left along the input spots, figure out if there are any skip slots
+		bool haveEncounteredEmpty = false;
+		bool haveEncounteredFull = false;
+		for (int i = 0; i < inputSpots.Length; i++)
+		{
+			if (inputSpots[i].storedTemplateObject == null)
+			{
+				haveEncounteredEmpty = true;
+			}
+			else
+			{
+				haveEncounteredFull = true;
+                if (haveEncounteredEmpty && disableSubmissionIfSkipSlots)
+				{
+					submitButton.interactable = false;
+				}
+			}
+		}
+
+		if (!haveEncounteredFull)
+		{
+			submitButton.interactable = false;
+		}
+
 	}
+
+	//when a template input slot is changed...
+	private void TemplateInputChangedHandler()
+	{
+		Debug.Log("A matrix input slot was changed.");
+		WorkspaceChanged();
+    }
 }
