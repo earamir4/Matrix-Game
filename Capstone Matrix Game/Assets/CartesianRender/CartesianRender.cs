@@ -1,10 +1,15 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CartesianRender : MonoBehaviour
 {
 	public Vector2 cartesianToWorldScale;
+	public RenderAreaZoom renderAreaZoom;
+
+	/*** Rendering Points ***/
+
 	public GameObject pointObjectPrefab;
 
 	//a list of cartesian space points
@@ -17,62 +22,80 @@ public class CartesianRender : MonoBehaviour
 	private IntVector2[] lineConnections;
 
 	private GameObject[] pointObjects;
+	private Vector2[] transformedPointPositions;
 
-    public List<GameObject> listOfMatrices;
-
-	public RenderAreaZoom renderAreaZoom;
+	public bool showCoordinates;
+	public float toolTipRenderSize;
 
 	void Start ()
 	{
 		RenderBasePoints();
     }
-
-    public void GetPoints(List<GameObject> matrices)
-    {
-        listOfMatrices = matrices;
-    }
-
+	
+	//create the point objects to later move around for transformations
 	public void RenderBasePoints()
 	{
 		DestroyExistingPoints();
 
 		int numPoints = listOfPoints.Length;
-        pointObjects = new GameObject[numPoints];
+
+		transformedPointPositions = new Vector2[numPoints];
+
+		pointObjects = new GameObject[numPoints];
 		for (int i = 0; i < numPoints; i++)
 		{
 			Vector2 pointPosition = listOfPoints[i];
 			Vector3 worldPosition = new Vector3(pointPosition.x * cartesianToWorldScale[0], pointPosition.y * cartesianToWorldScale[1], -1);
             GameObject newRenderPoint = Instantiate(pointObjectPrefab, worldPosition, Quaternion.identity);
-			newRenderPoint.GetComponent<RenderPoint>().ChangeText("(" + pointPosition.x.ToString("0.0") + ", " + pointPosition.y.ToString("0.0") + " )");
+
 			pointObjects[i] = newRenderPoint;
+
+			transformedPointPositions[i] = pointPosition;
         }
 
 		ConnectLines();
-		UpdateZoom();
+
+		AdjustZoom();
+		UpdatePointTooltips();
     }
 
+	//using the existing point objects, transform their positions and update their tooltips based on the input transformation matrix
 	public void TransformPoints(Matrix2x2 transformation)
 	{
+		if (transformation == null)
+		{
+			Debug.LogError("Can't transform points with a null transformation matrix.");
+			return;
+		}
+
 		int numPoints = listOfPoints.Length;
 		for (int i = 0; i < numPoints; i++)
 		{
 			//transform the point
-			Vector2 transformedPoint = new Vector2(transformation.a * listOfPoints[i].x + transformation.b * listOfPoints[i].y, transformation.c * listOfPoints[i].x + transformation.d * listOfPoints[i].y);
+			float newX = transformation.a * listOfPoints[i].x + transformation.b * listOfPoints[i].y;
+			float newY = transformation.c * listOfPoints[i].x + transformation.d * listOfPoints[i].y;
+            Vector2 transformedPoint = new Vector2(newX, newY);
+
+			transformedPointPositions[i] = transformedPoint;
 
 			//find and move the object to the point
 			Vector3 worldPosition = new Vector3(transformedPoint.x * cartesianToWorldScale[0], transformedPoint.y * cartesianToWorldScale[1], -1);
 
 			pointObjects[i].transform.position = worldPosition;
-
-			RenderPoint renderPoint = pointObjects[i].GetComponent<RenderPoint>();
-			renderPoint.UpdateLine();
-			renderPoint.ChangeText("(" + transformedPoint.x.ToString("0.0") + ", " + transformedPoint.y.ToString("0.0") + " )");
 		}
 
-		ConnectLines();
-		UpdateZoom();
-	}
+		//update line positions
+		for (int i = 0; i < numPoints; i++)
+		{
+			RenderPoint renderPoint = pointObjects[i].GetComponent<RenderPoint>();
+			renderPoint.UpdateLine();
+		}
 
+		AdjustZoom();
+		UpdatePointTooltips();
+    }
+
+	//destroy all existing point render objects
 	private void DestroyExistingPoints()
 	{
 		if (pointObjects == null)
@@ -86,10 +109,14 @@ public class CartesianRender : MonoBehaviour
 		pointObjects = null;
     }
 
+	//update each point to create the lines that connect points together
 	private void ConnectLines()
 	{
 		if (lineConnections == null)
+		{
+			Debug.Log("Won't connect lines with no line connections to make.");
 			return;
+		}
 
 		for (int i = 0; i < lineConnections.Length; i++)
 		{
@@ -117,13 +144,15 @@ public class CartesianRender : MonoBehaviour
 		}
 	}
 
-	private void UpdateZoom()
+	//adjust the zoom level of the render area based on the extent of point positions
+	private void AdjustZoom()
 	{
 		float maxDistance = 0;
 		foreach (GameObject pointObject in pointObjects)
 		{
 			float xDistance = Mathf.Abs(transform.position.x - pointObject.transform.position.x);
 			float yDistance = Mathf.Abs(transform.position.y - pointObject.transform.position.y);
+			yDistance *= 1.4f;
 
 			if (xDistance > maxDistance)
 			{
@@ -136,6 +165,37 @@ public class CartesianRender : MonoBehaviour
             }
 		}
 
-		renderAreaZoom.SetRenderSize((maxDistance * 1.2f) / cartesianToWorldScale.magnitude);
+		float renderSize = (maxDistance * 1.2f) / cartesianToWorldScale.magnitude;
+        renderAreaZoom.SetRenderSize(renderSize);
+    }
+
+	//set if coordinates should be shown above the points or not
+	public void SetShowCoordinates(bool value)
+	{
+		Debug.Log("Setting to show coordinates: " + value.ToString());
+		showCoordinates = value;
+		UpdatePointTooltips();
+    }
+
+	//update the size at which the tool tips above points should be rendered
+	public void UpdatePointTooltipSize(float zoomSize)
+	{
+		Debug.Log("Tool tip render size set to: " + zoomSize.ToString("0.00"));
+		toolTipRenderSize = zoomSize;
+		UpdatePointTooltips();
+	}
+
+	//update each point's tooltip with new text describing the point's position, and setting whether its tool tip should be enabled or not
+	private void UpdatePointTooltips()
+	{
+		Debug.Log("Updating the tool tips for each point.");
+		int numPoints = listOfPoints.Length;
+		for (int i = 0; i < numPoints; i++)
+		{
+			RenderPoint renderPoint = pointObjects[i].GetComponent<RenderPoint>();
+			renderPoint.ChangeText("(" + transformedPointPositions[i].x.ToString("0.0") + ", " + transformedPointPositions[i].y.ToString("0.0") + " )");
+			renderPoint.TooltipEnabled = showCoordinates;
+			renderPoint.SetToolTipSize(toolTipRenderSize);
+        }
 	}
 }

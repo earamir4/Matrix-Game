@@ -19,10 +19,10 @@ public class Matrix2x2
 
 	public Matrix2x2()
 	{
-		this.a = 0;
-		this.b = 0;
-		this.c = 0;
-		this.d = 0;
+		a = 0;
+		b = 0;
+		c = 0;
+		d = 0;
 	}
 
 	public Matrix2x2(float a, float b, float c, float d)
