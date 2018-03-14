@@ -13,10 +13,15 @@ public class MatrixInputTemplate : MonoBehaviour
     private float[] matrixValues;
     public GameObject blocker;
 
+	public delegate void InputSlotChangedHandler();
+	public event InputSlotChangedHandler inputSlotChanged;
+
     private void Start()
     {
         matrixValues = new float[xSize * ySize];
-        FillValuesFromText();
+        xField.text = xSize.ToString();
+        yField.text = ySize.ToString();
+        GatherValuesFromText();
     }
 
     public void OnValueChanged()
@@ -34,10 +39,10 @@ public class MatrixInputTemplate : MonoBehaviour
                 }
             }
         }
-        else {
+        else 
+        {
             inputField.text = inputField.text.Substring(0, inputField.text.Length - 1);
         }
-
     }
     
     public void OnEndEdit()
@@ -48,8 +53,8 @@ public class MatrixInputTemplate : MonoBehaviour
             inputField.text = (float.Parse(splits[0]) / float.Parse(splits[1])).ToString();
         }
     }
-
-    private void FillValuesFromText()
+    
+    private void GatherValuesFromText()
     {
         for(int i = 0; i < matrixValues.Length; i++)
         {
@@ -62,13 +67,10 @@ public class MatrixInputTemplate : MonoBehaviour
                 }
             }
             else
+            {
                 matrixValues[i] = float.Parse(matrixObjects[i].GetComponentInChildren<InputField>().text);
+            }
         }
-    }
-
-    public void UpdateValues()
-    {
-		FillValuesFromText();
     }
 
     public void SetAcceptingInput(bool isAcceptingInput)
@@ -78,6 +80,12 @@ public class MatrixInputTemplate : MonoBehaviour
 
     public float[] GetValues()
     {
+		GatherValuesFromText();
         return matrixValues;
     }
+
+	public void InputSlotChanged()
+	{
+		 inputSlotChanged();
+  }
 }

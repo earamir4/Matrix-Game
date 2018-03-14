@@ -19,7 +19,7 @@ public class TemplateInputSpot : MonoBehaviour, IDropHandler
 		{
 			acceptingInput = value;
 			GetComponent<Image>().color = acceptingInput ? acceptingInputColor : notAcceptingInputColor;
-			Debug.Log("Input slot now " + (!acceptingInput ? "not" : "") + " accepting input.");
+			//Debug.Log("Input slot now " + (!acceptingInput ? "not" : "") + " accepting input.");
 		}
 	}
 	private bool acceptingInput;
@@ -56,7 +56,7 @@ public class TemplateInputSpot : MonoBehaviour, IDropHandler
 
 			DragHandler.template.transform.SetParent(transform);
 
-			matrixInputManager.UpdateInputabilityStatus();
+			matrixInputManager.WorkspaceChanged();
 		}
     }
 }

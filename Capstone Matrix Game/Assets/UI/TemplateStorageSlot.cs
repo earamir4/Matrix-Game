@@ -37,7 +37,7 @@ public class TemplateStorageSlot : MonoBehaviour, IDropHandler
 
 			DragHandler.template.transform.SetParent(transform);
 
-			matrixInputManager.UpdateInputabilityStatus();
+			matrixInputManager.WorkspaceChanged();
 		}
 	}
 }

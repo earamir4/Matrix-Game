@@ -148,3 +148,4 @@ MonoBehaviour:
     Y: 0
   listOfMatrices: []
   renderAreaZoom: {fileID: 0}
+  showCoordinates: 0
