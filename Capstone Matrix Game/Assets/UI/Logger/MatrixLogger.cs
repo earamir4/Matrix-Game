@@ -26,6 +26,11 @@ public class MatrixLogger: MonoBehaviour
     /// <param name="data">String to add to the log</param>
     public static void Add(string data)
     {
+		if (LogField == null)
+		{
+			Debug.LogError("Matrix Logger can't add anything to log since it doesn't have a reference to the Log Text.");
+			return;
+		}
         LogField.text += data + "\n\n";
     }
 

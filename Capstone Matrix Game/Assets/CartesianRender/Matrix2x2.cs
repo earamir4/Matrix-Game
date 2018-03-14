@@ -15,7 +15,7 @@ public class Matrix2x2
 	public readonly float c;
 	public readonly float d;
 
-	public static readonly Matrix2x2 IdentityMatrix = new Matrix2x2(1, 0, 0, 1);
+	public static readonly Matrix2x2 IdentityMatrix = new Matrix2x2(1f, 0f, 0f, 1f);
 
 	public Matrix2x2()
 	{

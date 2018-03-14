@@ -177,7 +177,7 @@ public class CartesianRender : MonoBehaviour
 		UpdatePointTooltips();
     }
 
-	//update the size at which the tool tips above points should be rendered
+	//update the size at which the tool tips above points are rendered
 	public void UpdatePointTooltipSize(float zoomSize)
 	{
 		Debug.Log("Tool tip render size set to: " + zoomSize.ToString("0.00"));
@@ -185,10 +185,10 @@ public class CartesianRender : MonoBehaviour
 		UpdatePointTooltips();
 	}
 
-	//update each point's tooltip with new text describing the point's position, and setting whether its tool tip should be enabled or not
+	//update each point's tooltip with text describing the point's position, and set whether its tool tip should be enabled or not
 	private void UpdatePointTooltips()
 	{
-		Debug.Log("Updating the tool tips for each point.");
+		//Debug.Log("Updating the tool tips for each point.");
 		int numPoints = listOfPoints.Length;
 		for (int i = 0; i < numPoints; i++)
 		{

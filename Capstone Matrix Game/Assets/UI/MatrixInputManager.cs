@@ -78,12 +78,11 @@ public class MatrixInputManager : MonoBehaviour
 				accumulatedBlankSpots = 0;
             }
 
-      // TODO: Check if working Template is needed
-			workingTemplate.UpdateValues();
 			float[] inputValues = workingTemplate.GetValues();
+			Debug.Log(inputValues);
 
-			//TODO expand to other matrix sizes
 			Matrix2x2 newMatrix = new Matrix2x2(inputValues[0], inputValues[1], inputValues[2], inputValues[3]);
+			Debug.Log(newMatrix);
 
 			inputMatrices.Add(newMatrix);
         }

@@ -39,7 +39,7 @@ Transform:
   m_GameObject: {fileID: 1886502385225844}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: -1}
-  m_LocalScale: {x: 2, y: 1, z: 2}
+  m_LocalScale: {x: 20, y: 1, z: 20}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -58,7 +58,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 0ee7f9b4be973ff438b500ce849287dc, type: 2}
+  - {fileID: 2100000, guid: f1f8572a9afddeb41af1221c5d99671f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cartesianRenderer: {fileID: 114599620160863538}
+  gameManager: {fileID: 0}
   animationDurationPerMatrix: 2.5
   animationBars:
   - {fileID: 0}
@@ -130,6 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cartesianToWorldScale: {x: 0.9, y: 0.9}
+  renderAreaZoom: {fileID: 0}
   pointObjectPrefab: {fileID: 1939782810009628, guid: 69fa6118f1d9d854c8c52f590d47c682,
     type: 2}
   listOfPoints:
@@ -146,6 +148,5 @@ MonoBehaviour:
     Y: 3
   - X: 3
     Y: 0
-  listOfMatrices: []
-  renderAreaZoom: {fileID: 0}
   showCoordinates: 0
+  toolTipRenderSize: 0
