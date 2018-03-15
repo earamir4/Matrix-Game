@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class MatrixRenderManager : MonoBehaviour
 {
 	public CartesianRender cartesianRenderer;
+	public GameManager gameManager;
 
 	private Matrix2x2[] transformationMatrices;
 	private Matrix2x2 finalMatrix;
@@ -26,6 +27,8 @@ public class MatrixRenderManager : MonoBehaviour
 		ResetAnimationBars();
     }
 
+	//tgives the manager an array of matrices to use with the cartesian render
+	//it calculates the final cumulative transformation matrix
 	public void SetMatrices(Matrix2x2[] matricesArray)
 	{
 		if (matricesArray == null)
@@ -50,8 +53,11 @@ public class MatrixRenderManager : MonoBehaviour
 				finalMatrix = currentMatrix.Multiply(finalMatrix);
 			}
 		}
+
+		gameManager.CheckAnswer(finalMatrix);
 	}
 
+	//reset the animation bars each to empty
 	public void ResetAnimationBars()
 	{
 		for (int i = 0; i < animationBars.Length; i++)
@@ -60,6 +66,7 @@ public class MatrixRenderManager : MonoBehaviour
 		}
 	}
 
+	//tell the cartesian render to render the points in their original, untransformed positions
 	public void RenderUnTransformed()
 	{
 		StopAllCoroutines();
@@ -67,6 +74,7 @@ public class MatrixRenderManager : MonoBehaviour
 		ResetAnimationBars();
     }
 
+	//tell the cartesian render to render the points with the complete cumulative transformation, ending all current animations
 	public void RenderFullyTransformed()
 	{
 		StopAllCoroutines();
@@ -85,6 +93,8 @@ public class MatrixRenderManager : MonoBehaviour
 		}
 	}
 
+	//begin the animation coroutine
+	//does some cleanup first
 	public void StartAnimation()
 	{
 		if (transformationMatrices == null || transformationMatrices.Length == 0)
@@ -96,6 +106,7 @@ public class MatrixRenderManager : MonoBehaviour
 		StartCoroutine("TransformationAnimation");
     }
 
+	//a coroutine that performs an animation of each matrix transformation one by one
 	public IEnumerator TransformationAnimation()
 	{
 		print("Animation starting.");
