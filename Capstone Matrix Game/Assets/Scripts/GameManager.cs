@@ -6,28 +6,40 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public Text messageText;
+    public GameObject OptionsPanel;
+    public GameObject QuestionPanel;
+    public Text QuestionText;
 
-    private Matrix2x2 solutionMatrix;
+    private Matrix2x2 SolutionMatrix;
 
 	// Use this for initialization
 	void Start ()
     {
-        messageText.text = "Test message: Hello world!";
+        QuestionText.text = "Test message: Hello world!";
 
-        solutionMatrix = new Matrix2x2(2, 2, 2, 2);
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-		//
+        SolutionMatrix = new Matrix2x2(2, 2, 2, 2);
 	}
 
     /// <summary>
-    /// Compares the answer <see cref="Matrix2x2"/> provided by the Player with the <see cref="solutionMatrix"/>.
+    /// Toggles the visibility of the <see cref="QuestionPanel"/>.
+    /// </summary>
+    public void ToggleQuestionPanel()
+    {
+        QuestionPanel.SetActive(!QuestionPanel.activeInHierarchy);
+    }
+
+    /// <summary>
+    /// Toggles the visibility of the <see cref="OptionsPanel"/>.
+    /// </summary>
+    public void ToggleOptionsPanel()
+    {
+        OptionsPanel.SetActive(!OptionsPanel.activeInHierarchy);
+    }
+
+    /// <summary>
+    /// Compares the answer <see cref="Matrix2x2"/> provided by the Player with the <see cref="SolutionMatrix"/>.
     /// <para>
-    ///     The <see cref="messageText"/> will display whether or not the Player got the right answer.
+    ///     The <see cref="QuestionText"/> will display whether or not the Player got the right answer.
     /// </para>
     /// <para>
     ///     Additional information can be sent to the <see cref="MatrixLogger"/> as well.
@@ -36,16 +48,16 @@ public class GameManager : MonoBehaviour
     /// <param name="answerMatrix">The final answer the User submitted.</param>
     public void CheckAnswer(Matrix2x2 answerMatrix)
     {
-        bool isCorrect = Matrix2x2.IsEqual(solutionMatrix, answerMatrix);
+        bool isCorrect = Matrix2x2.IsEqual(SolutionMatrix, answerMatrix);
 
         if (isCorrect)
         {
-            messageText.text = "Correct answer!";
-            MatrixLogger.Add("Correct! The answer was:\n" + solutionMatrix.ToString());
+            QuestionText.text = "Correct answer!";
+            MatrixLogger.Add("Correct! The answer was:\n" + SolutionMatrix.ToString());
         }
         else
         {
-            messageText.text = "Incorrect answer!";
+            QuestionText.text = "Incorrect answer!";
             MatrixLogger.Add("Incorrect! Your answer was:\n" + answerMatrix.ToString());
         }
     }
