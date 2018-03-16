@@ -6,18 +6,36 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    #region GameManager Variables
+    // UI
     public GameObject OptionsPanel;
     public GameObject QuestionPanel;
-    public Text QuestionText;
+    public GameObject LogPanel;
 
+    // Question and answer values
+    public string QuestionString;
+    public float MatrixValueA;
+    public float MatrixValueB;
+    public float MatrixValueC;
+    public float MatrixValueD;
+
+    // Private variables
+    private Text QuestionText;
     private Matrix2x2 SolutionMatrix;
+    #endregion
 
-	// Use this for initialization
-	void Start ()
+    /// <summary>
+    /// Instantiates the question being asked.
+    /// <para>
+    ///     The <see cref="SolutionMatrix"/> is based on four "matrix values".
+    /// </para>
+    /// </summary>
+    void Start ()
     {
-        QuestionText.text = "Test message: Hello world!";
+        QuestionText = QuestionPanel.GetComponentInChildren<Text>();
+        QuestionText.text = QuestionString;
 
-        SolutionMatrix = new Matrix2x2(2, 2, 2, 2);
+        SolutionMatrix = new Matrix2x2(MatrixValueA, MatrixValueB, MatrixValueC, MatrixValueD);
 	}
 
     /// <summary>
@@ -50,14 +68,19 @@ public class GameManager : MonoBehaviour
     {
         bool isCorrect = Matrix2x2.IsEqual(SolutionMatrix, answerMatrix);
 
+        if (!LogPanel.activeInHierarchy)
+        {
+            LogPanel.SetActive(true);
+        }
+
         if (isCorrect)
         {
-            QuestionText.text = "Correct answer!";
+            QuestionText.text = "Correct!";
             MatrixLogger.Add("Correct! The answer was:\n" + SolutionMatrix.ToString());
         }
         else
         {
-            QuestionText.text = "Incorrect answer!";
+            QuestionText.text = "Incorrect...";
             MatrixLogger.Add("Incorrect! Your answer was:\n" + answerMatrix.ToString());
         }
     }
