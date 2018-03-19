@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,6 +7,7 @@ using UnityEngine.UI;
 public class MatrixRenderManager : MonoBehaviour
 {
 	public CartesianRender cartesianRenderer;
+	public GameManager gameManager;
 
 	private Matrix2x2[] transformationMatrices;
 	private Matrix2x2 finalMatrix;
@@ -22,15 +24,19 @@ public class MatrixRenderManager : MonoBehaviour
 		{
 			cartesianRenderer.RenderBasePoints();
 		}
-
-		for (int i = 0; i< animationBars.Length; i++)
-		{
-			animationBars[i].fillAmount = 0f;
-		}
+		ResetAnimationBars();
     }
 
+	//tgives the manager an array of matrices to use with the cartesian render
+	//it calculates the final cumulative transformation matrix
 	public void SetMatrices(Matrix2x2[] matricesArray)
 	{
+		if (matricesArray == null)
+		{
+			Debug.LogError("Render manager can't accept null array of input matrices.");
+			return;
+		}
+
 		transformationMatrices = matricesArray;
 
 		//calculate final matrix
@@ -47,11 +53,38 @@ public class MatrixRenderManager : MonoBehaviour
 				finalMatrix = currentMatrix.Multiply(finalMatrix);
 			}
 		}
+
+		gameManager.CheckAnswer(finalMatrix);
 	}
 
+	//reset the animation bars each to empty
+	public void ResetAnimationBars()
+	{
+		for (int i = 0; i < animationBars.Length; i++)
+		{
+			animationBars[i].fillAmount = 0f;
+		}
+	}
+
+	//tell the cartesian render to render the points in their original, untransformed positions
+	public void RenderUnTransformed()
+	{
+		StopAllCoroutines();
+		cartesianRenderer.TransformPoints(Matrix2x2.IdentityMatrix);
+		ResetAnimationBars();
+    }
+
+	//tell the cartesian render to render the points with the complete cumulative transformation, ending all current animations
 	public void RenderFullyTransformed()
 	{
 		StopAllCoroutines();
+
+		if (transformationMatrices == null || transformationMatrices.Length == 0)
+		{
+			Debug.Log("Can't show animation with no transformation.");
+			return;
+		}
+
 		cartesianRenderer.TransformPoints(finalMatrix);
 
 		for (int i = 0; i < transformationMatrices.Length; i++)
@@ -60,6 +93,8 @@ public class MatrixRenderManager : MonoBehaviour
 		}
 	}
 
+	//begin the animation coroutine
+	//does some cleanup first
 	public void StartAnimation()
 	{
 		if (transformationMatrices == null || transformationMatrices.Length == 0)
@@ -71,14 +106,12 @@ public class MatrixRenderManager : MonoBehaviour
 		StartCoroutine("TransformationAnimation");
     }
 
+	//a coroutine that performs an animation of each matrix transformation one by one
 	public IEnumerator TransformationAnimation()
 	{
 		print("Animation starting.");
 
-		for (int i = 0; i < animationBars.Length; i++)
-		{
-			animationBars[i].fillAmount = 0f;
-		}
+		ResetAnimationBars();
 
 		cartesianRenderer.TransformPoints(Matrix2x2.IdentityMatrix);
 
