@@ -1854,6 +1854,11 @@ Prefab:
       propertyPath: OptionsPanel
       value: 
       objectReference: {fileID: 1518032684}
+    - target: {fileID: 114004567638055734, guid: 3f7f2adc35b70dc44aafe4f40189aa44,
+        type: 2}
+      propertyPath: LogPanel
+      value: 
+      objectReference: {fileID: 1263580235}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3f7f2adc35b70dc44aafe4f40189aa44, type: 2}
   m_IsPrefabParent: 0
@@ -4562,7 +4567,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00003965131, y: 0}
+  m_AnchoredPosition: {x: -0.0000463994, y: 0}
   m_SizeDelta: {x: 0, y: 5000}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1108157585
@@ -5041,6 +5046,11 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1245788907}
+--- !u!1 &1263580235 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1514314684359932, guid: 71ec7eb7af5494248b3e4d6ffe3232c6,
+    type: 2}
+  m_PrefabInternal: {fileID: 1324718956}
 --- !u!1 &1272885093
 GameObject:
   m_ObjectHideFlags: 0
@@ -8087,7 +8097,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1379643585}
   m_Direction: 0
   m_Value: 0.5
-  m_Size: 0.9999996
+  m_Size: 0.99999946
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -8806,6 +8816,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114599620160863538, guid: fcd93ad273b368945932e565eed62b4f,
+        type: 2}
+      propertyPath: lineConnections.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4453342432563928, guid: fcd93ad273b368945932e565eed62b4f, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -8873,6 +8888,26 @@ Prefab:
       propertyPath: renderAreaZoom
       value: 
       objectReference: {fileID: 578124169}
+    - target: {fileID: 114599620160863538, guid: fcd93ad273b368945932e565eed62b4f,
+        type: 2}
+      propertyPath: lineConnections.Array.data[3].X
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114599620160863538, guid: fcd93ad273b368945932e565eed62b4f,
+        type: 2}
+      propertyPath: lineConnections.Array.data[0].Y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114599620160863538, guid: fcd93ad273b368945932e565eed62b4f,
+        type: 2}
+      propertyPath: lineConnections.Array.data[2].X
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114599620160863538, guid: fcd93ad273b368945932e565eed62b4f,
+        type: 2}
+      propertyPath: lineConnections.Array.data[2].Y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fcd93ad273b368945932e565eed62b4f, type: 2}
   m_IsPrefabParent: 0
