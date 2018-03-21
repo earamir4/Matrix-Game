@@ -29,9 +29,11 @@ public class MatrixLogger: MonoBehaviour
 		if (LogField == null)
 		{
 			Debug.LogError("Matrix Logger can't add anything to log since it doesn't have a reference to the Log Text.");
-			return;
 		}
-        LogField.text += data + "\n\n";
+        else
+        {
+            LogField.text += data + "\n\n";
+        }
     }
 
     /// <summary>
@@ -42,6 +44,9 @@ public class MatrixLogger: MonoBehaviour
         LogField.text = string.Empty;
     }
 
+    /// <summary>
+    /// Toggles visibility of the <see cref="MatrixLogger"/> UI.
+    /// </summary>
     public void ToggleVisibility()
     {
         gameObject.SetActive(!gameObject.activeInHierarchy);
