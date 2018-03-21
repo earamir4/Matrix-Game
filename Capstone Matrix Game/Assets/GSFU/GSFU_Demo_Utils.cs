@@ -24,7 +24,7 @@ public static class GSFU_Demo_Utils
 	public static PlayerInfo player;
 	private static string tableName= "PlayerInfo";
     public static string playername;
-    float completetime;
+    public static float completetime;
 
     public static void namechange(string n)
     {
@@ -101,7 +101,7 @@ public static class GSFU_Demo_Utils
         Debug.Log("<color=yellow>Updating cloud data: player named " + playername + " finished question 1 in "+completetime+" seconds.</color>");
 
         // Look in the 'PlayerInfo' table, for an object of name 'Cameron Root, and set its level to 100.
-        CloudConnectorCore.UpdateObjects(tableName, "name", playername, "q1", completetime , runtime);
+        CloudConnectorCore.UpdateObjects(tableName, "name", playername, "q1", completetime.ToString() , runtime);
     }
 
 
@@ -159,10 +159,11 @@ public static class GSFU_Demo_Utils
 				player = players[0];
 				
 				Debug.Log("<color=yellow>Object retrieved from the cloud and parsed: \n</color>" + 
-					"Name: " + player.name + "\n" +
-					"Level: " + player.level + "\n" +
-					"Health: " + player.health + "\n" +
-					"Role: " + player.role + "\n");
+					"Name: " + player.name + "\n" //+
+					//"Level: " + player.level + "\n" +
+					//"Health: " + player.health + "\n" +
+					//"Role: " + player.role + "\n"
+                    );
 			}
 		}
 		
@@ -178,11 +179,11 @@ public static class GSFU_Demo_Utils
 				string logMsg = "<color=yellow>" + players.Length.ToString() + " objects retrieved from the cloud and parsed:</color>";
 				for (int i = 0; i < players.Length; i++)
 				{
-					logMsg += "\n" +
-						"<color=blue>Name: " + players[i].name + "</color>\n" +
-						"Level: " + players[i].level + "\n" +
-						"Health: " + players[i].health + "\n" +
-						"Role: " + players[i].role + "\n";				
+                    logMsg += "\n" +
+                        "<color=blue>Name: " + players[i].name + "</color>\n"; //+
+						//"Level: " + players[i].level + "\n" +
+						//"Health: " + players[i].health + "\n" +
+						//"Role: " + players[i].role + "\n";				
 				}
 				Debug.Log(logMsg);
 			}

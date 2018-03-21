@@ -19,7 +19,7 @@ public class GSFU_Demo_Editor : Editor
 	[MenuItem ("Tools/Google Sheets For Unity/Update Player")]
 	static void UpdateGandalf()
 	{
-		GSFU_Demo_Utils.UpdateGandalf(false);
+		//GSFU_Demo_Utils.UpdateGandalf(false);
 	}
 	
 	[MenuItem ("Tools/Google Sheets For Unity/Retrieve Player")]
