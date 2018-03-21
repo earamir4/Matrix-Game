@@ -105,6 +105,11 @@ public class MatrixInputManager : MonoBehaviour
 		renderManager.StartAnimation();
     }
 
+	public void AnimationSeek(int finalMatrixRendered)
+	{
+		renderManager.RenderPartiallyTransformed(finalMatrixRendered);
+    }
+
 	public void WorkspaceChanged()
 	{
 		renderManager.RenderUnTransformed();
