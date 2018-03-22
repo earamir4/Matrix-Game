@@ -24,18 +24,18 @@ public class CartesianRender : MonoBehaviour
 	private GameObject[] pointObjects;
 	private Vector2[] transformedPointPositions;
 
-	public bool showCoordinates;
-	public float toolTipRenderSize;
+	private bool showCoordinates;
+	private float toolTipRenderSize;
 
-	void Start ()
+	public void SetListOfPoints(Vector2[] listOfNewPoints)
 	{
-		RenderBasePoints();
+		listOfPoints = listOfNewPoints;
     }
 	
 	//create the point objects to later move around for transformations
-	public void RenderBasePoints()
+	public void CreatePointObjects()
 	{
-		DestroyExistingPoints();
+		DestroyPointObjects();
 
 		int numPoints = listOfPoints.Length;
 
@@ -53,7 +53,7 @@ public class CartesianRender : MonoBehaviour
 			transformedPointPositions[i] = pointPosition;
         }
 
-		ConnectLines();
+		GivePointObjectsLineData();
 
 		AdjustZoom();
 		UpdatePointTooltips();
@@ -96,7 +96,7 @@ public class CartesianRender : MonoBehaviour
     }
 
 	//destroy all existing point render objects
-	private void DestroyExistingPoints()
+	public void DestroyPointObjects()
 	{
 		if (pointObjects == null)
 			return;
@@ -110,7 +110,7 @@ public class CartesianRender : MonoBehaviour
     }
 
 	//update each point to create the lines that connect points together
-	private void ConnectLines()
+	private void GivePointObjectsLineData()
 	{
 		if (lineConnections == null)
 		{
@@ -169,6 +169,15 @@ public class CartesianRender : MonoBehaviour
         renderAreaZoom.SetRenderSize(renderSize);
     }
 
+	//set whether this cartesian render should enable its rendering or not
+	public void SetRenderingDisabled(bool disabled)
+	{
+		foreach(GameObject pointObject in pointObjects)
+		{
+			pointObject.SetActive(!disabled);
+        }
+	}
+
 	//set if coordinates should be shown above the points or not
 	public void SetShowCoordinates(bool value)
 	{
@@ -178,7 +187,7 @@ public class CartesianRender : MonoBehaviour
     }
 
 	//update the size at which the tool tips above points are rendered
-	public void UpdatePointTooltipSize(float zoomSize)
+	public void SetPointTooltipSize(float zoomSize)
 	{
 		Debug.Log("Tool tip render size set to: " + zoomSize.ToString("0.00"));
 		toolTipRenderSize = zoomSize;
@@ -188,8 +197,13 @@ public class CartesianRender : MonoBehaviour
 	//update each point's tooltip with text describing the point's position, and set whether its tool tip should be enabled or not
 	private void UpdatePointTooltips()
 	{
+		if (pointObjects == null)
+		{
+			Debug.LogError("Can't update tooltips when no point objects exist.");
+			return;
+		}
 		//Debug.Log("Updating the tool tips for each point.");
-		int numPoints = listOfPoints.Length;
+		int numPoints = pointObjects.Length;
 		for (int i = 0; i < numPoints; i++)
 		{
 			RenderPoint renderPoint = pointObjects[i].GetComponent<RenderPoint>();
