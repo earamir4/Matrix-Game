@@ -74,6 +74,42 @@ public class MatrixRenderManager : MonoBehaviour
 		ResetAnimationBars();
     }
 
+	public void RenderPartiallyTransformed(int finalMatrix)
+	{
+		if (transformationMatrices == null)
+		{
+			Debug.Log("Can't show partial transformation with no transformation.");
+			return;
+		}
+
+		if (finalMatrix >= transformationMatrices.Length)
+		{
+			Debug.Log("Can't render partially transformed at matrix " + finalMatrix + ", since there are only " + transformationMatrices.Length + " matrices input.");
+			return;
+		}
+
+		StopAllCoroutines();
+
+		Matrix2x2 partialTransformationMatrix = transformationMatrices[0];
+		for (int i = 0; i <= finalMatrix; i++)
+		{
+			Matrix2x2 currentMatrix = transformationMatrices[i];
+			partialTransformationMatrix = currentMatrix.Multiply(partialTransformationMatrix);
+		}
+
+		cartesianRenderer.TransformPoints(partialTransformationMatrix);
+
+		for (int i = 0; i < animationBars.Length; i++)
+		{
+			animationBars[i].fillAmount = 0f;
+
+			if (i <= finalMatrix)
+			{
+				animationBars[i].fillAmount = 1f;
+			}
+		}
+	}
+
 	//tell the cartesian render to render the points with the complete cumulative transformation, ending all current animations
 	public void RenderFullyTransformed()
 	{
