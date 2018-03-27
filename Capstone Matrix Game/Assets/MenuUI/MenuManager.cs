@@ -20,6 +20,7 @@ public class MenuManager : MonoBehaviour
 {
     #region Panel Variables
     public GameObject MainMenuPanel;
+    public GameObject MainMenuButtons;
     public GameObject LevelSelectPanel;
     public GameObject SettingsPanel;
 
@@ -163,7 +164,7 @@ public class MenuManager : MonoBehaviour
     /// </summary>
     public void ReturnToMain()
     {
-        MainMenuPanel.SetActive(true);
+        MainMenuButtons.SetActive(true);
 
         if (LevelSelectPanel.activeInHierarchy)
         {
