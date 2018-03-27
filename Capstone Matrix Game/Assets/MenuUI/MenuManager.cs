@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 /// <summary>
 /// <see cref="MenuManager"/> handles the Main Menu UI logic.
@@ -27,10 +28,27 @@ public class MenuManager : MonoBehaviour
     public GameObject PartThreePanel;
     public GameObject PartFourPanel;
 
+    public GameObject LoginPanel;
+    public GameObject NamePanel;
+    public InputField NameInputField;
+    public GameObject LogoutPanel;
+
+    public Text CurrentLevelText;
+
+    public GameObject GSFUManager;
+
     private const string TEST_LEVEL = "FullMatrixUI";
     #endregion
 
     #region Scene Management
+    /// <summary>
+    /// Updates the text based on the current level chosen
+    /// </summary>
+    public void UpdateLevelText(string textName)
+    {
+        CurrentLevelText.text = "Current Level: " + textName;
+    }
+    
     /// <summary>
     /// Loads scene based on scene index.
     /// </summary>
@@ -75,12 +93,14 @@ public class MenuManager : MonoBehaviour
 
     #region Panel Visibility
     /// <summary>
-    /// Displays the <see cref="LevelSelectPanel"/>.
+    /// Displays or hides the <see cref="LevelSelectPanel"/>.
+    /// Hides the setting panel if active
     /// </summary>
     public void DisplayLevelSelect()
     {
-        MainMenuPanel.SetActive(false);
-        LevelSelectPanel.SetActive(true);
+        if (SettingsPanel.activeSelf)
+            SettingsPanel.SetActive(false);
+        LevelSelectPanel.SetActive(!LevelSelectPanel.activeSelf);
     }
 
     /// <summary>
@@ -128,12 +148,14 @@ public class MenuManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Displays the <see cref="SettingsPanel"/>.
+    /// Displays or hides the <see cref="SettingsPanel"/>.
+    /// Hides the level select panel if it's active
     /// </summary>
     public void DisplaySettings()
     {
-        MainMenuPanel.SetActive(false);
-        SettingsPanel.SetActive(true);
+        if (LevelSelectPanel.activeSelf)
+            LevelSelectPanel.SetActive(false);
+        SettingsPanel.SetActive(!SettingsPanel.activeSelf);
     }
 
     /// <summary>
@@ -154,5 +176,46 @@ public class MenuManager : MonoBehaviour
         
         SettingsPanel.SetActive(false);
     }
+
+    /// <summary>
+    /// Moves on to the <see cref="LogoutPanel"/> if there is text to submit 
+    /// </summary>
+    public void SubmitName()
+    {
+        if (NameInputField.text != null)
+        {
+            NamePanel.SetActive(false);
+            LogoutPanel.SetActive(true);
+        }
+    }
+
+    /// <summary>
+    /// Handles the rest of the GSFU panels: 
+    ///     - Login changes to Submit
+    ///     - Name cancels back into Login
+    ///     - Logout changes to Login
+    /// </summary>
+    public void DisplayLogin_Logout()
+    {
+        if (LoginPanel.activeSelf == true)
+        {
+            NamePanel.SetActive(true);
+            LoginPanel.SetActive(false);
+        }
+
+        //Called when user cancels submitting a name, which sends it back to the login panel
+        else if (NamePanel.activeSelf == true)
+        {
+            LoginPanel.SetActive(true);
+            NamePanel.SetActive(false);
+        }
+
+        else if (LogoutPanel.activeSelf == true)
+        {
+            LoginPanel.SetActive(true);
+            LogoutPanel.SetActive(false);   
+        }
+    }
     #endregion
+
 }

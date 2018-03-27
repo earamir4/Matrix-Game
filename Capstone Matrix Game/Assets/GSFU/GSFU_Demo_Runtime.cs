@@ -29,6 +29,7 @@ public class GSFU_Demo_Runtime : MonoBehaviour
         if (GUI.Button(new Rect(20, 300, 140, 25), "Test"))
             GSFU_Demo_Utils.namechange(playername);
     }
+
 	
 	
 }
