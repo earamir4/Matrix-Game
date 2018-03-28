@@ -6,7 +6,11 @@ using UnityEngine.UI;
 
 public class MatrixRenderManager : MonoBehaviour
 {
-	public CartesianRender cartesianRenderer;
+	public CartesianRender mainRenderer;
+	public CartesianRender optionalRenderer;
+
+	public CartesianRender previewRenderer;
+
 	public GameManager gameManager;
 
 	private Matrix2x2[] transformationMatrices;
@@ -19,11 +23,14 @@ public class MatrixRenderManager : MonoBehaviour
 
 	public void Start()
 	{
-		//render base points
-		if (cartesianRenderer != null)
-		{
-			cartesianRenderer.RenderBasePoints();
-		}
+		mainRenderer.CreatePointObjects();
+		optionalRenderer.CreatePointObjects();
+        previewRenderer.CreatePointObjects();
+			
+		mainRenderer.SetRenderingDisabled(false);
+		optionalRenderer.SetRenderingDisabled(true);
+		previewRenderer.SetRenderingDisabled(false);
+
 		ResetAnimationBars();
     }
 
@@ -57,6 +64,14 @@ public class MatrixRenderManager : MonoBehaviour
 		gameManager.CheckAnswer(finalMatrix);
 	}
 
+	//tell the renders with tool tips to render them at the given scale
+	public void SetToolTipRenderSize(float toolTipRenderSize)
+	{
+		mainRenderer.SetPointTooltipSize(toolTipRenderSize);
+		optionalRenderer.SetPointTooltipSize(toolTipRenderSize);
+		previewRenderer.SetPointTooltipSize(toolTipRenderSize);
+	}
+
 	//reset the animation bars each to empty
 	public void ResetAnimationBars()
 	{
@@ -70,11 +85,13 @@ public class MatrixRenderManager : MonoBehaviour
 	public void RenderUnTransformed()
 	{
 		StopAllCoroutines();
-		cartesianRenderer.TransformPoints(Matrix2x2.IdentityMatrix);
+		mainRenderer.TransformPoints(Matrix2x2.IdentityMatrix);
+		optionalRenderer.TransformPoints(Matrix2x2.IdentityMatrix);
 		ResetAnimationBars();
     }
 
-	public void RenderPartiallyTransformed(int finalMatrix)
+	//renders the main render with only some of the matrices, from 0 -> lastMatrixIndexBeingRendered (e.g. 0-3)
+	public void RenderPartiallyTransformed(int lastMatrixIndexBeingRendered)
 	{
 		if (transformationMatrices == null)
 		{
@@ -82,28 +99,29 @@ public class MatrixRenderManager : MonoBehaviour
 			return;
 		}
 
-		if (finalMatrix >= transformationMatrices.Length)
+		if (lastMatrixIndexBeingRendered >= transformationMatrices.Length)
 		{
-			Debug.Log("Can't render partially transformed at matrix " + finalMatrix + ", since there are only " + transformationMatrices.Length + " matrices input.");
+			Debug.Log("Can't render partially transformed at matrix " + lastMatrixIndexBeingRendered + ", since there are only " + transformationMatrices.Length + " matrices input.");
 			return;
 		}
 
 		StopAllCoroutines();
 
 		Matrix2x2 partialTransformationMatrix = transformationMatrices[0];
-		for (int i = 0; i <= finalMatrix; i++)
+		for (int i = 0; i <= lastMatrixIndexBeingRendered; i++)
 		{
 			Matrix2x2 currentMatrix = transformationMatrices[i];
 			partialTransformationMatrix = currentMatrix.Multiply(partialTransformationMatrix);
 		}
 
-		cartesianRenderer.TransformPoints(partialTransformationMatrix);
+		mainRenderer.TransformPoints(partialTransformationMatrix);
+		optionalRenderer.TransformPoints(partialTransformationMatrix);
 
 		for (int i = 0; i < animationBars.Length; i++)
 		{
 			animationBars[i].fillAmount = 0f;
 
-			if (i <= finalMatrix)
+			if (i <= lastMatrixIndexBeingRendered)
 			{
 				animationBars[i].fillAmount = 1f;
 			}
@@ -121,7 +139,8 @@ public class MatrixRenderManager : MonoBehaviour
 			return;
 		}
 
-		cartesianRenderer.TransformPoints(finalMatrix);
+		mainRenderer.TransformPoints(finalMatrix);
+		optionalRenderer.TransformPoints(finalMatrix);
 
 		for (int i = 0; i < transformationMatrices.Length; i++)
 		{
@@ -149,7 +168,8 @@ public class MatrixRenderManager : MonoBehaviour
 
 		ResetAnimationBars();
 
-		cartesianRenderer.TransformPoints(Matrix2x2.IdentityMatrix);
+		mainRenderer.TransformPoints(Matrix2x2.IdentityMatrix);
+		optionalRenderer.TransformPoints(Matrix2x2.IdentityMatrix);
 
 		Matrix2x2 cumulativeMatrix = Matrix2x2.IdentityMatrix;
 
@@ -172,7 +192,8 @@ public class MatrixRenderManager : MonoBehaviour
 					Mathf.Lerp(0, currentTargetMatrix.c, animationRatio),
 					Mathf.Lerp(1, currentTargetMatrix.d, animationRatio)
 					);
-				cartesianRenderer.TransformPoints(transformationInProgress.Multiply(cumulativeMatrix));
+				mainRenderer.TransformPoints(transformationInProgress.Multiply(cumulativeMatrix));
+				optionalRenderer.TransformPoints(transformationInProgress.Multiply(cumulativeMatrix));
 
 				animationBars[i].fillAmount = animationRatio;
 
@@ -182,7 +203,35 @@ public class MatrixRenderManager : MonoBehaviour
 			cumulativeMatrix = cumulativeMatrix.Multiply(currentTargetMatrix);
         }
 
-		cartesianRenderer.TransformPoints(finalMatrix);
+		mainRenderer.TransformPoints(finalMatrix);
+		optionalRenderer.TransformPoints(finalMatrix);
+
 		print("Animation finished.");
 	}
+
+	public void SetOptionalPoint(int positionX, int positionY)
+	{
+		optionalRenderer.SetListOfPoints(new Vector2[] { new Vector2(positionX, positionY) });
+		optionalRenderer.CreatePointObjects();
+
+		mainRenderer.SetRenderingDisabled(true);
+		optionalRenderer.SetRenderingDisabled(false);
+	}
+
+	public void RemoveOptionalPoint()
+	{
+		optionalRenderer.SetListOfPoints(new Vector2[] { new Vector2(0f, 0f) });
+		optionalRenderer.CreatePointObjects();
+
+		mainRenderer.SetRenderingDisabled(false);
+		optionalRenderer.SetRenderingDisabled(true);
+	}
+
+	public void SetShowCoordinates(bool showCoordinates)
+	{
+		mainRenderer.SetShowCoordinates(showCoordinates);
+		previewRenderer.SetShowCoordinates(showCoordinates);
+		optionalRenderer.SetShowCoordinates(showCoordinates);
+    }
+
 }
