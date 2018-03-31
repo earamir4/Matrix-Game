@@ -24,9 +24,8 @@ public class GameManager : MonoBehaviour
     private Text QuestionText;
     private Matrix2x2 SolutionMatrix;
     
-    //Stopwatch for Timing
-    private Stopwatch stopwatch;
     private float answertime;
+    public string playername;
     
     #endregion
 
@@ -43,7 +42,6 @@ public class GameManager : MonoBehaviour
 
         SolutionMatrix = new Matrix2x2(MatrixValueA, MatrixValueB, MatrixValueC, MatrixValueD);
 	
-	stopwatch = new Stopwatch.StartNew();
 	}
 
     /// <summary>
@@ -85,8 +83,8 @@ public class GameManager : MonoBehaviour
         {
             QuestionText.text = "Correct!";
             MatrixLogger.Add("Correct! The answer was:\n" + SolutionMatrix.ToString());
-	    answertime = stopwatch.ElapsedMilliseconds;
-	    CloudConnectorCore.UpdateObjects("playerInfo", "name", "Cameron Root", "q1", answertime.toString() , runtime);
+	    
+	    CloudConnectorCore.UpdateObjects("playerInfo", "name", playername, "q1", answertime.ToString() , true);
         }
         else
         {
@@ -101,5 +99,10 @@ public class GameManager : MonoBehaviour
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    
+    public void Update()
+    {
+        answertime = Time.timeSinceLevelLoad;
     }
 }
