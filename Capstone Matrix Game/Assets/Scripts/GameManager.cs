@@ -37,11 +37,15 @@ public class GameManager : MonoBehaviour
     /// </summary>
     void Start ()
     {
-        QuestionText = QuestionPanel.GetComponentInChildren<Text>();
-        QuestionText.text = QuestionString;
+        SolutionMatrix = new Matrix2x2(MatrixValueA, MatrixValueB, MatrixValueC, MatrixValueD);
+
+        if (QuestionText != null)
+        {
+            QuestionText = QuestionPanel.GetComponentInChildren<Text>();
+            QuestionText.text = QuestionString;
+        }
 
         SolutionMatrix = new Matrix2x2(MatrixValueA, MatrixValueB, MatrixValueC, MatrixValueD);
-	
 	}
 
     /// <summary>
@@ -73,6 +77,11 @@ public class GameManager : MonoBehaviour
     public void CheckAnswer(Matrix2x2 answerMatrix)
     {
         bool isCorrect = Matrix2x2.IsEqual(SolutionMatrix, answerMatrix);
+
+		if (LogPanel == null)
+		{
+			return;
+		}
 
         if (!LogPanel.activeInHierarchy)
         {
