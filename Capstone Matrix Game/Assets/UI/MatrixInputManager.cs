@@ -42,7 +42,9 @@ public class MatrixInputManager : MonoBehaviour
         }
 
 		submitButton.interactable = false;
-	}
+
+		renderManager = GameObject.FindObjectOfType<MatrixRenderManager>();
+    }
 
     private void SendToBackend()
     {

@@ -24,8 +24,13 @@ public class CartesianRender : MonoBehaviour
 	private GameObject[] pointObjects;
 	private Vector2[] transformedPointPositions;
 
-	private bool showCoordinates;
+	private bool showCoordinates = true;
 	private float toolTipRenderSize;
+
+	public void Start()
+	{
+		renderAreaZoom = GameObject.FindObjectOfType<RenderAreaZoom>();
+    }
 
 	public void SetListOfPoints(Vector2[] listOfNewPoints)
 	{

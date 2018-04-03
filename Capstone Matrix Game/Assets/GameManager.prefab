@@ -51,9 +51,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04b7a9d10a60ee146943fab8d3c8f148, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OptionsPanel: {fileID: 0}
-  QuestionPanel: {fileID: 0}
-  LogPanel: {fileID: 0}
+  submissionResultPanel: {fileID: 0}
+  resultText: {fileID: 0}
+  resultPanelImage: {fileID: 0}
   QuestionString: 'Demo: Scale the N by a factor of 3'
   MatrixValueA: 3
   MatrixValueB: 0
