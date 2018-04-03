@@ -9,6 +9,11 @@ public class OptionalPointInputManager : MonoBehaviour
 	public InputField fieldY;
 	public MatrixRenderManager renderManager;
 
+	public void Start()
+	{
+		renderManager = GameObject.FindObjectOfType<MatrixRenderManager>();
+    }
+
 	public void ClearInput()
 	{
 		fieldX.text = "";
