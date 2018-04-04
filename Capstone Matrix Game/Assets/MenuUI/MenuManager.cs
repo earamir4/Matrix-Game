@@ -33,13 +33,27 @@ public class MenuManager : MonoBehaviour
     public GameObject NamePanel;
     public InputField NameInputField;
     public GameObject LogoutPanel;
+    public GameObject userName;
 
     public Text CurrentLevelText;
 
     public GameObject GSFUManager;
+    private GameObject GSFU_Clone;
 
-    private const string TEST_LEVEL = "FullMatrixUI";
+    private const string TEST_LEVEL = "Demo Level";
     #endregion
+
+    public void Start()
+    {
+        if (GameObject.Find("GSFUManager") == null)
+            GSFU_Clone = Instantiate(GSFUManager);
+    }
+
+    public void UpdateUsername(string playerName)
+    {
+        GSFU_Clone.GetComponent<GSFU_Runtime>().NameInput(playerName);
+        userName.GetComponent<Text>().text = playerName;
+    }
 
     #region Scene Management
     /// <summary>
@@ -49,7 +63,7 @@ public class MenuManager : MonoBehaviour
     {
         CurrentLevelText.text = "Current Level: " + textName;
     }
-    
+
     /// <summary>
     /// Loads scene based on scene index.
     /// </summary>
@@ -58,6 +72,8 @@ public class MenuManager : MonoBehaviour
     {
         SceneManager.LoadScene(index);
     }
+
+    //public static void DontDestroyOnLoad(GSFUManager);
 
     /// <summary>
     /// Loads scene based on name.
@@ -74,7 +90,7 @@ public class MenuManager : MonoBehaviour
     public void ExitGame()
     {
         #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
+        UnityEditor.EditorApplication.isPlaying = false;
         #else
             Application.Quit();
         #endif
@@ -174,7 +190,7 @@ public class MenuManager : MonoBehaviour
             PartThreePanel.SetActive(false);
             PartFourPanel.SetActive(false);
         }
-        
+
         SettingsPanel.SetActive(false);
     }
 
@@ -214,7 +230,7 @@ public class MenuManager : MonoBehaviour
         else if (LogoutPanel.activeSelf == true)
         {
             LoginPanel.SetActive(true);
-            LogoutPanel.SetActive(false);   
+            LogoutPanel.SetActive(false);
         }
     }
     #endregion
