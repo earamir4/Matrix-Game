@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -22,6 +23,11 @@ public class GameManager : MonoBehaviour
     // Private variables
     private Text QuestionText;
     private Matrix2x2 SolutionMatrix;
+    
+    //Stopwatch for Timing
+    private Stopwatch stopwatch;
+    private float answertime;
+    
     #endregion
 
     /// <summary>
@@ -32,10 +38,16 @@ public class GameManager : MonoBehaviour
     /// </summary>
     void Start ()
     {
-        QuestionText = QuestionPanel.GetComponentInChildren<Text>();
-        QuestionText.text = QuestionString;
+        SolutionMatrix = new Matrix2x2(MatrixValueA, MatrixValueB, MatrixValueC, MatrixValueD);
+
+        if (QuestionText != null)
+        {
+            QuestionText = QuestionPanel.GetComponentInChildren<Text>();
+            QuestionText.text = QuestionString;
+        }
 
         SolutionMatrix = new Matrix2x2(MatrixValueA, MatrixValueB, MatrixValueC, MatrixValueD);
+        stopwatch = new Stopwatch.StartNew();
 	}
 
     /// <summary>
@@ -68,6 +80,11 @@ public class GameManager : MonoBehaviour
     {
         bool isCorrect = Matrix2x2.IsEqual(SolutionMatrix, answerMatrix);
 
+		if (LogPanel == null)
+		{
+			return;
+		}
+
         if (!LogPanel.activeInHierarchy)
         {
             LogPanel.SetActive(true);
@@ -77,6 +94,8 @@ public class GameManager : MonoBehaviour
         {
             QuestionText.text = "Correct!";
             MatrixLogger.Add("Correct! The answer was:\n" + SolutionMatrix.ToString());
+	    answertime = stopwatch.ElapsedMilliseconds;
+	    CloudConnectorCore.UpdateObjects("playerInfo", "name", "Cameron Root", "q1", answertime.toString() , runtime);
         }
         else
         {
