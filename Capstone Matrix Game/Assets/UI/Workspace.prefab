@@ -1210,7 +1210,7 @@ MonoBehaviour:
   fieldX: {fileID: 114815300716627150}
   fieldY: {fileID: 114724573295336552}
   renderManager: {fileID: 0}
-  clearButton: {fileID: 114016846150647122}
+  clearButton: {fileID: 0}
 --- !u!114 &114538438161099962
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1303,10 +1303,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_NormalColor: {r: 0.6810121, g: 0.78383845, b: 0.9852941, a: 1}
+    m_HighlightedColor: {r: 0.5722318, g: 0.6919401, b: 0.9264706, a: 1}
+    m_PressedColor: {r: 0.40268162, g: 0.59707975, b: 0.97794116, a: 1}
+    m_DisabledColor: {r: 0.44961074, g: 0.48900193, b: 0.5661765, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:

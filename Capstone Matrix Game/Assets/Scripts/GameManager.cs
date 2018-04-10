@@ -1,56 +1,63 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/// <summary>
+/// The <see cref="GameManager"/> gives feedback to the User whenever a solution is submitted.
+/// <para>
+///     The <see cref="GameManager"/> is also responsible for scene transitions.
+/// </para>
+/// <para>
+///     Data is recorded to the Google Sheets for Unity (GSFU) system and the <see cref="MatrixLogger"/>.
+/// </para>
+/// </summary>
 public class GameManager : MonoBehaviour
 {
-    #region GameManager Variables
-
-    // UI
-    public GameObject submissionResultPanel;
-	public Text resultText;
-	public Image resultPanelImage;
-    public Text QuestionText;
+    #region UI
+    public GameObject SubmissionResultPanel;
     public GameObject QuestionPanel;
+    public Text QuestionText;
+    public Text ResultText;
+	public Image ResultPanelImage;
+    #endregion
 
-	// Question and answer values
-	public string QuestionString;
+    #region Question and Answer Values
+    public string Playername;
+
+    public string QuestionString;
     public float MatrixValueA;
     public float MatrixValueB;
     public float MatrixValueC;
     public float MatrixValueD;
 
-    private Matrix2x2 SolutionMatrix;
-    
+    private Matrix2x2 solutionMatrix;
     private float answertime;
-    public string playername;
 
-	public Text QuestionText;
-
-	public static string NameOfMainMenuScene = "MainMenu";
-    
+	public const string MAIN_MENU_NAME = "MainMenu";
     #endregion
 
     /// <summary>
     /// Instantiates the question being asked.
     /// <para>
-    ///     The <see cref="SolutionMatrix"/> is based on four "matrix values".
+    ///     The <see cref="solutionMatrix"/> is based on four "matrix values".
     /// </para>
     /// </summary>
     void Start ()
     {
 		if (QuestionText)
-			QuestionText.text = QuestionString;
-		SolutionMatrix = new Matrix2x2(MatrixValueA, MatrixValueB, MatrixValueC, MatrixValueD);
+        {
+            QuestionText.text = QuestionString;
+        }
+
+		solutionMatrix = new Matrix2x2(MatrixValueA, MatrixValueB, MatrixValueC, MatrixValueD);
 	}
 
 	/// <summary>
-	/// Compares the answer <see cref="Matrix2x2"/> provided by the Player with the <see cref="SolutionMatrix"/>.
+	/// Compares the answer <see cref="Matrix2x2"/> provided by the Player with the <see cref="solutionMatrix"/>.
 	/// <para>
-	///     The <see cref="resultText"/> will display whether or not the Player got the right answer.
+	///     The <see cref="ResultText"/> will display whether or not the Player got the right answer.
+    ///     This information will be recorded in the Google Sheets for Unity system (GSFU) via <see cref="CloudConnectorCore"/>.
 	/// </para>
 	/// <para>
 	///     Additional information can be sent to the <see cref="MatrixLogger"/> as well.
@@ -59,16 +66,16 @@ public class GameManager : MonoBehaviour
 	/// <param name="answerMatrix">The final answer the User submitted.</param>
 	public void CheckAnswer(Matrix2x2 answerMatrix)
     {
-        bool isCorrect = Matrix2x2.IsEqual(SolutionMatrix, answerMatrix);
+        bool isCorrect = Matrix2x2.IsEqual(solutionMatrix, answerMatrix);
 
         if (isCorrect)
         {
-            resultText.text = "Correct!";
+            ResultText.text = "Correct!";
             answertime = Time.timeSinceLevelLoad;
-            CloudConnectorCore.UpdateObjects("playerInfo", "name", playername, "q1", answertime.ToString() , true);
+            CloudConnectorCore.UpdateObjects("playerInfo", "name", Playername, "q1", answertime.ToString() , true);
 
-            MatrixLogger.Add("Correct! The answer was:\n" + SolutionMatrix.ToString());
-            submissionResultPanel.SetActive(true);
+            MatrixLogger.Add("Correct! The answer was:\n" + solutionMatrix.ToString());
+            SubmissionResultPanel.SetActive(true);
 
             StopCoroutine("RemoveResultPanelAfterSomeSeconds");
             StartCoroutine("RemoveResultPanelAfterSomeSeconds");
@@ -77,8 +84,8 @@ public class GameManager : MonoBehaviour
         {
             MatrixLogger.Add("Incorrect! Your answer was:\n" + answerMatrix.ToString());
 
-            resultText.text = "Incorrect...";
-            submissionResultPanel.SetActive(true);
+            ResultText.text = "Incorrect...";
+            SubmissionResultPanel.SetActive(true);
 
             StopCoroutine("RemoveResultPanelAfterSomeSeconds");
             StartCoroutine("RemoveResultPanelAfterSomeSeconds");
@@ -93,11 +100,26 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    /// <summary>
+    /// Returns to the main menu.
+    /// </summary>
 	public void GoToMainMenu()
 	{
-		SceneManager.LoadScene(NameOfMainMenuScene);
+		SceneManager.LoadScene(MAIN_MENU_NAME);
 	}
 
+    /// <summary>
+    /// Goes to the next level.
+    /// </summary>
+    public void NextScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    /// <summary>
+    /// TODO: Add method description and rename the method.
+    /// </summary>
+    /// <returns></returns>
 	public IEnumerator RemoveResultPanelAfterSomeSeconds()
 	{
 		yield return new WaitForSeconds(4f);
@@ -108,12 +130,12 @@ public class GameManager : MonoBehaviour
 		{
 			yield return null;
 			elapsedTime += Time.unscaledDeltaTime;
-			resultPanelImage.color = new Color(resultPanelImage.color.r, resultPanelImage.color.g, resultPanelImage.color.b, (1-elapsedTime / 2f));
-			resultText.color = new Color(resultText.color.r, resultText.color.g, resultText.color.b, (1 - elapsedTime / 2f));
+			ResultPanelImage.color = new Color(ResultPanelImage.color.r, ResultPanelImage.color.g, ResultPanelImage.color.b, (1-elapsedTime / 2f));
+			ResultText.color = new Color(ResultText.color.r, ResultText.color.g, ResultText.color.b, (1 - elapsedTime / 2f));
 		}
 
-		submissionResultPanel.SetActive(false);
-		resultPanelImage.color = new Color(resultPanelImage.color.r, resultPanelImage.color.g, resultPanelImage.color.b, 1f);
-		resultText.color = new Color(resultText.color.r, resultText.color.g, resultText.color.b, 1f);
+		SubmissionResultPanel.SetActive(false);
+		ResultPanelImage.color = new Color(ResultPanelImage.color.r, ResultPanelImage.color.g, ResultPanelImage.color.b, 1f);
+		ResultText.color = new Color(ResultText.color.r, ResultText.color.g, ResultText.color.b, 1f);
 	}
 }
