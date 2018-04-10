@@ -34,7 +34,7 @@ public class MatrixRenderManager : MonoBehaviour
 		ResetAnimationBars();
     }
 
-	//tgives the manager an array of matrices to use with the cartesian render
+	//gives the manager an array of matrices to use with the cartesian render
 	//it calculates the final cumulative transformation matrix
 	public void SetMatrices(Matrix2x2[] matricesArray)
 	{
@@ -60,8 +60,6 @@ public class MatrixRenderManager : MonoBehaviour
 				finalMatrix = currentMatrix.Multiply(finalMatrix);
 			}
 		}
-
-		gameManager.CheckAnswer(finalMatrix);
 	}
 
 	//tell the renders with tool tips to render them at the given scale
@@ -146,6 +144,8 @@ public class MatrixRenderManager : MonoBehaviour
 		{
 			animationBars[i].fillAmount = 1f;
 		}
+
+		gameManager.CheckAnswer(finalMatrix);
 	}
 
 	//begin the animation coroutine
@@ -203,8 +203,7 @@ public class MatrixRenderManager : MonoBehaviour
 			cumulativeMatrix = cumulativeMatrix.Multiply(currentTargetMatrix);
         }
 
-		mainRenderer.TransformPoints(finalMatrix);
-		optionalRenderer.TransformPoints(finalMatrix);
+		RenderFullyTransformed();
 
 		print("Animation finished.");
 	}
