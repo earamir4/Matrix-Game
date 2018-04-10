@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     public GameObject submissionResultPanel;
 	public Text resultText;
 	public Image resultPanelImage;
+    public Text QuestionText;
+    public GameObject QuestionPanel;
 
 	// Question and answer values
 	public string QuestionString;
@@ -62,9 +64,8 @@ public class GameManager : MonoBehaviour
         if (isCorrect)
         {
             resultText.text = "Correct!";
-
-			answertime = Time.timeSinceLevelLoad;
-			CloudConnectorCore.UpdateObjects("playerInfo", "name", "Cameron Root", "q1", answertime.ToString() , true);
+            answertime = Time.timeSinceLevelLoad;
+            CloudConnectorCore.UpdateObjects("playerInfo", "name", playername, "q1", answertime.ToString() , true);
 
             MatrixLogger.Add("Correct! The answer was:\n" + SolutionMatrix.ToString());
             submissionResultPanel.SetActive(true);
