@@ -25,8 +25,8 @@ public class GSFU_Runtime : MonoBehaviour
 
     public void ChangeName()
     {
-        if(playername != null)
-            GSFU_Demo_Utils.namechange(playername);
+        if (playername != null)
+            PlayerPrefs.SetString("Playername", playername);
     }
 }
 
