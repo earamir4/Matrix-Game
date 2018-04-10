@@ -14,8 +14,9 @@ public class MatrixInputManager : MonoBehaviour
 	public bool restrictInputToInOrder;
 	public bool disableSubmissionIfSkipSlots;
 
+	public bool skipSubmissionAnimation;
+
 	public Button submitButton;
-	public Button animateButton;
 
 	public void Start()
 	{
@@ -40,8 +41,6 @@ public class MatrixInputManager : MonoBehaviour
 		{
 			inputTemplate.inputSlotChanged += new MatrixInputTemplate.InputSlotChangedHandler(TemplateInputChangedHandler);
         }
-
-		submitButton.interactable = false;
 
 		renderManager = GameObject.FindObjectOfType<MatrixRenderManager>();
     }
@@ -96,15 +95,14 @@ public class MatrixInputManager : MonoBehaviour
 	{
 		SendToBackend();
 
-		submitButton.interactable = false;
-		animateButton.interactable = true;
-
-		renderManager.RenderFullyTransformed();
-    }
-
-	public void BeginAnimation()
-	{
-		renderManager.StartAnimation();
+		if (skipSubmissionAnimation)
+		{
+			renderManager.RenderFullyTransformed();
+		}
+		else
+		{
+			renderManager.StartAnimation();
+		}
     }
 
 	public void AnimationSeek(int finalMatrixRendered)
@@ -117,7 +115,6 @@ public class MatrixInputManager : MonoBehaviour
 		renderManager.RenderUnTransformed();
 
 		submitButton.interactable = true;
-		animateButton.interactable = false;
 
 		if (restrictInputToInOrder)
 		{
@@ -162,7 +159,7 @@ public class MatrixInputManager : MonoBehaviour
 
 		if (!haveEncounteredFull)
 		{
-			submitButton.interactable = false;
+			submitButton.interactable = true;
 		}
 
 	}
@@ -172,5 +169,10 @@ public class MatrixInputManager : MonoBehaviour
 	{
 		Debug.Log("A matrix input slot was changed.");
 		WorkspaceChanged();
+    }
+
+	public void SetSkipAnimation(bool skipAnimation)
+	{
+		skipSubmissionAnimation = skipAnimation;
     }
 }
