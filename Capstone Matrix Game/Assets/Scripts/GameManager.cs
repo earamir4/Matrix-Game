@@ -21,11 +21,14 @@ public class GameManager : MonoBehaviour
     public float MatrixValueC;
     public float MatrixValueD;
 
-
     private Matrix2x2 SolutionMatrix;
     
     private float answertime;
     public string playername;
+
+	public Text QuestionText;
+
+	public static string NameOfMainMenuScene = "MainMenu";
     
     #endregion
 
@@ -37,13 +40,9 @@ public class GameManager : MonoBehaviour
     /// </summary>
     void Start ()
     {
-        if (QuestionText != null)
-        {
-            QuestionText = QuestionPanel.GetComponentInChildren<Text>();
-            QuestionText.text = QuestionString;
-        }
-
-        SolutionMatrix = new Matrix2x2(MatrixValueA, MatrixValueB, MatrixValueC, MatrixValueD);
+		if (QuestionText)
+			QuestionText.text = QuestionString;
+		SolutionMatrix = new Matrix2x2(MatrixValueA, MatrixValueB, MatrixValueC, MatrixValueD);
 	}
 
 	/// <summary>
@@ -62,23 +61,24 @@ public class GameManager : MonoBehaviour
 
         if (isCorrect)
         {
-
             resultText.text = "Correct!";
-            
-            answertime = stopwatch.ElapsedMilliseconds;
-            CloudConnectorCore.UpdateObjects("playerInfo", "name", "Cameron Root", "q1", answertime.ToString() , true);
+
+			answertime = Time.timeSinceLevelLoad;
+			CloudConnectorCore.UpdateObjects("playerInfo", "name", "Cameron Root", "q1", answertime.ToString() , true);
 
             MatrixLogger.Add("Correct! The answer was:\n" + SolutionMatrix.ToString());
             submissionResultPanel.SetActive(true);
+
             StopCoroutine("RemoveResultPanelAfterSomeSeconds");
             StartCoroutine("RemoveResultPanelAfterSomeSeconds");
-		    }
+		}
         else
         {
             MatrixLogger.Add("Incorrect! Your answer was:\n" + answerMatrix.ToString());
 
             resultText.text = "Incorrect...";
             submissionResultPanel.SetActive(true);
+
             StopCoroutine("RemoveResultPanelAfterSomeSeconds");
             StartCoroutine("RemoveResultPanelAfterSomeSeconds");
         }
@@ -92,6 +92,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+	public void GoToMainMenu()
+	{
+		SceneManager.LoadScene(NameOfMainMenuScene);
+	}
+
 	public IEnumerator RemoveResultPanelAfterSomeSeconds()
 	{
 		yield return new WaitForSeconds(4f);
@@ -103,14 +108,11 @@ public class GameManager : MonoBehaviour
 			yield return null;
 			elapsedTime += Time.unscaledDeltaTime;
 			resultPanelImage.color = new Color(resultPanelImage.color.r, resultPanelImage.color.g, resultPanelImage.color.b, (1-elapsedTime / 2f));
-        }
+			resultText.color = new Color(resultText.color.r, resultText.color.g, resultText.color.b, (1 - elapsedTime / 2f));
+		}
 
-      submissionResultPanel.SetActive(false);
-      resultPanelImage.color = new Color(resultPanelImage.color.r, resultPanelImage.color.g, resultPanelImage.color.b, 1f);
-    }
-    
-    public void Update()
-    {
-        answertime = Time.timeSinceLevelLoad;
-    }
+		submissionResultPanel.SetActive(false);
+		resultPanelImage.color = new Color(resultPanelImage.color.r, resultPanelImage.color.g, resultPanelImage.color.b, 1f);
+		resultText.color = new Color(resultText.color.r, resultText.color.g, resultText.color.b, 1f);
+	}
 }
