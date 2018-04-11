@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
-  m_LightingDataAsset: {fileID: 112000002, guid: a37b6aea1b6d53d45b382d70cb4bc032,
+  m_LightingDataAsset: {fileID: 112000002, guid: 76a9ed41e6496af4b9fa9456b6e268c9,
     type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -205,6 +205,31 @@ Prefab:
       propertyPath: ResultPanelImage
       value: 
       objectReference: {fileID: 438238577}
+    - target: {fileID: 114004567638055734, guid: 3f7f2adc35b70dc44aafe4f40189aa44,
+        type: 2}
+      propertyPath: QuestionString
+      value: 'Demo: We have graphed an N, but now we want change it into a Z'
+      objectReference: {fileID: 0}
+    - target: {fileID: 114004567638055734, guid: 3f7f2adc35b70dc44aafe4f40189aa44,
+        type: 2}
+      propertyPath: MatrixValueD
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114004567638055734, guid: 3f7f2adc35b70dc44aafe4f40189aa44,
+        type: 2}
+      propertyPath: MatrixValueA
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114004567638055734, guid: 3f7f2adc35b70dc44aafe4f40189aa44,
+        type: 2}
+      propertyPath: MatrixValueB
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114004567638055734, guid: 3f7f2adc35b70dc44aafe4f40189aa44,
+        type: 2}
+      propertyPath: MatrixValueC
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3f7f2adc35b70dc44aafe4f40189aa44, type: 2}
   m_IsPrefabParent: 0
@@ -678,6 +703,26 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114931009906254196, guid: 919bafbd0aed9b84f87fcf226dfb080d,
+        type: 2}
+      propertyPath: m_Text
+      value: Level 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114866374838766994, guid: 919bafbd0aed9b84f87fcf226dfb080d,
+        type: 2}
+      propertyPath: m_Text
+      value: "Hint 1: Try thinking about ways to achieve the goal other than rotation.\r\nHint
+        2: Think about how you can combine multiple matrix templates to achieve the
+        goal."
+      objectReference: {fileID: 0}
+    - target: {fileID: 1594257162738438, guid: 919bafbd0aed9b84f87fcf226dfb080d, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1080003425084408, guid: 919bafbd0aed9b84f87fcf226dfb080d, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 919bafbd0aed9b84f87fcf226dfb080d, type: 2}
@@ -1239,21 +1284,6 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 224630162147854736, guid: 44a74d059f878fd4c98d05706a00c7bc,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: -50
-      objectReference: {fileID: 0}
-    - target: {fileID: 224630162147854736, guid: 44a74d059f878fd4c98d05706a00c7bc,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 49.999996
-      objectReference: {fileID: 0}
-    - target: {fileID: 224270635250489882, guid: 44a74d059f878fd4c98d05706a00c7bc,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: -25
-      objectReference: {fileID: 0}
     - target: {fileID: 224777829924291748, guid: 44a74d059f878fd4c98d05706a00c7bc,
         type: 2}
       propertyPath: m_AnchorMin.y
@@ -1433,6 +1463,20 @@ Prefab:
         type: 2}
       propertyPath: m_SizeDelta.y
       value: 230
+      objectReference: {fileID: 0}
+    - target: {fileID: 224630162147854736, guid: 44a74d059f878fd4c98d05706a00c7bc,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -280.56006
+      objectReference: {fileID: 0}
+    - target: {fileID: 224630162147854736, guid: 44a74d059f878fd4c98d05706a00c7bc,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 44.04444
+      objectReference: {fileID: 0}
+    - target: {fileID: 1758712414039082, guid: 44a74d059f878fd4c98d05706a00c7bc, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224326288025539772, guid: 44a74d059f878fd4c98d05706a00c7bc,
         type: 2}

@@ -126,13 +126,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1441285557415030}
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4453342432563928}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!23 &23491505399833270
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -225,19 +225,17 @@ MonoBehaviour:
   pointObjectPrefab: {fileID: 1939782810009628, guid: 5c2b88b418623de439f66ac6c19267b9,
     type: 2}
   listOfPoints:
-  - {x: 3, y: 3}
-  - {x: -3, y: 3}
-  - {x: -3, y: -3}
-  - {x: 3, y: -3}
+  - {x: 0, y: 0}
+  - {x: 0, y: 2}
+  - {x: -3, y: 0}
+  - {x: -3, y: 2}
   lineConnections:
   - X: 0
-    Y: 1
+    Y: 2
   - X: 1
     Y: 2
-  - X: 2
-    Y: 3
   - X: 3
-    Y: 0
+    Y: 1
 --- !u!114 &114765013418345302
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -272,10 +270,10 @@ MonoBehaviour:
   pointObjectPrefab: {fileID: 1939782810009628, guid: 69fa6118f1d9d854c8c52f590d47c682,
     type: 2}
   listOfPoints:
-  - {x: 1, y: 1}
-  - {x: -1, y: 1}
-  - {x: -1, y: -1}
-  - {x: 1, y: -1}
+  - {x: 0, y: 0}
+  - {x: 0, y: 3}
+  - {x: 2, y: 0}
+  - {x: 2, y: 3}
   lineConnections:
   - X: 0
     Y: 1
@@ -283,5 +281,3 @@ MonoBehaviour:
     Y: 2
   - X: 2
     Y: 3
-  - X: 3
-    Y: 0
