@@ -7,25 +7,37 @@ public class SideMenuController : MonoBehaviour
 	public GameObject OptionsPanel;
 	public GameObject LogPanel;
 	public GameObject TemplatesPanel;
+    public GameObject VectorPanel;
 
 	public void SwapToOptionsPanel()
 	{
-		TemplatesPanel.SetActive(false);
+        VectorPanel.SetActive(false);
+        TemplatesPanel.SetActive(false);
 		OptionsPanel.SetActive(true);
 		LogPanel.SetActive(false);
 	}
 
 	public void SwapToLogPanel()
 	{
-		TemplatesPanel.SetActive(false);
+        VectorPanel.SetActive(false);
+        TemplatesPanel.SetActive(false);
 		OptionsPanel.SetActive(false);
 		LogPanel.SetActive(true);
 	}
 
 	public void SwapToTemplatesPanel()
 	{
-		TemplatesPanel.SetActive(true);
+        VectorPanel.SetActive(false);
+        TemplatesPanel.SetActive(true);
 		OptionsPanel.SetActive(false);
 		LogPanel.SetActive(false);
 	}
+
+    public void SwapToVectorPanel()
+    {
+        VectorPanel.SetActive(true);
+        TemplatesPanel.SetActive(false);
+        OptionsPanel.SetActive(false);
+        LogPanel.SetActive(false);
+    }
 }
