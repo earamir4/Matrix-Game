@@ -110,10 +110,22 @@ public class GameManager : MonoBehaviour
 
     /// <summary>
     /// Goes to the next level.
+    /// <para>
+    ///     If the Player is on the last level, then the game returns to the main menu.
+    /// </para>
     /// </summary>
     public void NextScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        int nextLevel = SceneManager.GetActiveScene().buildIndex + 1;
+
+        if (nextLevel > SceneManager.sceneCountInBuildSettings)
+        {
+            GoToMainMenu();
+        }
+        else
+        {
+            SceneManager.LoadScene(nextLevel);
+        }
     }
 
     /// <summary>

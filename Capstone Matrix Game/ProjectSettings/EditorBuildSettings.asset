@@ -9,5 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: db6f7ced46c880e4b8b3c16dd187242f
   - enabled: 1
-    path: Assets/Scenes/FullMatrixUI.unity
-    guid: e4a3c8deaa5d74e4baa7d9ccbd1b4b0c
+    path: Assets/Scenes/Demo Level.unity
+    guid: 2adac94236d47c54799a8098133db5cf
+  - enabled: 1
+    path: Assets/Scenes/Second Level.unity
+    guid: f04abf3e05ccce14998a37dbe3f164dd
