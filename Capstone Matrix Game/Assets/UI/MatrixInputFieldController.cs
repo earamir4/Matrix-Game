@@ -4,11 +4,12 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MatrixInputFieldValidator : MonoBehaviour
+public class MatrixInputFieldController : MonoBehaviour
 {
 	public MatrixInputTemplate inputTemplate;
 	public InputField inputField;
 	public string originalText;
+	public Text textDisplay;
 
 	//the regex for determining if an input is valid
 	//checks for either nonnegative integers
@@ -18,6 +19,7 @@ public class MatrixInputFieldValidator : MonoBehaviour
 	private void Start()
 	{
 		originalText = inputField.text;
+		textDisplay.horizontalOverflow = HorizontalWrapMode.Wrap;
     }
 
 	//on value changed, check if the most recently given value is a valid value or not
