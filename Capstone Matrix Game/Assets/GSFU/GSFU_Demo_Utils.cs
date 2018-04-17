@@ -8,23 +8,24 @@ public static class GSFU_Demo_Utils
 	public struct PlayerInfo
 	{
 		public string name; 
-		public float q1; 
-		public float q2;
-		public float q3;
-        public float q4;
-        public float q5;
-        public float q6;
-        public float q7;
-        public float q8;
-        public float q9;
-        public float q10;
-        public float q11;
+		public string q1; 
+		public string q2;
+		public string q3;
+        public string q4;
+        public string q5;
+        public string q6;
+        public string q7;
+        public string q8;
+        public string q9;
+        public string q10;
+        public string q11;
     }
 	
 	public static PlayerInfo player;
 	private static string tableName= "PlayerInfo";
     public static string playername;
     public static float completetime;
+	public static PlayerInfo hint;
 
     public static void namechange(string n)
     {
@@ -33,17 +34,17 @@ public static class GSFU_Demo_Utils
         player = new PlayerInfo();
         playername = n;
         player.name = playername;
-        player.q1 = 0;
-        player.q2 = 0;
-        player.q3 = 0;
-        player.q4 = 0;
-        player.q5 = 0;
-        player.q6 = 0;
-        player.q7 = 0;
-        player.q8 = 0;
-        player.q9 = 0;
-        player.q10 = 0;
-        player.q11 = 0;
+        player.q1 = "0";
+        player.q2 = "0";
+        player.q3 ="0";
+        player.q4 ="0";
+        player.q5 = "0";
+        player.q6 = "0";
+        player.q7 = "0";
+        player.q8 ="0";
+        player.q9 = "0";
+        player.q10 = "0";
+        player.q11 = "0";
 
         string jsonPlayer = JsonUtility.ToJson(player);
 
@@ -106,12 +107,12 @@ public static class GSFU_Demo_Utils
 
 
     // Need work. Hint system. Figure out how to pull a row w/o first column if possible. Make a sheet for hints and broadcasts.
-    public static void RetrieveGandalf(bool runtime)
+    public static void retrieveHints1()
 	{
-		Debug.Log("<color=yellow>Retrieving player of name Mithrandir from the Cloud.</color>");
-		
+		//Debug.Log("<color=yellow>Retrieving player of name Mithrandir from the Cloud.</color>");
+		runtime=true;
 		// Get any objects from table 'PlayerInfo' with value 'Mithrandir' in the field called 'name'.
-		CloudConnectorCore.GetObjectsByField(tableName, "name", "Mithrandir", runtime);
+		CloudConnectorCore.GetObjectsByField("Hints", "name", "Question1", runtime);
 	}
 	
 	// This will be used for broadcasts. One sheet will only have one column, broadcasts. This will pull it.
@@ -152,14 +153,14 @@ public static class GSFU_Demo_Utils
 			// but may return several objects depending the query parameters.
 			
 			// Check if the type is correct.
-			if (string.Compare(objTypeNames[0], tableName) == 0)
+			if (string.Compare(objTypeNames[0], "Hints") == 0)
 			{
 				// Parse from json to the desired object type.
-				PlayerInfo[] players = GSFUJsonHelper.JsonArray<PlayerInfo>(jsonData[0]);
-				player = players[0];
+				PlayerInfo[] hints = GSFUJsonHelper.JsonArray<PlayerInfo>(jsonData[0]);
+				hint = hints[0];
 				
 				Debug.Log("<color=yellow>Object retrieved from the cloud and parsed: \n</color>" + 
-					"Name: " + player.name + "\n" //+
+					"Name: " +hint.name + "\n" //+
 					//"Level: " + player.level + "\n" +
 					//"Health: " + player.health + "\n" +
 					//"Role: " + player.role + "\n"
