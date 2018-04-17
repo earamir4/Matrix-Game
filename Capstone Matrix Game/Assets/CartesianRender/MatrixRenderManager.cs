@@ -19,7 +19,7 @@ public class MatrixRenderManager : MonoBehaviour
 	public float animationDurationPerMatrix;
 	private float animationTime;
 
-	public Image[] animationBars;
+	private Image[] animationBars;
 
 	public void Start()
 	{
@@ -30,6 +30,15 @@ public class MatrixRenderManager : MonoBehaviour
 		mainRenderer.SetRenderingDisabled(false);
 		optionalRenderer.SetRenderingDisabled(true);
 		previewRenderer.SetRenderingDisabled(false);
+
+		GameObject[] animationBarObjects = GameObject.FindGameObjectsWithTag("AnimationBar");
+
+		animationBars = new Image[animationBarObjects.Length];
+		int count = 0;
+		foreach (GameObject obj in animationBarObjects)
+		{
+			animationBars[count++] = obj.GetComponent<Image>();
+        }
 
 		ResetAnimationBars();
     }
