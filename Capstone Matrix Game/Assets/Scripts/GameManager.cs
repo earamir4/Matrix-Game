@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
         {
             ResultText.text = "Correct!";
             answertime = Time.timeSinceLevelLoad;
-            CloudConnectorCore.UpdateObjects("playerInfo", "name", Playername, "q1", answertime.ToString() , true);
+            CloudConnectorCore.UpdateObjects("playerInfo", "name", GSFUManager.GetComponent<GSFU_Runtime>().playername, "q1", answertime.ToString() , true);
 
             MatrixLogger.Add("Correct! The answer was:\n" + solutionMatrix.ToString());
             SubmissionResultPanel.SetActive(true);
