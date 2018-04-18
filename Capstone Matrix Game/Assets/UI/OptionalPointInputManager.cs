@@ -31,7 +31,7 @@ public class OptionalPointInputManager : MonoBehaviour
 		{
 			renderManager.SetOptionalPoint(int.Parse(fieldX.text), int.Parse(fieldY.text));
 			clearButton.interactable = true;
-            mathView.SetPoint(fieldX.text, fieldY.text);
+            mathView.SetPoint(int.Parse(fieldX.text), int.Parse(fieldY.text));
 		}
     }
 }

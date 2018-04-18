@@ -7,7 +7,7 @@ public class MathView : MonoBehaviour {
 
     public GameObject[] vectorPanels;
     public int pointX, pointY;
-    public Text equation;
+    public Text equation, pointXUI, pointYUI;
     private Matrix2x2[] transformationMatrices;
 
     public void SetMatrices(Matrix2x2[] matricesArray)
@@ -22,10 +22,12 @@ public class MathView : MonoBehaviour {
         SetEquation();
     }
 
-    public void SetPoint(string x, string y)
+    public void SetPoint(int x, int y)
     {
-        pointX = int.Parse(x);
-        pointY = int.Parse(y);
+        pointX = x;
+        pointY = y;
+        pointXUI.text = x.ToString();
+        pointYUI.text = y.ToString();
     }
 
     public void SetEquation()
