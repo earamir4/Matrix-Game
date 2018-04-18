@@ -21,6 +21,10 @@ public class RenderAreaZoom : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 		matrixRenderCamera.orthographicSize = baseOrthoSize;
     }
 
+    /// <summary>
+    /// TODO: Add documentation
+    /// TODO: Fix tooltip size
+    /// </summary>
 	public void Update()
 	{
 		matrixRenderCamera.orthographicSize = orthoSize;
