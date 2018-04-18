@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class MathView : MonoBehaviour {
 
-    public GameObject[] VectorPanels;
-    public Text Equation;
+    public GameObject[] vectorPanels;
+    public int pointX, pointY;
+    public Text equation;
     private Matrix2x2[] transformationMatrices;
 
     public void SetMatrices(Matrix2x2[] matricesArray)
@@ -21,18 +22,24 @@ public class MathView : MonoBehaviour {
         SetEquation();
     }
 
+    public void SetPoint(string x, string y)
+    {
+        pointX = int.Parse(x);
+        pointY = int.Parse(y);
+    }
+
     public void SetEquation()
     {
-        int PointX, PointY, a, b, c, d;
         Vector2 Vect1, Vect2;
 
-        Equation = VectorPanels[0].GetComponentInChildren<Text>();
-        PointX = 1;
-        PointY = 1;
+        for (int i = 0; i < transformationMatrices.Length; i++)
+        {
+            equation = vectorPanels[i].GetComponentInChildren<Text>();
 
-        Vect1 = new Vector2 (transformationMatrices[0].a, transformationMatrices[0].b);
-        Vect2 = new Vector2(transformationMatrices[0].c, transformationMatrices[0].d);
+            Vect1 = new Vector2(transformationMatrices[i].a, transformationMatrices[i].b);
+            Vect2 = new Vector2(transformationMatrices[i].c, transformationMatrices[i].d);
 
-        Equation.text = PointX + " * " + Vect1.ToString() + " + " + PointY + " * " + Vect2.ToString() + " = " + ((PointX*Vect1)+(PointY*Vect2));
+            equation.text = pointX + " * " + Vect1.ToString() + " + " + pointY + " * " + Vect2.ToString() + " = " + ((pointX * Vect1) + (pointY * Vect2));
+        }
     }
 }

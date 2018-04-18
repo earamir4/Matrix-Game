@@ -5,14 +5,16 @@ using UnityEngine.UI;
 
 public class OptionalPointInputManager : MonoBehaviour
 {
-	public InputField fieldX;
-	public InputField fieldY;
+	public Text fieldX;
+	public Text fieldY;
 	public MatrixRenderManager renderManager;
 	public Button clearButton;
+    private MathView mathView;
 
 	public void Start()
 	{
 		renderManager = GameObject.FindObjectOfType<MatrixRenderManager>();
+        mathView = FindObjectOfType<MathView>();
     }
 
 	public void ClearInput()
@@ -29,6 +31,7 @@ public class OptionalPointInputManager : MonoBehaviour
 		{
 			renderManager.SetOptionalPoint(int.Parse(fieldX.text), int.Parse(fieldY.text));
 			clearButton.interactable = true;
+            mathView.SetPoint(fieldX.text, fieldY.text);
 		}
     }
 }
