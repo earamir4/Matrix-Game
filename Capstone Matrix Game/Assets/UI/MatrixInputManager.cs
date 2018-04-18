@@ -9,6 +9,7 @@ public class MatrixInputManager : MonoBehaviour
 	public TemplateInputSpot[] inputSpots;
 	private int spotsFilled;
     public MatrixRenderManager renderManager;
+    public MathView mathView;
 
 	//restrict ability to insert matrices to 
 	public bool restrictInputToInOrder;
@@ -43,6 +44,7 @@ public class MatrixInputManager : MonoBehaviour
         }
 
 		renderManager = GameObject.FindObjectOfType<MatrixRenderManager>();
+        mathView = FindObjectOfType<MathView>();
     }
 
     private void SendToBackend()
@@ -89,6 +91,7 @@ public class MatrixInputManager : MonoBehaviour
         }
 
 		renderManager.SetMatrices(inputMatrices.ToArray());
+        mathView.SetMatrices(inputMatrices.ToArray());
 	}
 
 	public void SubmitMatrices()
