@@ -307,7 +307,7 @@ GameObject:
   - component: {fileID: 223949914130813926}
   - component: {fileID: 114507236349059214}
   m_Layer: 5
-  m_Name: Reflection thru Y 1
+  m_Name: Refl [Y=-X]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -501,10 +501,10 @@ MonoBehaviour:
   - {fileID: 1707318234077720}
   - {fileID: 1515649041807972}
   defaultValue:
-  - 1
-  - 0
   - 0
   - -1
+  - -1
+  - 0
   blocker: {fileID: 1095091216149598}
   inWorkspace: 0
 --- !u!114 &114238466675630442
