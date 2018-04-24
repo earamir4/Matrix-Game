@@ -204,11 +204,6 @@ MonoBehaviour:
   previewRenderer: {fileID: 114641837979362072}
   gameManager: {fileID: 0}
   animationDurationPerMatrix: 2.5
-  animationBars:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &114641837979362072
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -249,7 +244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cartesianToWorldScale: {x: 0.9, y: 0.9}
   renderAreaZoom: {fileID: 0}
-  pointObjectPrefab: {fileID: 1939782810009628, guid: 69fa6118f1d9d854c8c52f590d47c682,
+  pointObjectPrefab: {fileID: 1939782810009628, guid: b555e025bf98d6d4296b74ba33ca75b4,
     type: 2}
   listOfPoints:
   - {x: 1, y: 1}

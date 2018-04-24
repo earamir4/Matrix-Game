@@ -222,7 +222,7 @@ public class MatrixRenderManager : MonoBehaviour
 		optionalRenderer.SetListOfPoints(new Vector2[] { new Vector2(positionX, positionY) });
 		optionalRenderer.CreatePointObjects();
 
-		mainRenderer.SetRenderingDisabled(true);
+		//mainRenderer.SetRenderingDisabled(true);
 		optionalRenderer.SetRenderingDisabled(false);
 	}
 
