@@ -5554,7 +5554,7 @@ GameObject:
   - component: {fileID: 114312613628012746}
   - component: {fileID: 114096102813430922}
   m_Layer: 5
-  m_Name: UI_New
+  m_Name: UI_Old
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9895,14 +9895,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b7814e8bc135e5428ba493546fa763f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSize: 2
-  ySize: 2
   matrixObjects:
   - {fileID: 1556523303654230}
   - {fileID: 1442519039617192}
   - {fileID: 1709729605819942}
   - {fileID: 1029455585742506}
-  inputField: {fileID: 114500838765466036}
+  defaultValue:
+  - 
+  - 
+  - 
+  - 
   blocker: {fileID: 1451724656885330}
 --- !u!114 &114005172637815058
 MonoBehaviour:
@@ -10348,6 +10350,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114440342107440598}
   inputField: {fileID: 114458062066618322}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114020022881811608
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10520,6 +10523,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114589729838314670}
   inputField: {fileID: 114886963092908324}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114032041779053302
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10594,6 +10598,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114216875877113500}
   inputField: {fileID: 114287101747205728}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114034498798538960
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10635,6 +10640,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114762143212145382}
   inputField: {fileID: 114721740532632568}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114037566993686058
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10649,6 +10655,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114794924658898374}
   inputField: {fileID: 114189964845160890}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114038228100013216
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10802,6 +10809,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114451849344950076}
   inputField: {fileID: 114381049876382076}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114043452925788572
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11042,6 +11050,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114733055271259272}
   inputField: {fileID: 114063630149222520}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114049514303674154
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11422,6 +11431,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114864178914337440}
   inputField: {fileID: 114664819810870190}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114061077819513340
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11496,6 +11506,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114191771372446724}
   inputField: {fileID: 114091831033233216}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114062532869014438
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11715,6 +11726,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114440342107440598}
   inputField: {fileID: 114565076133008002}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114072405974963940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11961,6 +11973,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114711902957648374}
   inputField: {fileID: 114574441698419972}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114078028457849032
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12198,6 +12211,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114216875877113500}
   inputField: {fileID: 114497899526385470}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114090008393814998
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12223,6 +12237,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114711902957648374}
   inputField: {fileID: 114919652976598642}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114091831033233216
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12425,6 +12440,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114428652925091644}
   inputField: {fileID: 114151222424568686}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114097439397277908
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12439,6 +12455,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114368546385224596}
   inputField: {fileID: 114354841551946472}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114097955799843376
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12453,6 +12470,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114004687119479700}
   inputField: {fileID: 114500838765466036}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114098547573550444
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13396,14 +13414,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b7814e8bc135e5428ba493546fa763f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSize: 2
-  ySize: 2
   matrixObjects:
   - {fileID: 1130499972093956}
   - {fileID: 1674950228366232}
   - {fileID: 1634393942465712}
   - {fileID: 1734415567187320}
-  inputField: {fileID: 114005172637815058}
+  defaultValue:
+  - 
+  - 
+  - 
+  - 
   blocker: {fileID: 1858347037952134}
 --- !u!114 &114137878093825874
 MonoBehaviour:
@@ -13853,6 +13873,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114004687119479700}
   inputField: {fileID: 114850282957259802}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114148179962928806
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14117,10 +14138,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d829275d23390e442957d85ef1d63e67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OptionsPanel: {fileID: 1757099163030534}
   LogPanel: {fileID: 1434466281059756}
   TemplatesPanel: {fileID: 1228181521462712}
-  VectorPanel: {fileID: 1556763574443926}
+  popupMenu: {fileID: 0}
 --- !u!114 &114156532361204768
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14295,6 +14315,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114864178914337440}
   inputField: {fileID: 114049514303674154}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114171237661272768
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14994,14 +15015,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b7814e8bc135e5428ba493546fa763f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSize: 2
-  ySize: 2
   matrixObjects:
   - {fileID: 1885215842731912}
   - {fileID: 1071668433840056}
   - {fileID: 1818710995065756}
   - {fileID: 1998327350845720}
-  inputField: {fileID: 114435478804754398}
+  defaultValue:
+  - 
+  - 
+  - 
+  - 
   blocker: {fileID: 1603146072616242}
 --- !u!114 &114192095055237904
 MonoBehaviour:
@@ -15593,6 +15616,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114137831630698618}
   inputField: {fileID: 114395641514504546}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114214111530690070
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15718,14 +15742,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b7814e8bc135e5428ba493546fa763f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSize: 2
-  ySize: 2
   matrixObjects:
   - {fileID: 1379798300679456}
   - {fileID: 1330226030946544}
   - {fileID: 1910760980758976}
   - {fileID: 1750624742880454}
-  inputField: {fileID: 114690691002998902}
+  defaultValue:
+  - 
+  - 
+  - 
+  - 
   blocker: {fileID: 1105254496615162}
 --- !u!114 &114217618377030242
 MonoBehaviour:
@@ -16522,6 +16548,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114216875877113500}
   inputField: {fileID: 114690691002998902}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114248253426754926
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16628,6 +16655,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114451849344950076}
   inputField: {fileID: 114780184246691446}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114251808765320946
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16653,6 +16681,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114276374520821302}
   inputField: {fileID: 114971143147280408}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114252652470389478
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16757,14 +16786,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b7814e8bc135e5428ba493546fa763f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSize: 2
-  ySize: 2
   matrixObjects:
   - {fileID: 1711803280289772}
   - {fileID: 1763928411801554}
   - {fileID: 1417954519618238}
   - {fileID: 1096935481936342}
-  inputField: {fileID: 114366474146160518}
+  defaultValue:
+  - 
+  - 
+  - 
+  - 
   blocker: {fileID: 1886807230515936}
 --- !u!114 &114256082043994366
 MonoBehaviour:
@@ -17202,14 +17233,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b7814e8bc135e5428ba493546fa763f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSize: 2
-  ySize: 2
   matrixObjects:
   - {fileID: 1631542821380260}
   - {fileID: 1199639267960866}
   - {fileID: 1767646814780066}
   - {fileID: 1958024382189928}
-  inputField: {fileID: 114971143147280408}
+  defaultValue:
+  - 
+  - 
+  - 
+  - 
   blocker: {fileID: 1968864630555642}
 --- !u!114 &114279612918687936
 MonoBehaviour:
@@ -17366,6 +17399,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114864178914337440}
   inputField: {fileID: 114681621608063236}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114282577585231496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17651,6 +17685,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114191771372446724}
   inputField: {fileID: 114435478804754398}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114289529236635886
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17823,6 +17858,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114571832444991616}
   inputField: {fileID: 114416902692299966}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114301696832013106
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17951,6 +17987,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114589729838314670}
   inputField: {fileID: 114049942371044118}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114307960491992028
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -18299,6 +18336,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114137831630698618}
   inputField: {fileID: 114663902384432778}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114316656042531846
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -19917,14 +19955,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b7814e8bc135e5428ba493546fa763f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSize: 2
-  ySize: 2
   matrixObjects:
   - {fileID: 1030431186711708}
   - {fileID: 1314980801480854}
   - {fileID: 1372168660748832}
   - {fileID: 1781842772890898}
-  inputField: {fileID: 114354841551946472}
+  defaultValue:
+  - 
+  - 
+  - 
+  - 
   blocker: {fileID: 1870205674974642}
 --- !u!114 &114369068961684646
 MonoBehaviour:
@@ -20097,6 +20137,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114733055271259272}
   inputField: {fileID: 114442874296904854}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114376267327993870
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -20335,6 +20376,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114191771372446724}
   inputField: {fileID: 114975255092681790}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114387448078990420
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -20382,6 +20424,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114255148210464574}
   inputField: {fileID: 114474548204122436}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114387808222463302
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -20541,6 +20584,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114864178914337440}
   inputField: {fileID: 114677547049760988}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114394753236338780
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -20865,6 +20909,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114711902957648374}
   inputField: {fileID: 114591519845711288}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114403065637145684
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -20991,6 +21036,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114589729838314670}
   inputField: {fileID: 114392810902851014}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114406496968225908
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -21005,6 +21051,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114571832444991616}
   inputField: {fileID: 114793374510462096}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114407555985317618
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -21526,6 +21573,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114004687119479700}
   inputField: {fileID: 114664886194462700}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114422411812945068
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -21688,14 +21736,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b7814e8bc135e5428ba493546fa763f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSize: 2
-  ySize: 2
   matrixObjects:
   - {fileID: 1147828599184448}
   - {fileID: 1374731713727004}
   - {fileID: 1105684825712762}
   - {fileID: 1853308900992458}
-  inputField: {fileID: 114563279040030494}
+  defaultValue:
+  - 
+  - 
+  - 
+  - 
   blocker: {fileID: 1641001463204988}
 --- !u!114 &114430908647799324
 MonoBehaviour:
@@ -21893,14 +21943,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b7814e8bc135e5428ba493546fa763f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSize: 2
-  ySize: 2
   matrixObjects:
   - {fileID: 1572460236600672}
   - {fileID: 1804032309897146}
   - {fileID: 1608708597187494}
   - {fileID: 1473047049162246}
-  inputField: {fileID: 114565076133008002}
+  defaultValue:
+  - 
+  - 
+  - 
+  - 
   blocker: {fileID: 1565361291504092}
 --- !u!114 &114440654610481244
 MonoBehaviour:
@@ -21916,6 +21968,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114428652925091644}
   inputField: {fileID: 114692243042019294}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114442874296904854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -22066,14 +22119,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b7814e8bc135e5428ba493546fa763f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSize: 2
-  ySize: 2
   matrixObjects:
   - {fileID: 1680525530496568}
   - {fileID: 1016978708091848}
   - {fileID: 1130333988793048}
   - {fileID: 1556969321461082}
-  inputField: {fileID: 114346246437810058}
+  defaultValue:
+  - 
+  - 
+  - 
+  - 
   blocker: {fileID: 1810066454146632}
 --- !u!114 &114451871715233456
 MonoBehaviour:
@@ -22507,6 +22562,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114276374520821302}
   inputField: {fileID: 114643939903589300}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114466275110602748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -22726,6 +22782,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114571832444991616}
   inputField: {fileID: 114076619017993400}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114474548204122436
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -24676,6 +24733,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114255148210464574}
   inputField: {fileID: 114728846739517360}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114558296142241238
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -25257,14 +25315,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b7814e8bc135e5428ba493546fa763f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSize: 2
-  ySize: 2
   matrixObjects:
   - {fileID: 1647437660509284}
   - {fileID: 1731543310630646}
   - {fileID: 1716578510854400}
   - {fileID: 1416535137263380}
-  inputField: {fileID: 114076619017993400}
+  defaultValue:
+  - 
+  - 
+  - 
+  - 
   blocker: {fileID: 1306706773689446}
 --- !u!114 &114573984099000168
 MonoBehaviour:
@@ -25826,14 +25886,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b7814e8bc135e5428ba493546fa763f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSize: 2
-  ySize: 2
   matrixObjects:
   - {fileID: 1693148554662310}
   - {fileID: 1377107209160110}
   - {fileID: 1122800334435170}
   - {fileID: 1849062155984172}
-  inputField: {fileID: 114601351912342816}
+  defaultValue:
+  - 
+  - 
+  - 
+  - 
   blocker: {fileID: 1493406285467920}
 --- !u!114 &114591462509027662
 MonoBehaviour:
@@ -26182,6 +26244,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114571832444991616}
   inputField: {fileID: 114413022427427186}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114599024862324578
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -26624,6 +26687,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114794552714478694}
   inputField: {fileID: 114966267030981452}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114614529197592000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -27316,6 +27380,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114794924658898374}
   inputField: {fileID: 114629120535478748}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114631400688342584
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -27611,6 +27676,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114733055271259272}
   inputField: {fileID: 114676484366944946}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114642998643950576
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -27855,6 +27921,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114255148210464574}
   inputField: {fileID: 114785687727877396}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114648802159920504
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -28167,6 +28234,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114762143212145382}
   inputField: {fileID: 114217696178077386}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114660521892045240
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -28247,6 +28315,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114711902957648374}
   inputField: {fileID: 114696038072619666}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114663872739285370
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -28646,6 +28715,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114428652925091644}
   inputField: {fileID: 114614529197592000}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114666718379341710
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -28804,6 +28874,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114137831630698618}
   inputField: {fileID: 114205590169643308}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114675176994332750
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -29830,6 +29901,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114368546385224596}
   inputField: {fileID: 114470423020109264}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114697677596073592
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -30266,14 +30338,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b7814e8bc135e5428ba493546fa763f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSize: 2
-  ySize: 2
   matrixObjects:
   - {fileID: 1739500223657060}
   - {fileID: 1669281774055908}
   - {fileID: 1909101794506026}
   - {fileID: 1575676597377116}
-  inputField: {fileID: 114591519845711288}
+  defaultValue:
+  - 
+  - 
+  - 
+  - 
   blocker: {fileID: 1378822453036256}
 --- !u!114 &114712564108957098
 MonoBehaviour:
@@ -30924,14 +30998,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b7814e8bc135e5428ba493546fa763f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSize: 2
-  ySize: 2
   matrixObjects:
   - {fileID: 1853400191202804}
   - {fileID: 1412487063720142}
   - {fileID: 1222238764014078}
   - {fileID: 1434798636797828}
-  inputField: {fileID: 114800510594524424}
+  defaultValue:
+  - 
+  - 
+  - 
+  - 
   blocker: {fileID: 1139528090439222}
 --- !u!114 &114734712014104330
 MonoBehaviour:
@@ -31013,6 +31089,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114255148210464574}
   inputField: {fileID: 114366474146160518}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114737172452770540
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -31027,6 +31104,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114276374520821302}
   inputField: {fileID: 114657248126355090}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114737746790687376
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -31574,6 +31652,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114368546385224596}
   inputField: {fileID: 114279612918687936}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114749075598516836
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -31713,8 +31792,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37dfd0a5691755a4788de589bc69b4d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fieldX: {fileID: 114757393734582824}
-  fieldY: {fileID: 114627690030699952}
+  fieldX: {fileID: 0}
+  fieldY: {fileID: 0}
   renderManager: {fileID: 0}
   clearButton: {fileID: 0}
 --- !u!114 &114755273263486364
@@ -32040,6 +32119,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114794924658898374}
   inputField: {fileID: 114665642047141514}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114760731933693014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -32084,14 +32164,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b7814e8bc135e5428ba493546fa763f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSize: 2
-  ySize: 2
   matrixObjects:
   - {fileID: 1452771196443634}
   - {fileID: 1136296685104610}
   - {fileID: 1842325476931162}
   - {fileID: 1123343696302508}
-  inputField: {fileID: 114721740532632568}
+  defaultValue:
+  - 
+  - 
+  - 
+  - 
   blocker: {fileID: 1629946431591984}
 --- !u!114 &114762978057639726
 MonoBehaviour:
@@ -32861,6 +32943,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114794552714478694}
   inputField: {fileID: 114422411812945068}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114793374510462096
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -32990,14 +33073,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b7814e8bc135e5428ba493546fa763f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSize: 2
-  ySize: 2
   matrixObjects:
   - {fileID: 1753603454188850}
   - {fileID: 1163628462340754}
   - {fileID: 1956186325855980}
   - {fileID: 1299123771432092}
-  inputField: {fileID: 114868535100030404}
+  defaultValue:
+  - 
+  - 
+  - 
+  - 
   blocker: {fileID: 1758876147567276}
 --- !u!114 &114794857357391432
 MonoBehaviour:
@@ -33037,14 +33122,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b7814e8bc135e5428ba493546fa763f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSize: 2
-  ySize: 2
   matrixObjects:
   - {fileID: 1117530794712640}
   - {fileID: 1847156193946900}
   - {fileID: 1589967649048106}
   - {fileID: 1576088061277654}
-  inputField: {fileID: 114629120535478748}
+  defaultValue:
+  - 
+  - 
+  - 
+  - 
   blocker: {fileID: 1039293417203184}
 --- !u!114 &114795174385664860
 MonoBehaviour:
@@ -33060,6 +33147,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114762143212145382}
   inputField: {fileID: 114464441813962806}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114795258245383028
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -33077,6 +33165,7 @@ MonoBehaviour:
   - {fileID: 114778752576849124}
   - {fileID: 114436143187773422}
   renderManager: {fileID: 0}
+  mathView: {fileID: 0}
   restrictInputToInOrder: 1
   disableSubmissionIfSkipSlots: 1
   skipSubmissionAnimation: 0
@@ -33095,6 +33184,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114137831630698618}
   inputField: {fileID: 114005172637815058}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114799462756675276
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -33598,6 +33688,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114276374520821302}
   inputField: {fileID: 114574509116298020}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114827846325395322
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -33806,6 +33897,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114216875877113500}
   inputField: {fileID: 114323256137306366}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114840230344736504
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -34047,6 +34139,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114794552714478694}
   inputField: {fileID: 114231508514204670}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114846597579403374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -34273,6 +34366,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114451849344950076}
   inputField: {fileID: 114950778895166996}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114854907752337712
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -34287,6 +34381,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114368546385224596}
   inputField: {fileID: 114746268003360574}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114855228055942468
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -34334,6 +34429,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114451849344950076}
   inputField: {fileID: 114346246437810058}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114864178914337440
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -34345,14 +34441,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b7814e8bc135e5428ba493546fa763f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSize: 2
-  ySize: 2
   matrixObjects:
   - {fileID: 1178548639915424}
   - {fileID: 1769297647225020}
   - {fileID: 1078115729145728}
   - {fileID: 1706818067005368}
-  inputField: {fileID: 114664819810870190}
+  defaultValue:
+  - 
+  - 
+  - 
+  - 
   blocker: {fileID: 1478273434231498}
 --- !u!114 &114866624628175304
 MonoBehaviour:
@@ -34609,6 +34707,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114794924658898374}
   inputField: {fileID: 114326813629510256}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114871742127350724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -34809,6 +34908,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114589729838314670}
   inputField: {fileID: 114601351912342816}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114876239297631040
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -34951,6 +35051,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114428652925091644}
   inputField: {fileID: 114563279040030494}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114881083209870756
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -35979,6 +36080,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114440342107440598}
   inputField: {fileID: 114348686587897020}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114919652976598642
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -36642,6 +36744,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114762143212145382}
   inputField: {fileID: 114691685095354258}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114937306845661552
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -36656,6 +36759,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114191771372446724}
   inputField: {fileID: 114399172210779690}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114943197680610452
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37171,6 +37275,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114794552714478694}
   inputField: {fileID: 114868535100030404}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114964044553961570
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37413,6 +37518,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114440342107440598}
   inputField: {fileID: 114098547573550444}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114968594842702800
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37717,6 +37823,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114733055271259272}
   inputField: {fileID: 114800510594524424}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114972889299076488
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -38444,6 +38551,7 @@ MonoBehaviour:
   inputTemplate: {fileID: 114004687119479700}
   inputField: {fileID: 114039142183410994}
   originalText: 
+  textDisplay: {fileID: 0}
 --- !u!114 &114993944318959926
 MonoBehaviour:
   m_ObjectHideFlags: 1

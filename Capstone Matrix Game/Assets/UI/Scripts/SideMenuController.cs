@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class SideMenuController : MonoBehaviour
 {
-    public GameObject LogPanel;
     public GameObject TemplatesPanel;
+    public GameObject VectorPanel;
     public GameObject popupMenu;
-
-    public void SwapToLogPanel()
-    {
-        TemplatesPanel.SetActive(false);
-        LogPanel.SetActive(true);
-    }
 
     public void SwapToTemplatesPanel()
     {
         TemplatesPanel.SetActive(true);
-        LogPanel.SetActive(false);
+        VectorPanel.SetActive(false);
+    }
+
+    public void SwapToVectorPanel()
+    {
+        TemplatesPanel.SetActive(false);
+        VectorPanel.SetActive(true);
     }
 
     public void ShowPopupMenu()

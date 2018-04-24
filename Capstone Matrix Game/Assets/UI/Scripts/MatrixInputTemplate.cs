@@ -6,11 +6,12 @@ using UnityEngine.UI;
 
 public class MatrixInputTemplate : MonoBehaviour
 {
-    public int xSize = 2, ySize = 2;
+    [HideInInspector]
     public GameObject[] matrixObjects;
-    public InputField inputField;
 
-    private float[] matrixValues;
+    //Default value should be edited on the prefab
+    public string[] defaultValue = new string[4];
+    private float[] matrixValues = new float[4];
     public GameObject blocker;
 
 	public delegate void InputSlotChangedHandler();
@@ -18,8 +19,21 @@ public class MatrixInputTemplate : MonoBehaviour
 
     private void Start()
     {
-        matrixValues = new float[xSize * ySize];
-        GatherValuesFromText();
+
+        for (int i = 0; i < defaultValue.Length; i++)
+        {
+            float value;
+            if (float.TryParse(defaultValue[i], out value))
+            {
+                matrixValues[i] = float.Parse(defaultValue[i]);
+                matrixObjects[i].GetComponent<InputField>().interactable = false;
+            }
+            else
+            {
+                matrixValues[i] = 0;
+                matrixObjects[i].GetComponent<InputField>().interactable = true;
+            }
+        }    
     }
     
     public void OnEndEdit()
@@ -27,26 +41,6 @@ public class MatrixInputTemplate : MonoBehaviour
 		inputSlotChanged();
 	}
     
-    private void GatherValuesFromText()
-    {
-        for(int i = 0; i < matrixValues.Length; i++)
-        {
-			String text = matrixObjects[i].GetComponentInChildren<InputField>().text;
-            if (text.Length != 0)
-            {
-                if (text.Contains("/"))
-                {
-                    string[] splits = text.Split('/');
-                    matrixValues[i] = float.Parse(splits[0]) / float.Parse(splits[1]);
-                }
-				else
-				{
-					matrixValues[i] = float.Parse(text);
-				}
-			}
-        }
-    }
-
 	public void SetAcceptingInput(bool isAcceptingInput)
     {
         blocker.SetActive(!isAcceptingInput);
@@ -54,7 +48,6 @@ public class MatrixInputTemplate : MonoBehaviour
 
     public float[] GetValues()
     {
-		GatherValuesFromText();
         return matrixValues;
     }
 }
