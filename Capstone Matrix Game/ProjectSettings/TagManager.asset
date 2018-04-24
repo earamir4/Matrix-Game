@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Workspace
   - AnimationBar
+  - TemplateSlot
   layers:
   - Default
   - TransparentFX
