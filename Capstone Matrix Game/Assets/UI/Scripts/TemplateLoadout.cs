@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class TemplateLoadout : MonoBehaviour {
 
-    private GameObject[] MatrixSlots;
+    private GameObject TemplateList;
     public GameObject[] LevelLoadout;
+    public GameObject TemplateSlot;
 
     void Start()
     {
-        MatrixSlots = GameObject.FindGameObjectsWithTag("TemplateSlot");
+        TemplateList = GameObject.Find("TemplateList");
         for(int i = 0; i<LevelLoadout.Length; i++)
         {
             if (LevelLoadout[i] != null)
-                Instantiate(LevelLoadout[i], MatrixSlots[i].transform);
+            {
+                GameObject newSlot = Instantiate(TemplateSlot, TemplateList.transform);
+                Instantiate(LevelLoadout[i], newSlot.transform);
+            }
         }
     }
 
