@@ -5,20 +5,22 @@ using System.Collections.Generic;
 public static class GSFU_Demo_Utils
 {
 	[System.Serializable]
-	public struct PlayerInfo
+public struct PlayerInfo
 	{
 		public string name; 
-		public float q1; 
-		public float q2;
-		public float q3;
-        public float q4;
-        public float q5;
-        public float q6;
-        public float q7;
-        public float q8;
-        public float q9;
-        public float q10;
-        public float q11;
+		public float q11; 
+		public float q12;
+		public float q13;
+        public float q21;
+        public float q22;
+        public float q23;
+        public float q31;
+        public float q32;
+        public float q33;
+        public float q41;
+        public float q42;
+        public float q43;
+
     }
 	
 	public static PlayerInfo player;
@@ -33,17 +35,18 @@ public static class GSFU_Demo_Utils
         player = new PlayerInfo();
         playername = n;
         player.name = playername;
-        player.q1 = 0;
-        player.q2 = 0;
-        player.q3 = 0;
-        player.q4 = 0;
-        player.q5 = 0;
-        player.q6 = 0;
-        player.q7 = 0;
-        player.q8 = 0;
-        player.q9 = 0;
-        player.q10 = 0;
         player.q11 = 0;
+        player.q12 = 0;
+        player.q13 = 0;
+        player.q21 = 0;
+        player.q22 = 0;
+        player.q23 = 0;
+        player.q31 = 0;
+        player.q32 = 0;
+        player.q33 = 0;
+        player.q41 = 0;
+        player.q42 = 0;
+        player.q43 = 0;
 
         string jsonPlayer = JsonUtility.ToJson(player);
 
@@ -67,20 +70,27 @@ public static class GSFU_Demo_Utils
 		string[] fieldNames = new string[12];
 		fieldNames[0] = "name";
 		fieldNames[1] = "q1";
-        fieldNames[2] = "q2";
-        fieldNames[3] = "q3";
-        fieldNames[4] = "q4";
-        fieldNames[5] = "q5";
-        fieldNames[6] = "q6";
-        fieldNames[7] = "q7";
-        fieldNames[8] = "q8";
-        fieldNames[9] = "q9";
-        fieldNames[10] = "q10";
-        fieldNames[11] = "q11";
+        	fieldNames[2] = "q2";
+        	fieldNames[3] = "q3";
+        	fieldNames[4] = "q4";
+        	fieldNames[5] = "q5";
+        	fieldNames[6] = "q6";
+        	fieldNames[7] = "q7";
+        	fieldNames[8] = "q8";
+        	fieldNames[9] = "q9";
+        	fieldNames[10] = "q10";
+        	fieldNames[11] = "q11";
 
-        // Request for the table to be created on the cloud.
-        CloudConnectorCore.CreateTable(fieldNames, tableName, runtime);
+        	// Request for the table to be created on the cloud.
+        	CloudConnectorCore.CreateTable(fieldNames, tableName, runtime);
 	}
+	
+	public static void createPlayer(string n)
+    	{
+        	RetrievePlayer(n);
+        	playername = n;
+    	}
+
 
 
     // example update command. can either have one of these and have a way to change it for every question. Or have several.
@@ -113,6 +123,14 @@ public static class GSFU_Demo_Utils
 		// Get any objects from table 'PlayerInfo' with value 'Mithrandir' in the field called 'name'.
 		CloudConnectorCore.GetObjectsByField(tableName, "name", "Mithrandir", runtime);
 	}
+	
+	public static void RetrievePlayer(string n)
+   	 {
+        	Debug.Log("<color=yellow>Retrieving player of name Mithrandir from the Cloud.</color>");
+
+        	// Get any objects from table 'PlayerInfo' with value 'Mithrandir' in the field called 'name'.
+        	CloudConnectorCore.GetObjectsByField(tableName, "name", n, true);
+   	 }
 	
 	// This will be used for broadcasts. One sheet will only have one column, broadcasts. This will pull it.
 	public static void GetAllPlayers(bool runtime)
@@ -154,16 +172,15 @@ public static class GSFU_Demo_Utils
 			// Check if the type is correct.
 			if (string.Compare(objTypeNames[0], tableName) == 0)
 			{
-				// Parse from json to the desired object type.
-				PlayerInfo[] players = GSFUJsonHelper.JsonArray<PlayerInfo>(jsonData[0]);
-				player = players[0];
-				
-				Debug.Log("<color=yellow>Object retrieved from the cloud and parsed: \n</color>" + 
-					"Name: " + player.name + "\n" //+
-					//"Level: " + player.level + "\n" +
-					//"Health: " + player.health + "\n" +
-					//"Role: " + player.role + "\n"
-                    );
+                try
+                {
+                    PlayerInfo[] players = GSFUJsonHelper.JsonArray<PlayerInfo>(jsonData[0]);
+                    player = players[0];
+                }
+                catch
+                {
+                    namechange(playername);
+                }
 			}
 		}
 		
