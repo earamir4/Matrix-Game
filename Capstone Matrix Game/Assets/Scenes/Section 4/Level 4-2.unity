@@ -722,7 +722,10 @@ Prefab:
         type: 2}
       propertyPath: m_Text
       value: 'Hint 1: Experiment with your matrix templates and observe how each one
-        transforms the W.'
+        transforms the W.
+
+
+        Hint 2: What effect does the identity matrix have on the points?'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 919bafbd0aed9b84f87fcf226dfb080d, type: 2}
