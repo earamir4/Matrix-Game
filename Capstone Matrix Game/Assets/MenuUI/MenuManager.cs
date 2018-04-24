@@ -22,7 +22,7 @@ public class MenuManager : MonoBehaviour
     public GameObject MainMenuPanel;
     public GameObject MainMenuButtons;
     public GameObject LevelSelectPanel;
-    public GameObject SettingsPanel;
+    public GameObject CreditsPanel;
 
     public GameObject PartOnePanel;
     public GameObject PartTwoPanel;
@@ -115,8 +115,8 @@ public class MenuManager : MonoBehaviour
     /// </summary>
     public void DisplayLevelSelect()
     {
-        if (SettingsPanel.activeSelf)
-            SettingsPanel.SetActive(false);
+        if (CreditsPanel.activeSelf)
+            CreditsPanel.SetActive(false);
         LevelSelectPanel.SetActive(!LevelSelectPanel.activeSelf);
     }
 
@@ -165,14 +165,14 @@ public class MenuManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Displays or hides the <see cref="SettingsPanel"/>.
-    /// Hides the level select panel if it's active
+    /// Displays or hides the <see cref="CreditsPanel"/>.
+    /// Hides the level select panel if it's active.
     /// </summary>
-    public void DisplaySettings()
+    public void DisplayCredits()
     {
         if (LevelSelectPanel.activeSelf)
             LevelSelectPanel.SetActive(false);
-        SettingsPanel.SetActive(!SettingsPanel.activeSelf);
+        CreditsPanel.SetActive(!CreditsPanel.activeSelf);
     }
 
     /// <summary>
@@ -191,7 +191,7 @@ public class MenuManager : MonoBehaviour
             PartFourPanel.SetActive(false);
         }
 
-        SettingsPanel.SetActive(false);
+        CreditsPanel.SetActive(false);
     }
 
     /// <summary>
