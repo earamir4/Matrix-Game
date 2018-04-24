@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
 
     private Matrix2x2 solutionMatrix;
     private float answertime;
+    public string q;
 
 	public const string MAIN_MENU_NAME = "MainMenu";
     #endregion
@@ -72,7 +73,7 @@ public class GameManager : MonoBehaviour
         {
             ResultText.text = "Correct!";
             answertime = Time.timeSinceLevelLoad;
-            CloudConnectorCore.UpdateObjects("playerInfo", "name", Playername, "q1", answertime.ToString() , true);
+            CloudConnectorCore.UpdateObjects("playerInfo", "name", Playername, q, answertime.ToString() , true);
 
             MatrixLogger.Add("Correct! The answer was:\n" + solutionMatrix.ToString());
             SubmissionResultPanel.SetActive(true);
