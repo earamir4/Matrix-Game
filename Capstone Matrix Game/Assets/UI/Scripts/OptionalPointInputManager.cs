@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class OptionalPointInputManager : MonoBehaviour
 {
-	public Text fieldX;
-	public Text fieldY;
+	public InputField fieldX;
+	public InputField fieldY;
 	public MatrixRenderManager renderManager;
 	public Button clearButton;
     private MathView mathView;

@@ -307,7 +307,7 @@ GameObject:
   - component: {fileID: 223949914130813926}
   - component: {fileID: 114507236349059214}
   m_Layer: 5
-  m_Name: MatrixTemplate
+  m_Name: ExpansionOrContraction_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -501,11 +501,12 @@ MonoBehaviour:
   - {fileID: 1707318234077720}
   - {fileID: 1515649041807972}
   defaultValue:
-  - 4
-  - 3
-  - 2
+  - 1
+  - 0
+  - 0
   - x
   blocker: {fileID: 1095091216149598}
+  inWorkspace: 0
 --- !u!114 &114238466675630442
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1045,7 +1046,7 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114192077196658108}
+      - m_Target: {fileID: 114424197719515424}
         m_MethodName: OnEndEdit
         m_Mode: 1
         m_Arguments:

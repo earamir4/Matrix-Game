@@ -57,4 +57,7 @@ public class RenderPoint : MonoBehaviour
 	{
 		canvasRect.localScale = Vector3.one * size * 0.03f;
     }
+
+    public void TestButton()
+    { Debug.Log("Button"); }
 }

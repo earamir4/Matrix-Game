@@ -13,6 +13,7 @@ public class MatrixInputTemplate : MonoBehaviour
     public string[] defaultValue = new string[4];
     private float[] matrixValues = new float[4];
     public GameObject blocker;
+    public bool inWorkspace = false;
 
 	public delegate void InputSlotChangedHandler();
 	public event InputSlotChangedHandler inputSlotChanged;
