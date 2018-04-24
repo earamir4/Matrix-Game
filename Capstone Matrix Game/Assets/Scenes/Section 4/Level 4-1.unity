@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
-  m_LightingDataAsset: {fileID: 112000002, guid: 201132acae9944742a1246177a7965ef,
+  m_LightingDataAsset: {fileID: 112000002, guid: 59a87fcdd1ce3c141bb4441c204eac5c,
     type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -208,13 +208,13 @@ Prefab:
     - target: {fileID: 114004567638055734, guid: 3f7f2adc35b70dc44aafe4f40189aa44,
         type: 2}
       propertyPath: QuestionString
-      value: We have graphed an N, but now we want to increase its height and italicize
-        it.
+      value: Now let's change the enlarged, italicized 'N' back into our original
+        'N' while only using one matrix for the transformation.
       objectReference: {fileID: 0}
     - target: {fileID: 114004567638055734, guid: 3f7f2adc35b70dc44aafe4f40189aa44,
         type: 2}
       propertyPath: MatrixValueD
-      value: 1.3333334
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 114004567638055734, guid: 3f7f2adc35b70dc44aafe4f40189aa44,
         type: 2}
@@ -224,7 +224,7 @@ Prefab:
     - target: {fileID: 114004567638055734, guid: 3f7f2adc35b70dc44aafe4f40189aa44,
         type: 2}
       propertyPath: MatrixValueB
-      value: 0.33333334
+      value: -0.25
       objectReference: {fileID: 0}
     - target: {fileID: 114004567638055734, guid: 3f7f2adc35b70dc44aafe4f40189aa44,
         type: 2}
@@ -708,7 +708,7 @@ Prefab:
     - target: {fileID: 114931009906254196, guid: 919bafbd0aed9b84f87fcf226dfb080d,
         type: 2}
       propertyPath: m_Text
-      value: Level 1-1
+      value: Level 4-1
       objectReference: {fileID: 0}
     - target: {fileID: 1330077892022270, guid: 919bafbd0aed9b84f87fcf226dfb080d, type: 2}
       propertyPath: m_IsActive
@@ -721,9 +721,7 @@ Prefab:
     - target: {fileID: 114866374838766994, guid: 919bafbd0aed9b84f87fcf226dfb080d,
         type: 2}
       propertyPath: m_Text
-      value: "Hint 1: Experiment with your matrix templates and observe how each one
-        transforms the N.\r\nHint 2: Think about how you can combine multiple matrix
-        templates to achieve the goal."
+      value: 'Hint 1: The solution to the original puzzle was to multiply by [[1,1/3],[0,4/3]].'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 919bafbd0aed9b84f87fcf226dfb080d, type: 2}
@@ -1771,12 +1769,12 @@ Prefab:
     - target: {fileID: 114827097479604474, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: listOfPoints.Array.data[1].x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114827097479604474, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: listOfPoints.Array.data[1].y
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114827097479604474, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
@@ -1796,22 +1794,22 @@ Prefab:
     - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: listOfPoints.Array.data[1].x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: listOfPoints.Array.data[1].y
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
-        type: 2}
-      propertyPath: listOfPoints.Array.data[3].x
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
+      propertyPath: listOfPoints.Array.data[3].x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
+        type: 2}
       propertyPath: listOfPoints.Array.data[3].y
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
@@ -1857,6 +1855,36 @@ Prefab:
         type: 2}
       propertyPath: lineConnections.Array.data[4].Y
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4054347939663180, guid: fcd93ad273b368945932e565eed62b4f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4054347939663180, guid: fcd93ad273b368945932e565eed62b4f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4054347939663180, guid: fcd93ad273b368945932e565eed62b4f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4054347939663180, guid: fcd93ad273b368945932e565eed62b4f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4054347939663180, guid: fcd93ad273b368945932e565eed62b4f, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 114827097479604474, guid: fcd93ad273b368945932e565eed62b4f,
+        type: 2}
+      propertyPath: listOfPoints.Array.data[3].x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114827097479604474, guid: fcd93ad273b368945932e565eed62b4f,
+        type: 2}
+      propertyPath: listOfPoints.Array.data[3].y
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fcd93ad273b368945932e565eed62b4f, type: 2}
