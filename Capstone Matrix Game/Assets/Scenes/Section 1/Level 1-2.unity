@@ -208,8 +208,8 @@ Prefab:
     - target: {fileID: 114004567638055734, guid: 3f7f2adc35b70dc44aafe4f40189aa44,
         type: 2}
       propertyPath: QuestionString
-      value: We have added some E's. Use the same transformation on each letter to
-        achieve the pictured result.
+      value: We have graphed an N, but now we want to increase its height and italicize
+        it.
       objectReference: {fileID: 0}
     - target: {fileID: 114004567638055734, guid: 3f7f2adc35b70dc44aafe4f40189aa44,
         type: 2}
@@ -708,7 +708,7 @@ Prefab:
     - target: {fileID: 114931009906254196, guid: 919bafbd0aed9b84f87fcf226dfb080d,
         type: 2}
       propertyPath: m_Text
-      value: Level 1-2
+      value: Level 1-1
       objectReference: {fileID: 0}
     - target: {fileID: 1330077892022270, guid: 919bafbd0aed9b84f87fcf226dfb080d, type: 2}
       propertyPath: m_IsActive
