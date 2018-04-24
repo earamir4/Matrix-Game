@@ -52,6 +52,7 @@ public class TemplateInputSpot : MonoBehaviour, IDropHandler
 			//find the template that is currently being dragged
 			MatrixInputTemplate draggedTemplate = DragHandler.template.GetComponent<MatrixInputTemplate>();
 
+            draggedTemplate.inWorkspace = true;
 			draggedTemplate.SetAcceptingInput(true);
 
 			DragHandler.template.transform.SetParent(transform);

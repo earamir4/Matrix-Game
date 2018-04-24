@@ -15,6 +15,10 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     public void OnBeginDrag(PointerEventData eventData)
     {
         template = gameObject;
+        if (!template.GetComponent<MatrixInputTemplate>().inWorkspace)
+            Instantiate(template, transform.parent);
+        else
+            template.GetComponent<MatrixInputTemplate>().inWorkspace = false;
         startPosition = transform.position;
         startParent = transform.parent;
         GetComponent<CanvasGroup>().blocksRaycasts = false;
@@ -29,9 +33,14 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        template = null;
-        GetComponent<CanvasGroup>().blocksRaycasts = true;
-        GetComponent<Canvas>().overrideSorting = false;
-        transform.localPosition = Vector3.zero;
+        if (template.GetComponent<MatrixInputTemplate>().inWorkspace)
+        {
+            template = null;
+            GetComponent<CanvasGroup>().blocksRaycasts = true;
+            GetComponent<Canvas>().overrideSorting = false;
+            transform.localPosition = Vector3.zero;
+        }
+        else
+            Destroy(gameObject);
     }
 }
