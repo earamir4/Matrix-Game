@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
-  m_LightingDataAsset: {fileID: 112000002, guid: ed86cb3aa9e6f3749ae21e840e0548fc,
+  m_LightingDataAsset: {fileID: 112000002, guid: fdc8891f088442f43a8b2745405ec499,
     type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -208,18 +208,18 @@ Prefab:
     - target: {fileID: 114004567638055734, guid: 3f7f2adc35b70dc44aafe4f40189aa44,
         type: 2}
       propertyPath: QuestionString
-      value: This new set of letters is an 'X', a 'W', and an 'M'. Find a way to move
-        the 'X' downward while keeping the 'W' and 'M' in place.
+      value: This set contains two N's on opposite sides of the X-axis and Y-axis.
+        Find a way to flip which side both shapes are on.
       objectReference: {fileID: 0}
     - target: {fileID: 114004567638055734, guid: 3f7f2adc35b70dc44aafe4f40189aa44,
         type: 2}
       propertyPath: MatrixValueD
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114004567638055734, guid: 3f7f2adc35b70dc44aafe4f40189aa44,
         type: 2}
       propertyPath: MatrixValueA
-      value: 1
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 114004567638055734, guid: 3f7f2adc35b70dc44aafe4f40189aa44,
         type: 2}
@@ -708,7 +708,7 @@ Prefab:
     - target: {fileID: 114931009906254196, guid: 919bafbd0aed9b84f87fcf226dfb080d,
         type: 2}
       propertyPath: m_Text
-      value: Level 2-2
+      value: Level 2-3
       objectReference: {fileID: 0}
     - target: {fileID: 1330077892022270, guid: 919bafbd0aed9b84f87fcf226dfb080d, type: 2}
       propertyPath: m_IsActive
@@ -1759,22 +1759,22 @@ Prefab:
     - target: {fileID: 114827097479604474, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: listOfPoints.Array.size
-      value: 14
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: listOfPoints.Array.size
-      value: 14
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 114827097479604474, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: lineConnections.Array.size
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: lineConnections.Array.size
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4453342432563928, guid: fcd93ad273b368945932e565eed62b4f, type: 2}
       propertyPath: m_LocalPosition.x
@@ -1836,112 +1836,112 @@ Prefab:
     - target: {fileID: 114827097479604474, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: lineConnections.Array.data[3].X
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114827097479604474, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: lineConnections.Array.data[3].Y
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114827097479604474, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: listOfPoints.Array.data[1].x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114827097479604474, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: listOfPoints.Array.data[1].y
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114827097479604474, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: listOfPoints.Array.data[2].x
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114827097479604474, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: listOfPoints.Array.data[2].y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: listOfPoints.Array.data[2].x
-      value: 2
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: listOfPoints.Array.data[1].x
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: listOfPoints.Array.data[1].y
-      value: -3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: listOfPoints.Array.data[3].x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
-        type: 2}
-      propertyPath: listOfPoints.Array.data[3].y
       value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
+      propertyPath: listOfPoints.Array.data[3].y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
+        type: 2}
       propertyPath: lineConnections.Array.data[0].Y
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: lineConnections.Array.data[2].X
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: lineConnections.Array.data[2].Y
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114827097479604474, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: listOfPoints.Array.data[4].x
-      value: 2
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 114827097479604474, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: listOfPoints.Array.data[4].y
-      value: 6
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 114827097479604474, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: listOfPoints.Array.data[5].x
-      value: 3
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 114827097479604474, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: listOfPoints.Array.data[5].y
-      value: 3
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 114827097479604474, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: listOfPoints.Array.data[6].x
-      value: 4
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 114827097479604474, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: listOfPoints.Array.data[6].y
-      value: 6
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 114827097479604474, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: listOfPoints.Array.data[7].x
-      value: 5
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 114827097479604474, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: listOfPoints.Array.data[7].y
-      value: 3
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 114827097479604474, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
@@ -1966,22 +1966,22 @@ Prefab:
     - target: {fileID: 114827097479604474, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: lineConnections.Array.data[4].X
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114827097479604474, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: lineConnections.Array.data[4].Y
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114827097479604474, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: lineConnections.Array.data[5].X
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114827097479604474, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: lineConnections.Array.data[5].Y
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 114827097479604474, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
@@ -2006,112 +2006,112 @@ Prefab:
     - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: listOfPoints.Array.data[4].x
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: listOfPoints.Array.data[4].y
-      value: 6
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: listOfPoints.Array.data[5].x
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: listOfPoints.Array.data[5].y
-      value: 3
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: listOfPoints.Array.data[6].x
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
-        type: 2}
-      propertyPath: listOfPoints.Array.data[6].y
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
-        type: 2}
-      propertyPath: listOfPoints.Array.data[7].x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
-        type: 2}
-      propertyPath: listOfPoints.Array.data[7].y
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
+      propertyPath: listOfPoints.Array.data[6].y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
+        type: 2}
+      propertyPath: listOfPoints.Array.data[7].x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
+        type: 2}
+      propertyPath: listOfPoints.Array.data[7].y
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
+        type: 2}
       propertyPath: listOfPoints.Array.data[8].x
-      value: 6
+      value: 5.33
       objectReference: {fileID: 0}
     - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: listOfPoints.Array.data[8].y
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
-        type: 2}
-      propertyPath: listOfPoints.Array.data[9].x
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
+      propertyPath: listOfPoints.Array.data[9].x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
+        type: 2}
       propertyPath: listOfPoints.Array.data[9].y
-      value: -6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: lineConnections.Array.data[3].X
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: lineConnections.Array.data[3].Y
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: lineConnections.Array.data[4].X
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: lineConnections.Array.data[4].Y
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: lineConnections.Array.data[5].X
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: lineConnections.Array.data[5].Y
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: lineConnections.Array.data[6].X
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: lineConnections.Array.data[6].Y
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: lineConnections.Array.data[7].X
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: lineConnections.Array.data[7].Y
-      value: 11
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114827097479604474, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
@@ -2156,7 +2156,7 @@ Prefab:
     - target: {fileID: 114827097479604474, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: lineConnections.Array.data[0].Y
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114827097479604474, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
@@ -2166,12 +2166,12 @@ Prefab:
     - target: {fileID: 114827097479604474, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: lineConnections.Array.data[2].X
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114827097479604474, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
       propertyPath: lineConnections.Array.data[2].Y
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114827097479604474, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
@@ -2193,65 +2193,40 @@ Prefab:
       propertyPath: lineConnections.Array.data[9].Y
       value: 13
       objectReference: {fileID: 0}
-    - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
+    - target: {fileID: 114827097479604474, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
-      propertyPath: listOfPoints.Array.data[10].x
+      propertyPath: listOfPoints.Array.data[0].x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114827097479604474, guid: fcd93ad273b368945932e565eed62b4f,
+        type: 2}
+      propertyPath: listOfPoints.Array.data[0].y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114827097479604474, guid: fcd93ad273b368945932e565eed62b4f,
+        type: 2}
+      propertyPath: listOfPoints.Array.data[3].x
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
+    - target: {fileID: 114827097479604474, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
-      propertyPath: listOfPoints.Array.data[10].y
-      value: -3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
-        type: 2}
-      propertyPath: listOfPoints.Array.data[11].x
+      propertyPath: listOfPoints.Array.data[3].y
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
-      propertyPath: listOfPoints.Array.data[11].y
-      value: -6
+      propertyPath: listOfPoints.Array.data[0].x
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
-      propertyPath: listOfPoints.Array.data[12].x
-      value: 5
+      propertyPath: listOfPoints.Array.data[0].y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
         type: 2}
-      propertyPath: listOfPoints.Array.data[12].y
-      value: -3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
-        type: 2}
-      propertyPath: listOfPoints.Array.data[13].x
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
-        type: 2}
-      propertyPath: listOfPoints.Array.data[13].y
-      value: -6
-      objectReference: {fileID: 0}
-    - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
-        type: 2}
-      propertyPath: lineConnections.Array.data[8].X
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
-        type: 2}
-      propertyPath: lineConnections.Array.data[8].Y
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
-        type: 2}
-      propertyPath: lineConnections.Array.data[9].X
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 114641837979362072, guid: fcd93ad273b368945932e565eed62b4f,
-        type: 2}
-      propertyPath: lineConnections.Array.data[9].Y
-      value: 13
+      propertyPath: listOfPoints.Array.data[2].y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fcd93ad273b368945932e565eed62b4f, type: 2}
