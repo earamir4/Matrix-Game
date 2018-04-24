@@ -14,19 +14,28 @@ using UnityEngine.UI;
 /// </summary>
 public class GameManager : MonoBehaviour
 {
-    #region UI
-    public GameObject SubmissionResultPanel;
-    public Text ResultText;
-	public Image ResultPanelImage;
+	#region UI
+	private GameObject SubmissionResultPanel;
+	private Text ResultText;
+	private Image ResultPanelImage;
 
-	public GameObject QuestionPanel;
-	public Text QuestionText;
+	private GameObject DescriptionPanel;
+	private Text DescriptionText;
+
+	private GameObject HintsPanel;
+	private Text HintsText;
+
+	private GameObject NamePanel;
+	private Text NameText;
 	#endregion
 
 	#region Question and Answer Values
 	public string Playername;
 
     public string QuestionString;
+	public string HintsString;
+	public string LevelName;
+
     public float MatrixValueA;
     public float MatrixValueB;
     public float MatrixValueC;
@@ -47,13 +56,23 @@ public class GameManager : MonoBehaviour
     /// </summary>
     void Start ()
     {
-		if (QuestionText)
-        {
-            QuestionText.text = QuestionString;
-        }
+		//find level and hints panel and other references
+		DescriptionPanel = GameObject.FindGameObjectWithTag("LevelDescription");
+		DescriptionText = DescriptionPanel.GetComponent<Text>();
+		DescriptionText.text = QuestionString;
+
+		HintsPanel = GameObject.FindGameObjectWithTag("LevelHints");
+		HintsText = HintsPanel.GetComponent<Text>();
+		HintsText.text = HintsString;
+		HintsPanel.transform.parent.gameObject.SetActive(false);
+
+		NamePanel = GameObject.FindGameObjectWithTag("LevelName");
+		NameText = NamePanel.GetComponent<Text>();
+		NameText.text = LevelName;
 
 		solutionMatrix = new Matrix2x2(MatrixValueA, MatrixValueB, MatrixValueC, MatrixValueD);
 
+		//find submission result panel and other references
 		SubmissionResultPanel = GameObject.FindGameObjectWithTag("SubmissionResultPanel");
 		ResultText = SubmissionResultPanel.GetComponentInChildren<Text>();
 		ResultPanelImage = SubmissionResultPanel.GetComponentInChildren<Image>();

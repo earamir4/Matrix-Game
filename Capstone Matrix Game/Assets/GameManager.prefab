@@ -51,14 +51,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04b7a9d10a60ee146943fab8d3c8f148, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SubmissionResultPanel: {fileID: 0}
-  QuestionPanel: {fileID: 0}
-  QuestionText: {fileID: 0}
-  ResultText: {fileID: 0}
-  ResultPanelImage: {fileID: 0}
   Playername: 
-  QuestionString: 'Demo: Scale the N by a factor of 3 '
-  MatrixValueA: 3
-  MatrixValueB: 0
-  MatrixValueC: 0
-  MatrixValueD: 3
+  QuestionString: We have graphed an E, but now we want to change it into a W as shown
+    in the preview.
+  HintsString: 'Hint 1: Experiment with your matrix templates and observe how each
+    one transforms the E. '
+  LevelName: Level 1-2
+  MatrixValueA: 0
+  MatrixValueB: 1
+  MatrixValueC: 1
+  MatrixValueD: 0
+  q: q12
