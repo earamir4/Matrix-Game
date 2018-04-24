@@ -23,7 +23,8 @@ public class OptionalPointInputManager : MonoBehaviour
 		fieldY.text = "";
 		renderManager.RemoveOptionalPoint();
 		clearButton.interactable = false;
-    }
+		mathView.SetPoint(0, 0);
+	}
 
 	public void TrySubmitOptionalPoint()
 	{
@@ -32,6 +33,7 @@ public class OptionalPointInputManager : MonoBehaviour
 			renderManager.SetOptionalPoint(int.Parse(fieldX.text), int.Parse(fieldY.text));
 			clearButton.interactable = true;
             mathView.SetPoint(int.Parse(fieldX.text), int.Parse(fieldY.text));
+			mathView.SetPoint(int.Parse(fieldX.text), int.Parse(fieldY.text));
 		}
     }
 }
