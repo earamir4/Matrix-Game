@@ -231,6 +231,23 @@ Prefab:
       propertyPath: MatrixValueC
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114004567638055734, guid: 3f7f2adc35b70dc44aafe4f40189aa44,
+        type: 2}
+      propertyPath: LevelName
+      value: Level 4-2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114004567638055734, guid: 3f7f2adc35b70dc44aafe4f40189aa44,
+        type: 2}
+      propertyPath: q
+      value: q42
+      objectReference: {fileID: 0}
+    - target: {fileID: 114004567638055734, guid: 3f7f2adc35b70dc44aafe4f40189aa44,
+        type: 2}
+      propertyPath: HintsString
+      value: 'Hint 1: Experiment with your matrix templates and observe how each one
+        transforms the W.   Hint 2: What effect does the identity matrix have on the
+        points? '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3f7f2adc35b70dc44aafe4f40189aa44, type: 2}
   m_IsPrefabParent: 0
@@ -983,7 +1000,7 @@ GameObject:
   - component: {fileID: 1413415065}
   m_Layer: 0
   m_Name: MainCamera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1177,7 +1194,7 @@ GameObject:
   - component: {fileID: 1590180698}
   m_Layer: 0
   m_Name: MatrixRenderCamera
-  m_TagString: MainCamera
+  m_TagString: MatrixRenderCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

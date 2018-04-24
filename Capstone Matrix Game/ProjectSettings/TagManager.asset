@@ -9,6 +9,9 @@ TagManager:
   - TemplateSlot
   - MatrixRenderCamera
   - SubmissionResultPanel
+  - LevelDescription
+  - LevelHints
+  - LevelName
   layers:
   - Default
   - TransparentFX
