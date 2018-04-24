@@ -16,14 +16,15 @@ public class GameManager : MonoBehaviour
 {
     #region UI
     public GameObject SubmissionResultPanel;
-    public GameObject QuestionPanel;
-    public Text QuestionText;
     public Text ResultText;
 	public Image ResultPanelImage;
-    #endregion
 
-    #region Question and Answer Values
-    public string Playername;
+	public GameObject QuestionPanel;
+	public Text QuestionText;
+	#endregion
+
+	#region Question and Answer Values
+	public string Playername;
 
     public string QuestionString;
     public float MatrixValueA;
@@ -52,6 +53,11 @@ public class GameManager : MonoBehaviour
         }
 
 		solutionMatrix = new Matrix2x2(MatrixValueA, MatrixValueB, MatrixValueC, MatrixValueD);
+
+		SubmissionResultPanel = GameObject.FindGameObjectWithTag("SubmissionResultPanel");
+		ResultText = SubmissionResultPanel.GetComponentInChildren<Text>();
+		ResultPanelImage = SubmissionResultPanel.GetComponentInChildren<Image>();
+		SubmissionResultPanel.SetActive(false);
 	}
 
 	/// <summary>

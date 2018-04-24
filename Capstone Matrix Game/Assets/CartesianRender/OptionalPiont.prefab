@@ -91,7 +91,7 @@ Transform:
   m_GameObject: {fileID: 1939782810009628}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 2.51, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children:
   - {fileID: 224609176550386026}
   m_Father: {fileID: 0}
@@ -196,6 +196,7 @@ MonoBehaviour:
   canvasRect: {fileID: 224609176550386026}
   baseCanvasScale: 0.03
   nextPointInLine: {fileID: 0}
+  pointRepresented: {x: 0, y: 0}
 --- !u!114 &114949162446710116
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -348,7 +349,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!222 &222015008419483112
 CanvasRenderer:

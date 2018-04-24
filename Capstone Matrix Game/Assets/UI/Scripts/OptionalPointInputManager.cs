@@ -14,7 +14,8 @@ public class OptionalPointInputManager : MonoBehaviour
 	public void Start()
 	{
 		renderManager = GameObject.FindObjectOfType<MatrixRenderManager>();
-        mathView = FindObjectOfType<MathView>();
+		clearButton.interactable = false;
+		mathView = FindObjectOfType<MathView>();
     }
 
 	public void ClearInput()

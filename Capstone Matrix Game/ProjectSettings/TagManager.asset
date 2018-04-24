@@ -8,6 +8,7 @@ TagManager:
   - AnimationBar
   - TemplateSlot
   - MatrixRenderCamera
+  - SubmissionResultPanel
   layers:
   - Default
   - TransparentFX
