@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class MathView : MonoBehaviour {
 
     public GameObject[] vectorPanels;
-    public int pointX, pointY;
+    private int pointX, pointY;
     public Text equation, pointXUI, pointYUI;
     private Matrix2x2[] transformationMatrices;
 
