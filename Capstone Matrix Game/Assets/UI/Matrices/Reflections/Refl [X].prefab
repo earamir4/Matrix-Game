@@ -307,7 +307,7 @@ GameObject:
   - component: {fileID: 223949914130813926}
   - component: {fileID: 114507236349059214}
   m_Layer: 5
-  m_Name: Reflection [Y]
+  m_Name: Refl [X]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
