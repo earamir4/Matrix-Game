@@ -208,7 +208,8 @@ Prefab:
     - target: {fileID: 114004567638055734, guid: 3f7f2adc35b70dc44aafe4f40189aa44,
         type: 2}
       propertyPath: QuestionString
-      value: We have graphed an E, but now we want to change it into a W.
+      value: We have graphed an E, but now we want to change it into a W as shown
+        in the preview.
       objectReference: {fileID: 0}
     - target: {fileID: 114004567638055734, guid: 3f7f2adc35b70dc44aafe4f40189aa44,
         type: 2}
