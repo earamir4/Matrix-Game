@@ -209,7 +209,7 @@ Prefab:
         type: 2}
       propertyPath: QuestionString
       value: This set contains two N's on opposite sides of the X-axis and Y-axis.
-        Find a way to flip which side both shapes are on.
+        Find a way to flip the right N to the left and vice-versa.
       objectReference: {fileID: 0}
     - target: {fileID: 114004567638055734, guid: 3f7f2adc35b70dc44aafe4f40189aa44,
         type: 2}
