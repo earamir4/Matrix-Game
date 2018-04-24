@@ -7,6 +7,7 @@ TagManager:
   - Workspace
   - AnimationBar
   - TemplateSlot
+  - MatrixRenderCamera
   layers:
   - Default
   - TransparentFX
