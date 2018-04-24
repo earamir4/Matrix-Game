@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class RenderAreaZoom : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-	public Camera matrixRenderCamera;
+	private Camera matrixRenderCamera;
 	public float maxOrthoSize;
 	public float minOrthoSize;
 	public float baseOrthoSize;
@@ -18,6 +18,8 @@ public class RenderAreaZoom : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
 	public void Start()
 	{
+        matrixRenderCamera = GameObject.FindGameObjectWithTag("MatrixRenderCamera").GetComponent<Camera>();
+        renderManager = GameObject.FindObjectOfType<MatrixRenderManager>();
 		matrixRenderCamera.orthographicSize = baseOrthoSize;
     }
 
