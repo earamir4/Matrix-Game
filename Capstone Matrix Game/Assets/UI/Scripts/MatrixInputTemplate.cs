@@ -27,11 +27,13 @@ public class MatrixInputTemplate : MonoBehaviour
             {
                 matrixValues[i] = float.Parse(defaultValue[i]);
                 matrixObjects[i].GetComponent<InputField>().interactable = false;
+                matrixObjects[i].GetComponent<InputField>().text = defaultValue[i];
             }
             else
             {
                 matrixValues[i] = 0;
                 matrixObjects[i].GetComponent<InputField>().interactable = true;
+                matrixObjects[i].GetComponent<InputField>().text = defaultValue[i];
             }
         }    
     }
