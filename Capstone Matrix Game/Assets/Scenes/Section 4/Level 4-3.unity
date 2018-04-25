@@ -231,6 +231,11 @@ Prefab:
       propertyPath: MatrixValueC
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 114004567638055734, guid: 3f7f2adc35b70dc44aafe4f40189aa44,
+        type: 2}
+      propertyPath: q
+      value: q43
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3f7f2adc35b70dc44aafe4f40189aa44, type: 2}
   m_IsPrefabParent: 0

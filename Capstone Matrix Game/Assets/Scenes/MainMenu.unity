@@ -930,6 +930,11 @@ Prefab:
       propertyPath: CreditsPanel
       value: 
       objectReference: {fileID: 579314879}
+    - target: {fileID: 114890995171487094, guid: 03d6f2c25dab9e84d96cc28619da8085,
+        type: 2}
+      propertyPath: userName
+      value: 
+      objectReference: {fileID: 741653480}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03d6f2c25dab9e84d96cc28619da8085, type: 2}
   m_IsPrefabParent: 0
