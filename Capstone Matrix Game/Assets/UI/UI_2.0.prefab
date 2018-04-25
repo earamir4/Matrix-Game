@@ -1141,7 +1141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1456938180733940
 GameObject:
   m_ObjectHideFlags: 1
@@ -3964,7 +3964,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Level 0
+  m_Text: Level 1
 --- !u!114 &114338004770350768
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4887,8 +4887,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelLoadout:
   - {fileID: 1925772231490230, guid: 3d68dc4a65483784d8588b78b54c08ff, type: 2}
-  - {fileID: 0}
-  TemplateSlot: {fileID: 0}
+  - {fileID: 1925772231490230, guid: 90a03c9ae8152ab459eb1a5215467a66, type: 2}
+  - {fileID: 1925772231490230, guid: 5060e6fa6ff7a5444804740716a87388, type: 2}
+  - {fileID: 1925772231490230, guid: 5991aca93f5ebfd4aababaaedb38f339, type: 2}
+  - {fileID: 1925772231490230, guid: 9ed349ca77c8dca428bf85c403703522, type: 2}
+  - {fileID: 1925772231490230, guid: b45e99767b2c6bf41ac56d33be1825c0, type: 2}
+  - {fileID: 1925772231490230, guid: 2971ad3e1cd2bf546833d2cb00fd2a58, type: 2}
+  - {fileID: 1925772231490230, guid: 596e37ebde5746b4e802ef09f4338b60, type: 2}
+  TemplateSlot: {fileID: 1639775054039382, guid: b7f2ab38707d9d540a12c6620b892908,
+    type: 2}
 --- !u!114 &114526019779865500
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6029,8 +6036,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37dfd0a5691755a4788de589bc69b4d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fieldX: {fileID: 114682798739156318}
-  fieldY: {fileID: 114304999090808996}
+  fieldX: {fileID: 0}
+  fieldY: {fileID: 0}
   renderManager: {fileID: 0}
   clearButton: {fileID: 114205379019441146}
 --- !u!114 &114789762691043446
@@ -7226,11 +7233,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 20
-    m_Right: 20
+    m_Left: 50
+    m_Right: 50
     m_Top: 20
     m_Bottom: 0
-  m_ChildAlignment: 1
+  m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 200, y: 230}
