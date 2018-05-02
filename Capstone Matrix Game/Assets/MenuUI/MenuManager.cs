@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -22,7 +22,7 @@ public class MenuManager : MonoBehaviour
     public GameObject MainMenuPanel;
     public GameObject MainMenuButtons;
     public GameObject LevelSelectPanel;
-    public GameObject SettingsPanel;
+    public GameObject CreditsPanel;
 
     public GameObject PartOnePanel;
     public GameObject PartTwoPanel;
@@ -32,8 +32,11 @@ public class MenuManager : MonoBehaviour
     public GameObject LoginPanel;
     public GameObject NamePanel;
     public InputField NameInputField;
+    public InputField PasswordInputField;
+    public InputField URLInputField;
+    public InputField WebsiteInputField;
     public GameObject LogoutPanel;
-    public GameObject userName;
+    public Text userName;
 
     public Text CurrentLevelText;
 
@@ -46,14 +49,34 @@ public class MenuManager : MonoBehaviour
     public void Start()
     {
         if (GameObject.Find("GSFUManager") == null)
+        {
             GSFU_Clone = Instantiate(GSFUManager);
+            DontDestroyOnLoad(GSFU_Clone);
+        }
     }
 
     public void UpdateUsername(string playerName)
     {
         GSFU_Clone.GetComponent<GSFU_Runtime>().NameInput(playerName);
-        userName.GetComponent<Text>().text = playerName;
+        NameInputField.GetComponent<Text>().text = playerName;
+        
     }
+    public void UpdatePassword(string password)
+    {
+        GSFU_Clone.GetComponent<GSFU_Runtime>().PWInput(password);
+        PasswordInputField.GetComponent<Text>().text = password;
+    }
+    public void UpdateURL(string URL)
+    {
+        GSFU_Clone.GetComponent<GSFU_Runtime>().URLInput(URL);
+        URLInputField.GetComponent<Text>().text = URL;
+    }
+    public void UpdateID(string ID)
+    {
+        GSFU_Clone.GetComponent<GSFU_Runtime>().IDInput(ID);
+        WebsiteInputField.GetComponent<Text>().text = ID;
+    }
+
 
     #region Scene Management
     /// <summary>
@@ -73,7 +96,6 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene(index);
     }
 
-    //public static void DontDestroyOnLoad(GSFUManager);
 
     /// <summary>
     /// Loads scene based on name.
@@ -115,8 +137,8 @@ public class MenuManager : MonoBehaviour
     /// </summary>
     public void DisplayLevelSelect()
     {
-        if (SettingsPanel.activeSelf)
-            SettingsPanel.SetActive(false);
+        if (CreditsPanel.activeSelf)
+            CreditsPanel.SetActive(false);
         LevelSelectPanel.SetActive(!LevelSelectPanel.activeSelf);
     }
 
@@ -165,14 +187,14 @@ public class MenuManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Displays or hides the <see cref="SettingsPanel"/>.
-    /// Hides the level select panel if it's active
+    /// Displays or hides the <see cref="CreditsPanel"/>.
+    /// Hides the level select panel if it's active.
     /// </summary>
-    public void DisplaySettings()
+    public void DisplayCredits()
     {
         if (LevelSelectPanel.activeSelf)
             LevelSelectPanel.SetActive(false);
-        SettingsPanel.SetActive(!SettingsPanel.activeSelf);
+        CreditsPanel.SetActive(!CreditsPanel.activeSelf);
     }
 
     /// <summary>
@@ -191,16 +213,17 @@ public class MenuManager : MonoBehaviour
             PartFourPanel.SetActive(false);
         }
 
-        SettingsPanel.SetActive(false);
+        CreditsPanel.SetActive(false);
     }
 
     /// <summary>
     /// Moves on to the <see cref="LogoutPanel"/> if there is text to submit 
     /// </summary>
-    public void SubmitName()
+    public void SubmitGSFUInfo()
     {
-        if (NameInputField.text != null)
+        if (!string.IsNullOrEmpty(NameInputField.text))
         {
+            GSFU_Clone.GetComponent<GSFU_Runtime>().SubmitInfo(NameInputField.GetComponent<Text>().text, PasswordInputField.GetComponent<Text>().text, URLInputField.GetComponent<Text>().text, WebsiteInputField.GetComponent<Text>().text);
             NamePanel.SetActive(false);
             LogoutPanel.SetActive(true);
         }
@@ -234,5 +257,15 @@ public class MenuManager : MonoBehaviour
         }
     }
     #endregion
+    /*
+    private void Update()
+    {
+        //PlayerPrefs.SetString("Playername", NameInputField.text);
+        PlayerPrefs.SetString("Playername", NameInputField.text);
+        PlayerPrefs.SetString("URL", URLInputField.text);
+        PlayerPrefs.SetString("Password", PasswordInputField.text);
+        PlayerPrefs.SetString("ID", WebsiteInputField.text);
+    }
+    */
 
 }
