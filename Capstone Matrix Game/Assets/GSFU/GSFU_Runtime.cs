@@ -26,7 +26,7 @@ public class GSFU_Runtime : MonoBehaviour
         if (playername != null)
         {
             PlayerPrefs.SetString("Playername", playername);
-            GSFU_Demo_Utils.createPlayer(playername);
+            GSFU_Demo_Utils.namechange(playername);
         }
     }
 }
