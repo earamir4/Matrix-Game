@@ -55,29 +55,6 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    public void UpdateUsername(string playerName)
-    {
-        GSFU_Clone.GetComponent<GSFU_Runtime>().NameInput(playerName);
-        NameInputField.GetComponent<Text>().text = playerName;
-        
-    }
-    public void UpdatePassword(string password)
-    {
-        GSFU_Clone.GetComponent<GSFU_Runtime>().PWInput(password);
-        PasswordInputField.GetComponent<Text>().text = password;
-    }
-    public void UpdateURL(string URL)
-    {
-        GSFU_Clone.GetComponent<GSFU_Runtime>().URLInput(URL);
-        URLInputField.GetComponent<Text>().text = URL;
-    }
-    public void UpdateID(string ID)
-    {
-        GSFU_Clone.GetComponent<GSFU_Runtime>().IDInput(ID);
-        WebsiteInputField.GetComponent<Text>().text = ID;
-    }
-
-
     #region Scene Management
     /// <summary>
     /// Updates the text based on the current level chosen
@@ -257,15 +234,4 @@ public class MenuManager : MonoBehaviour
         }
     }
     #endregion
-    /*
-    private void Update()
-    {
-        //PlayerPrefs.SetString("Playername", NameInputField.text);
-        PlayerPrefs.SetString("Playername", NameInputField.text);
-        PlayerPrefs.SetString("URL", URLInputField.text);
-        PlayerPrefs.SetString("Password", PasswordInputField.text);
-        PlayerPrefs.SetString("ID", WebsiteInputField.text);
-    }
-    */
-
 }
