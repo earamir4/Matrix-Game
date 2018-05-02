@@ -8,9 +8,9 @@ using UnityEngine.Networking;
 public class CloudConnectorEditor
 {
 	// -- Complete the following fields. --
-	private static string webServiceUrl = "";
-	private static string spreadsheetId = ""; // If this is a fixed value could also be setup on the webservice to save POST request size.
-	private static string servicePassword = "passcode";
+    	private static string webServiceUrl= PlayerPrefs.GetString("URL");
+    	private static string spreadsheetId = PlayerPrefs.GetString("ID");
+    	private static string servicePassword = PlayerPrefs.GetString("Password");
 	private static float timeOutLimit = 30f;
 	private static bool usePOST = true;
 	// --
