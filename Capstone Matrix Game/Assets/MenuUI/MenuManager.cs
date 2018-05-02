@@ -118,8 +118,19 @@ public class MenuManager : MonoBehaviour
     public void DisplayLevelSelect()
     {
         if (CreditsPanel.activeSelf)
+        {
             CreditsPanel.SetActive(false);
+        }
+            
         LevelSelectPanel.SetActive(!LevelSelectPanel.activeSelf);
+
+        if (!LevelSelectPanel.activeSelf)
+        {
+            PartOnePanel.SetActive(false);
+            PartTwoPanel.SetActive(false);
+            PartThreePanel.SetActive(false);
+            PartFourPanel.SetActive(false);
+        }
     }
 
     /// <summary>
