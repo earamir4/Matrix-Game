@@ -32,6 +32,9 @@ public class MenuManager : MonoBehaviour
     public GameObject LoginPanel;
     public GameObject NamePanel;
     public InputField NameInputField;
+    public InputField PasswordInputField;
+    public InputField URLInputField;
+    public InputField WebsiteInputField;
     public GameObject LogoutPanel;
     public Text userName;
 
@@ -50,12 +53,6 @@ public class MenuManager : MonoBehaviour
             GSFU_Clone = Instantiate(GSFUManager);
             DontDestroyOnLoad(GSFU_Clone);
         }
-    }
-
-    public void UpdateUsername(string playerName)
-    {
-        GSFU_Clone.GetComponent<GSFU_Runtime>().NameInput(playerName);
-        userName.text = playerName;
     }
 
     #region Scene Management
@@ -118,19 +115,8 @@ public class MenuManager : MonoBehaviour
     public void DisplayLevelSelect()
     {
         if (CreditsPanel.activeSelf)
-        {
             CreditsPanel.SetActive(false);
-        }
-            
         LevelSelectPanel.SetActive(!LevelSelectPanel.activeSelf);
-
-        if (!LevelSelectPanel.activeSelf)
-        {
-            PartOnePanel.SetActive(false);
-            PartTwoPanel.SetActive(false);
-            PartThreePanel.SetActive(false);
-            PartFourPanel.SetActive(false);
-        }
     }
 
     /// <summary>
@@ -210,12 +196,11 @@ public class MenuManager : MonoBehaviour
     /// <summary>
     /// Moves on to the <see cref="LogoutPanel"/> if there is text to submit 
     /// </summary>
-    public void SubmitName()
+    public void SubmitGSFUInfo()
     {
         if (!string.IsNullOrEmpty(NameInputField.text))
         {
-            GSFU_Clone.GetComponent<GSFU_Runtime>().ChangeName();
-            userName.text = NameInputField.text;
+            GSFU_Clone.GetComponent<GSFU_Runtime>().SubmitInfo(NameInputField.GetComponent<Text>().text, PasswordInputField.GetComponent<Text>().text, URLInputField.GetComponent<Text>().text, WebsiteInputField.GetComponent<Text>().text);
             NamePanel.SetActive(false);
             LogoutPanel.SetActive(true);
         }
@@ -249,5 +234,4 @@ public class MenuManager : MonoBehaviour
         }
     }
     #endregion
-
 }

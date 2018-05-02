@@ -6,10 +6,10 @@ using UnityEngine.Networking;
 
 public class CloudConnector : MonoBehaviour
 {
-	// -- Complete the following fields. --
-	private string webServiceUrl = "https://script.google.com/macros/s/AKfycby1-ChrVsf4ahs8YAYZutcF_46KMZOASVdnDoolfiQK6yPRIqs/exec";
-	private string spreadsheetId = "1UC9yyBBQSsT5x0tzS0SrTXWJFXKSssVmFoczXSu76Wk"; // If this is a fixed value could also be setup on the webservice to save POST request size.
-	private string servicePassword = "passcode";
+    // -- Complete the following fields. --
+    private string webServiceUrl;// = "https://script.google.com/macros/s/AKfycby1-ChrVsf4ahs8YAYZutcF_46KMZOASVdnDoolfiQK6yPRIqs/exec";
+    private string spreadsheetId;// = "1UC9yyBBQSsT5x0tzS0SrTXWJFXKSssVmFoczXSu76Wk"; // If this is a fixed value could also be setup on the webservice to save POST request size.
+    private string servicePassword;// = "passcode";
 	private float timeOutLimit = 30f;
 	public bool usePOST = true;
 	// --
@@ -75,7 +75,12 @@ public class CloudConnector : MonoBehaviour
 		
 		CloudConnectorCore.ProcessResponse(www.downloadHandler.text, elapsedTime);
 	}
-	
+    private void Update()
+    {
+        webServiceUrl= PlayerPrefs.GetString("URL");
+        spreadsheetId = PlayerPrefs.GetString("ID");
+        servicePassword = PlayerPrefs.GetString("Password");
+    }
 }
 
 	
