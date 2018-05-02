@@ -3,6 +3,9 @@
 public class GSFU_Runtime : MonoBehaviour
 {
     public string playername;
+       public string url;
+    public string password;
+    public string id;
 
     void OnEnable()
     {
@@ -20,12 +23,30 @@ public class GSFU_Runtime : MonoBehaviour
     {
         playername = inputName;
     }
+    
+    public void urlInput(string inputURL)
+    {
+        url = inputURL;
+    }
+    
+    public void pwInput(string inputPW)
+    {
+        password = inputPW;
+    }
+    
+    public void idInput(string inputID)
+    {
+        id = inputID;
+    }
 
     public void ChangeName()
     {
         if (playername != null)
         {
             PlayerPrefs.SetString("Playername", playername);
+            PlayerPrefs.SetString("URL", url);
+            PlayerPrefs.SetString("Password",password);
+            PlayerPrefs.SetString("ID", id);
             GSFU_Demo_Utils.namechange(playername);
         }
     }
