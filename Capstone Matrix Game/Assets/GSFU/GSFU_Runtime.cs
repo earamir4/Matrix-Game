@@ -16,16 +16,10 @@ public class GSFU_Runtime : MonoBehaviour
         CloudConnectorCore.processedResponseCallback.RemoveListener(GSFU_Demo_Utils.ParseData);
     }
 
-    public void NameInput(string inputName)
-    {
-        playername = inputName;
-    }
-
-    public void ChangeName()
+    public void SubmitInfo(string inputName, string password, string URL, string ID)
     {
         if (playername != null)
         {
-            PlayerPrefs.SetString("Playername", playername);
             GSFU_Demo_Utils.createPlayer(playername);
         }
     }

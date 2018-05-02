@@ -32,6 +32,9 @@ public class MenuManager : MonoBehaviour
     public GameObject LoginPanel;
     public GameObject NamePanel;
     public InputField NameInputField;
+    public InputField PasswordInputField;
+    public InputField URLInputField;
+    public InputField WebsiteInputField;
     public GameObject LogoutPanel;
     public Text userName;
 
@@ -55,8 +58,24 @@ public class MenuManager : MonoBehaviour
     public void UpdateUsername(string playerName)
     {
         GSFU_Clone.GetComponent<GSFU_Runtime>().NameInput(playerName);
-        userName.text = playerName;
+        NameInputField.GetComponent<Text>().text = playerName;
     }
+    public void UpdatePassword(string password)
+    {
+        GSFU_Clone.GetComponent<GSFU_Runtime>().NameInput(password);
+        PasswordInputField.GetComponent<Text>().text = password;
+    }
+    public void UpdateURL(string URL)
+    {
+        GSFU_Clone.GetComponent<GSFU_Runtime>().NameInput(URL);
+        URLInputField.GetComponent<Text>().text = URL;
+    }
+    public void UpdateID(string ID)
+    {
+        GSFU_Clone.GetComponent<GSFU_Runtime>().NameInput(ID);
+        URLInputField.GetComponent<Text>().text = ID;
+    }
+
 
     #region Scene Management
     /// <summary>
@@ -199,12 +218,11 @@ public class MenuManager : MonoBehaviour
     /// <summary>
     /// Moves on to the <see cref="LogoutPanel"/> if there is text to submit 
     /// </summary>
-    public void SubmitName()
+    public void SubmitGSFUInfo()
     {
         if (!string.IsNullOrEmpty(NameInputField.text))
         {
-            GSFU_Clone.GetComponent<GSFU_Runtime>().ChangeName();
-            userName.text = NameInputField.text;
+            GSFU_Clone.GetComponent<GSFU_Runtime>().SubmitInfo(NameInputField.GetComponent<Text>().text, PasswordInputField.GetComponent<Text>().text, URLInputField.GetComponent<Text>().text, WebsiteInputField.GetComponent<Text>().text);
             NamePanel.SetActive(false);
             LogoutPanel.SetActive(true);
         }
