@@ -50,8 +50,9 @@ public class GameManager : MonoBehaviour
         {
             QuestionText.text = QuestionString;
         }
+        Playername = PlayerPrefs.GetString("Name");
 
-		solutionMatrix = new Matrix2x2(MatrixValueA, MatrixValueB, MatrixValueC, MatrixValueD);
+        solutionMatrix = new Matrix2x2(MatrixValueA, MatrixValueB, MatrixValueC, MatrixValueD);
 	}
 
 	/// <summary>
