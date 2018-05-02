@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
 
     #region Question and Answer Values
     public string Playername;
+    
 
     public string QuestionString;
     public float MatrixValueA;
@@ -50,6 +51,8 @@ public class GameManager : MonoBehaviour
         {
             QuestionText.text = QuestionString;
         }
+		
+        	Playername = PlayerPrefs.GetString("Playername");
 
 		solutionMatrix = new Matrix2x2(MatrixValueA, MatrixValueB, MatrixValueC, MatrixValueD);
 	}
