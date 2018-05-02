@@ -33,7 +33,7 @@ public class MenuManager : MonoBehaviour
     public GameObject NamePanel;
     public InputField NameInputField;
     public GameObject LogoutPanel;
-    public GameObject userName;
+    public Text userName;
 
     public Text CurrentLevelText;
 
@@ -46,13 +46,16 @@ public class MenuManager : MonoBehaviour
     public void Start()
     {
         if (GameObject.Find("GSFUManager") == null)
+        {
             GSFU_Clone = Instantiate(GSFUManager);
+            DontDestroyOnLoad(GSFU_Clone);
+        }
     }
 
     public void UpdateUsername(string playerName)
     {
         GSFU_Clone.GetComponent<GSFU_Runtime>().NameInput(playerName);
-        userName.GetComponent<Text>().text = playerName;
+        userName.text = playerName;
     }
 
     #region Scene Management
@@ -73,7 +76,6 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene(index);
     }
 
-    //public static void DontDestroyOnLoad(GSFUManager);
 
     /// <summary>
     /// Loads scene based on name.
@@ -199,8 +201,10 @@ public class MenuManager : MonoBehaviour
     /// </summary>
     public void SubmitName()
     {
-        if (NameInputField.text != null)
+        if (!string.IsNullOrEmpty(NameInputField.text))
         {
+            GSFU_Clone.GetComponent<GSFU_Runtime>().ChangeName();
+            userName.text = NameInputField.text;
             NamePanel.SetActive(false);
             LogoutPanel.SetActive(true);
         }
