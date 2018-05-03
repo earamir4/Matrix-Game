@@ -75,6 +75,7 @@ public class CloudConnector : MonoBehaviour
 		
 		CloudConnectorCore.ProcessResponse(www.downloadHandler.text, elapsedTime);
 	}
+
     private void Update()
     {
         webServiceUrl= PlayerPrefs.GetString("URL");

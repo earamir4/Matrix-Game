@@ -90,8 +90,6 @@ public static class GSFU_Demo_Utils
         playername = n;
     }
 
-
-
     // example update command. can either have one of these and have a way to change it for every question. Or have several.
     //This is a general use to change names. It is as simpls as 
     //  (the table being changed, the first column, game object in first column to be edited, the column in which you want to edit, the change you want to make, runtime)

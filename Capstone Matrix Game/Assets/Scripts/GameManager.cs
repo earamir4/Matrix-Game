@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour
 {
     #region UI
     public GameObject SubmissionResultPanel;
-    public GameObject QuestionPanel;
     public Text QuestionText;
     public Text ResultText;
 	public Image ResultPanelImage;
@@ -73,12 +72,11 @@ public class GameManager : MonoBehaviour
         if (isCorrect)
         {
             ResultText.text = "Correct!";
-            answertime = Time.timeSinceLevelLoad;
-            CloudConnectorCore.UpdateObjects("playerInfo", "name", Playername, q, answertime.ToString() , true);
-
             MatrixLogger.Add("Correct! The answer was:\n" + solutionMatrix.ToString());
             SubmissionResultPanel.SetActive(true);
 
+            answertime = Time.timeSinceLevelLoad;
+            CloudConnectorCore.UpdateObjects("playerInfo", "name", Playername, q, answertime.ToString() , true);
             StopCoroutine("RemoveResultPanelAfterSomeSeconds");
             StartCoroutine("RemoveResultPanelAfterSomeSeconds");
 		}
