@@ -22,7 +22,7 @@ public class MenuManager : MonoBehaviour
     public GameObject MainMenuPanel;
     public GameObject MainMenuButtons;
     public GameObject LevelSelectPanel;
-    public GameObject SettingsPanel;
+    public GameObject CreditsPanel;
 
     public GameObject PartOnePanel;
     public GameObject PartTwoPanel;
@@ -32,8 +32,11 @@ public class MenuManager : MonoBehaviour
     public GameObject LoginPanel;
     public GameObject NamePanel;
     public InputField NameInputField;
+    public InputField PasswordInputField;
+    public InputField URLInputField;
+    public InputField WebsiteInputField;
     public GameObject LogoutPanel;
-    public GameObject userName;
+    public Text userName;
 
     public Text CurrentLevelText;
 
@@ -46,13 +49,10 @@ public class MenuManager : MonoBehaviour
     public void Start()
     {
         if (GameObject.Find("GSFUManager") == null)
+        {
             GSFU_Clone = Instantiate(GSFUManager);
-    }
-
-    public void UpdateUsername(string playerName)
-    {
-        GSFU_Clone.GetComponent<GSFU_Runtime>().NameInput(playerName);
-        userName.GetComponent<Text>().text = playerName;
+            DontDestroyOnLoad(GSFU_Clone);
+        }
     }
 
     #region Scene Management
@@ -73,7 +73,6 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene(index);
     }
 
-    //public static void DontDestroyOnLoad(GSFUManager);
 
     /// <summary>
     /// Loads scene based on name.
@@ -115,8 +114,8 @@ public class MenuManager : MonoBehaviour
     /// </summary>
     public void DisplayLevelSelect()
     {
-        if (SettingsPanel.activeSelf)
-            SettingsPanel.SetActive(false);
+        if (CreditsPanel.activeSelf)
+            CreditsPanel.SetActive(false);
         LevelSelectPanel.SetActive(!LevelSelectPanel.activeSelf);
     }
 
@@ -165,14 +164,14 @@ public class MenuManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Displays or hides the <see cref="SettingsPanel"/>.
-    /// Hides the level select panel if it's active
+    /// Displays or hides the <see cref="CreditsPanel"/>.
+    /// Hides the level select panel if it's active.
     /// </summary>
-    public void DisplaySettings()
+    public void DisplayCredits()
     {
         if (LevelSelectPanel.activeSelf)
             LevelSelectPanel.SetActive(false);
-        SettingsPanel.SetActive(!SettingsPanel.activeSelf);
+        CreditsPanel.SetActive(!CreditsPanel.activeSelf);
     }
 
     /// <summary>
@@ -191,16 +190,17 @@ public class MenuManager : MonoBehaviour
             PartFourPanel.SetActive(false);
         }
 
-        SettingsPanel.SetActive(false);
+        CreditsPanel.SetActive(false);
     }
 
     /// <summary>
     /// Moves on to the <see cref="LogoutPanel"/> if there is text to submit 
     /// </summary>
-    public void SubmitName()
+    public void SubmitGSFUInfo()
     {
-        if (NameInputField.text != null)
+        if (!string.IsNullOrEmpty(NameInputField.text))
         {
+            GSFU_Clone.GetComponent<GSFU_Runtime>().SubmitInfo(NameInputField.text, PasswordInputField.text, URLInputField.text, WebsiteInputField.text);
             NamePanel.SetActive(false);
             LogoutPanel.SetActive(true);
         }
@@ -234,5 +234,4 @@ public class MenuManager : MonoBehaviour
         }
     }
     #endregion
-
 }

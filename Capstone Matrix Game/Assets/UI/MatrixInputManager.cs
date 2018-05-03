@@ -7,6 +7,7 @@ public class MatrixInputManager : MonoBehaviour
 {
 	//input spots, from first to input to last to input
 	public TemplateInputSpot[] inputSpots;
+    private MathView mathView;
 	private int spotsFilled;
     public MatrixRenderManager renderManager;
 
@@ -20,6 +21,7 @@ public class MatrixInputManager : MonoBehaviour
 
 	public void Start()
 	{
+        mathView = FindObjectOfType<MathView>();
 		for (int i = 0; i < inputSpots.Length; i++)
 		{
 			if (inputSpots[i] != null)
@@ -86,10 +88,12 @@ public class MatrixInputManager : MonoBehaviour
 			Debug.Log(newMatrix);
 
 			inputMatrices.Add(newMatrix);
+            
         }
 
 		renderManager.SetMatrices(inputMatrices.ToArray());
-	}
+        mathView.SetMatrices(inputMatrices.ToArray());
+    }
 
 	public void SubmitMatrices()
 	{

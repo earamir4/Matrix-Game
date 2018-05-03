@@ -6,55 +6,55 @@ using UnityEngine.UI;
 
 public class MatrixInputTemplate : MonoBehaviour
 {
-    public int xSize = 2, ySize = 2;
+    [HideInInspector]
     public GameObject[] matrixObjects;
-    public InputField inputField;
 
-    private float[] matrixValues;
+    //Default value should be edited on the prefab
+    public string[] defaultValue = new string[4];
+    private float[] matrixValues = new float[4];
     public GameObject blocker;
+    public bool inWorkspace = false;
 
-	public delegate void InputSlotChangedHandler();
-	public event InputSlotChangedHandler inputSlotChanged;
+    public delegate void InputSlotChangedHandler();
+    public event InputSlotChangedHandler inputSlotChanged;
 
     private void Start()
     {
-        matrixValues = new float[xSize * ySize];
-        GatherValuesFromText();
-    }
-    
-    public void OnEndEdit()
-    {
-		inputSlotChanged();
-	}
-    
-    private void GatherValuesFromText()
-    {
-        for(int i = 0; i < matrixValues.Length; i++)
+
+        for (int i = 0; i < defaultValue.Length; i++)
         {
-			String text = matrixObjects[i].GetComponentInChildren<InputField>().text;
-            if (text.Length != 0)
+            float value;
+            if (float.TryParse(defaultValue[i], out value))
             {
-                if (text.Contains("/"))
-                {
-                    string[] splits = text.Split('/');
-                    matrixValues[i] = float.Parse(splits[0]) / float.Parse(splits[1]);
-                }
-				else
-				{
-					matrixValues[i] = float.Parse(text);
-				}
-			}
+                matrixValues[i] = float.Parse(defaultValue[i]);
+                matrixObjects[i].GetComponent<InputField>().interactable = false;
+                matrixObjects[i].GetComponent<InputField>().text = defaultValue[i];
+            }
+            else
+            {
+                matrixValues[i] = 0;
+                matrixObjects[i].GetComponent<InputField>().interactable = true;
+                matrixObjects[i].GetComponent<InputField>().text = defaultValue[i];
+            }
         }
     }
 
-	public void SetAcceptingInput(bool isAcceptingInput)
+    public void OnEndEdit()
+    {
+        inputSlotChanged();
+        for (int i = 0; i < matrixValues.Length; i++)
+        {
+            matrixValues[i] = float.Parse(matrixObjects[i].GetComponent<InputField>().text);
+        }
+    }
+
+    public void SetAcceptingInput(bool isAcceptingInput)
     {
         blocker.SetActive(!isAcceptingInput);
     }
 
     public float[] GetValues()
     {
-		GatherValuesFromText();
         return matrixValues;
     }
 }

@@ -1,34 +1,30 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 
 public class GSFU_Runtime : MonoBehaviour
 {
-    public string playername;
-
-	void OnEnable()
-	{
-		// Suscribe for catching cloud responses.
-		CloudConnectorCore.processedResponseCallback.AddListener(GSFU_Demo_Utils.ParseData);
-	}
-	
-	void OnDisable()
-	{
-		// Remove listeners.
-		CloudConnectorCore.processedResponseCallback.RemoveListener(GSFU_Demo_Utils.ParseData);
-	}
-	
-    public void NameInput(string inputName)
+    void OnEnable()
     {
-        playername = inputName;
+        // Suscribe for catching cloud responses.
+        CloudConnectorCore.processedResponseCallback.AddListener(GSFU_Demo_Utils.ParseData);
     }
 
-    public void ChangeName()
+    /// <summary>
+    /// Remove listeners from <see cref="GSFU_Demo_Utils"/>.
+    /// </summary>
+    void OnDisable()
     {
-        if (playername != null)
-            PlayerPrefs.SetString("Playername", playername);
+        CloudConnectorCore.processedResponseCallback.RemoveListener(GSFU_Demo_Utils.ParseData);
+    }
+
+    public void SubmitInfo(string inputName, string password, string URL, string ID)
+    {
+        if (!string.IsNullOrEmpty(inputName))
+        {
+            PlayerPrefs.SetString("Name", inputName);
+            PlayerPrefs.SetString("URL", URL);
+            PlayerPrefs.SetString("ID", ID);
+            PlayerPrefs.SetString("Password", password);
+            GSFU_Demo_Utils.createPlayer(inputName);
+        }
     }
 }
-
-
-
