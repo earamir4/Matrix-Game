@@ -200,7 +200,7 @@ public class MenuManager : MonoBehaviour
     {
         if (!string.IsNullOrEmpty(NameInputField.text))
         {
-            GSFU_Clone.GetComponent<GSFU_Runtime>().SubmitInfo(NameInputField.GetComponent<Text>().text, PasswordInputField.GetComponent<Text>().text, URLInputField.GetComponent<Text>().text, WebsiteInputField.GetComponent<Text>().text);
+            GSFU_Clone.GetComponent<GSFU_Runtime>().SubmitInfo(NameInputField.text, PasswordInputField.text, URLInputField.text, WebsiteInputField.text);
             NamePanel.SetActive(false);
             LogoutPanel.SetActive(true);
         }
