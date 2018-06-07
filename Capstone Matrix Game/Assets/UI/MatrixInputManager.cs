@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MatrixInputManager : MonoBehaviour
 {
@@ -178,5 +179,10 @@ public class MatrixInputManager : MonoBehaviour
 	public void SetSkipAnimation(bool skipAnimation)
 	{
 		skipSubmissionAnimation = skipAnimation;
+    }
+
+    public void restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

@@ -34,8 +34,8 @@ public class MathView : MonoBehaviour {
 
     public void SetPoint()
     {
-        pointX = int.Parse(inputFieldX.GetComponent<Text>().text);
-        pointY = int.Parse(inputFieldY.GetComponent<Text>().text);
+        pointX = int.Parse(inputFieldX.GetComponent<InputField>().text);
+        pointY = int.Parse(inputFieldY.GetComponent<InputField>().text);
     }
 
     public void SetEquation()
